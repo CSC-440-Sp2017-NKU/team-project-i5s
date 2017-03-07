@@ -1,0 +1,53 @@
+<h2>
+    Popular Questions
+</h2>
+<div class="popular-questions">
+    <%@popQs.each do |question|%>
+    <div class="question-summary">
+        <div class="qs-forum">
+            <%= question.forum %>
+        </div>
+        <div class="qs-question">
+            <%= question.title %>
+        </div>
+        <div class="qs-author">
+            - <%= question.author %>
+        </div>
+        <div class="qs-answers">
+            <%= question.num_answers %>
+        </div>
+        
+        <div class="qs-time">
+            <%= question.created_on %>
+        </div>
+        
+    </div>
+    <%end %>
+    
+    <div class="more-link">
+        <a>View More</a>
+    </div>
+</div>
+
+<h2>
+    Forums
+</h2>
+<div class="forum-toggle">
+    
+</div>
+<div class="forum-list">
+    <div class=row>
+        <%@forums.each do |forum| %>
+        <div class="col-xs-6 col-sm-4 col-md-3">
+            <div class="forum-tile">
+        <a class="forum-link" href="/Forums/<%= forum.id %>">
+            <%= image_tag(forum.image,{:class=>"forum-icon center-block img-responsive"})%>
+            <div class="forum-name">
+                <%= forum.name %>
+            </div>
+            </div>
+        </a>
+        </div>
+        <%end %>
+    </div>
+</div>

@@ -1,0 +1,275 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    margin: 0 0 50px; /* bottom = footer height */
+    font-family: Avenir, Arial, sans-serif;
+    font-weight: normal;
+    font-size: 18px;
+}
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+}
+
+/*Navbar*/
+.navbar
+{
+    margin-bottom: 0px;
+    min-height: 80px;
+    border-radius: 0px;
+}
+
+.navbar-inverse
+{
+    background-color: black;
+    border-color: transparent;
+}
+
+.logo
+{
+    
+}
+
+.navbar-brand
+{
+    padding: 0px;
+    padding-top: 8px;
+}
+.user-icon
+{
+ opacity: 0.52;   
+}
+
+.user-icon:hover
+{
+ opacity: 0.92;   
+}
+
+.navbar-nav
+{
+ height: 80px;   
+}
+.vertical-center-content
+{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+.nav>li
+{
+    padding-left: 20px;
+    padding-right: 0px;
+    
+}
+.search
+{
+    position: relative;
+}
+
+.search span
+{
+    position: absolute;
+    right: 5px;
+    top: 1px;
+    font-size: 18px;
+    color: white;
+    background-color: #363636;
+    padding: 3px;
+}
+.search input
+{
+    background-color: #363636;
+    border-radius: 5px;
+    border: none;
+    min-height: 25px;
+    color: white;
+    padding: 5px;
+    padding-left: 8px;
+    padding-bottom: 3px;
+}
+
+.navbar-inverse .navbar-nav>li>a
+{
+    color: white;
+    font-size: 22px;
+    font-weight: 700;
+}
+.caret-padding
+{
+    padding-left:5px;
+}
+/*End Navbar*/
+
+.nkuBackground
+{
+    background-image: url("background.jpg");
+    background-size: cover;
+    background-position: center;
+}
+.main-content
+{
+    background-color: white;
+    min-height: calc(100vh - 80px - 50px);
+    padding-top: 22px;
+}
+
+h2
+{
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 24px;
+}
+
+/*Home Page*/
+.popular-questions
+{
+ padding-top: 10px;
+}
+.question-summary
+{
+    background-color: #ececec;
+   margin-bottom: 10px;
+   height: 50px;
+}
+.question-summary, .qs-forum, .qs-answers{
+ border-radius: 10px;
+ 
+}
+.question-summary,.qs-forum, .qs-question, .qs-author, .qs-time, .qs-answers
+{
+    height: 48px;
+       
+    
+}
+.qs-forum, .qs-question, .qs-author, .qs-time, .qs-answers
+{
+    display: inline-block;
+    padding: 10px;
+   
+}
+.qs-forum,.qs-question
+{
+    font-weight: bold;
+}
+
+.qs-answers
+{
+    font-weight: 900;
+    font-size: 20px;
+    min-width: 70px;
+    text-align: center;
+}
+
+.qs-forum
+{
+    background-color: #a5a5a5;
+    color: white;
+    padding-left: 17px;
+    padding-right: 17px;
+    padding-top: 13px;
+    font-size: 17px;
+    font-weight: bold;
+    
+}
+.qs-author, .qs-time{
+    color: #a5a5a5;
+    font-weight: normal;
+}
+
+.qs-time, .qs-answers
+{
+    float: right;
+}
+
+.qs-answers
+{
+    background-color: #ffcc33;
+    color: white;
+    font-size: 22px;
+}
+
+.more-link
+{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
+}
+.more-link a{
+    color: #a5a5a5;
+}
+
+
+.forum-list
+{
+    margin-bottom: 50px;
+}
+.forum-tile
+{
+    background-color: #ececec;
+    border-radius: 10px;
+    padding: 10px;
+}
+.forum-icon
+{
+    height: 150px;
+    width: 150px;
+}
+.forum-link
+{
+    text-decoration: none;
+}
+.forum-link:hover
+{
+    text-decoration: none;
+}
+.forum-name
+{
+    color: #5b5b5b;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 900;
+    margin-top: 10px;
+}
+/*Footer info*/
+footer
+{
+    background-color: black;
+}
+.footer-info
+{
+  color: white;
+  float: right;
+  padding-top: 15px;
+}
+
+/*Need to fix filepaths!*/
+
+@font-face {
+  font-family: 'Avenir';
+  src: url('Avenir-Black.eot?#iefix') format('embedded-opentype'),  url('Avenir-Black.woff') format('woff'), url('Avenir-Black.ttf')  format('truetype'), url('Avenir-Black.svg#Avenir-Black') format('svg');
+  font-weight: 900;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'Avenir';
+  src: url('Avenir-Roman.eot?#iefix') format('embedded-opentype'),  url('Avenir-Roman.woff') format('woff'), url('Avenir-Roman.ttf')  format('truetype'), url('Avenir-Roman.svg#Avenir-Roman') format('svg');
+  font-weight: 700;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'Avenir';
+  src: url('Avenir-Book.eot?#iefix') format('embedded-opentype'),  url('Avenir-Book.woff') format('woff'), url('Avenir-Book.ttf')  format('truetype'), url('Avenir-Book.svg#Avenir-Book') format('svg');
+  font-weight: 400;
+  font-style: normal;
+}
+
