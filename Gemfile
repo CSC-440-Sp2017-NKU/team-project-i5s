@@ -8,6 +8,11 @@ gem 'rails', '4.2.5'
 #Hunter- switch to using pg as it is compatible with heroku
   gem'pg'
   
+#Hunter- added for heroku
+gem 'rails_12factor'
+ruby '2.3.0'
+##
+  
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
