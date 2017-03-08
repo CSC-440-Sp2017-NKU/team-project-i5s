@@ -1,0 +1,64 @@
+<h2>
+    Popular Questions
+</h2>
+<div class="popular-questions">
+    <%@popQs.each do |question|%>
+    <div class="question-summary">
+        
+             <a href="/Forums/<%= question.forum.id %>">
+        <div class="qs-forum">
+            <%= question.forum.name %>
+           
+        </div>
+         </a>
+        <div class="qs-question">
+             <a href="/Question/<%= question.id %>">
+            <%= question.title %>
+            </a>
+        </div>
+        <div class="qs-author">
+            <a href="">
+            - <%= question.author %>
+            </a>
+        </div>
+        <a href="/Question/<%= question.id %>">
+        <div class="qs-answers">
+        
+            <span class="qs-a-expand">View </span> <%= question.num_answers %> <span class="qs-a-expand">Answers <i class="fa fa-arrow-right"></i></span>
+       
+        </div>
+         </a>
+        <div class="qs-time">
+            <%= question.created_on %>
+        </div>
+        
+    </div>
+    <%end %>
+    
+    <div class="more-link">
+        <a>View More</a>
+    </div>
+</div>
+
+<h2>
+    Forums
+</h2>
+<div class="forum-toggle">
+    
+</div>
+<div class="forum-list">
+    <div class="row">
+        <% list_forums().each do |forum| %>
+        <div class="col-xs-6 col-sm-4 col-md-3 fl-forum-col">
+            <div class="fl-forum-tile">
+        <a class="fl-forum-link" href="/Forums/<%= forum.id %>">
+            <%= image_tag(forum.image,{:class=>"fl-forum-icon center-block img-responsive"})%>
+            <div class="fl-forum-name">
+                <%= forum.name %>
+            </div>
+            </div>
+        </a>
+        </div>
+        <%end %>
+    </div>
+</div>
