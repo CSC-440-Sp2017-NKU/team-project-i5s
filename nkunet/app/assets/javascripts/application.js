@@ -15,4 +15,5 @@
 //= require turbolinks
 
 //= require bootstrap.min
+//= require isotope.pkgd.min
 //= require_tree .

@@ -55,5 +55,11 @@ Rails.application.routes.draw do
   #   end
   
   root 'forum#index'
-  
+  get '/Forums', to: 'forum#list_forums'
+  get '/Forums/:id', to: 'forum#view_forum'
+  get '/Question/:id', to: 'question#view_question'
+  get '/Question/Post/:forum_id', to: 'question#post_question'
+  post '/Question/Post', to: 'question#post_question'
+  get '/Question/Answer/:question_id', to: 'question#answer_question'
+  post '/Question/Answer/:question_id', to: 'question#answer_question'
 end
