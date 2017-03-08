@@ -1,6 +1,6 @@
 module TestData
  
-   def list_forums()
+   def test_list_forums()
    @forums = []
     @forums.push Forum.new
     @forums[0].id = 0
@@ -25,7 +25,7 @@ module TestData
      return @forums;
    end
    
-   def list_questions()
+   def test_list_questions()
        @popQs = []
     @popQs.push Question.new
     @popQs[0].id = 0

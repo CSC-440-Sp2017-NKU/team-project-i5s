@@ -1,3 +1,5 @@
+require "test_classes"
+
 class QuestionController < ActionController::Base
     layout "main"
     require "test_data"
@@ -9,9 +11,8 @@ class QuestionController < ActionController::Base
   protect_from_forgery with: :exception
   
   def view_question
-      @question = list_questions()[Integer(params["id"])]
+      @question = test_list_questions()[Integer(params["id"])]
   end
-  
 end
 
 

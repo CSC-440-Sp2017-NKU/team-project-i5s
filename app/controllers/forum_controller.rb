@@ -1,3 +1,5 @@
+require "test_classes"
+
 class ForumController < ActionController::Base
     layout "main"
     require "test_data"
@@ -9,24 +11,15 @@ class ForumController < ActionController::Base
   protect_from_forgery with: :exception
   
   def index
-    
-    @popQs = list_questions()
-    
+    @forums = test_list_forums()
+    @popQs = test_list_questions()
   end
   
   
   
   def view_forum
-      @forum = list_forums()[Integer(params["id"])]
-      @questions = list_questions()
+      @forum = test_list_forums()[Integer(params["id"])]
+      @questions = test_list_questions()
   end
   
 end
-
-  class Question
-    attr_accessor :id, :forum, :title, :author, :created_on, :num_answers
-   end
-
-  class Forum
-    attr_accessor :name, :id, :image
-  end

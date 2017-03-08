@@ -3,10 +3,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
-# Use sqlite3 as the database for Active Record
-##gem 'sqlite3'
-#Hunter- switch to using pg as it is compatible with heroku
-  gem'pg'
+
   
 #Hunter- added for heroku
 gem 'rails_12factor'
@@ -51,6 +48,10 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
+# Use sqlite3 as the database for Active Record
+##gem 'sqlite3'
+#Hunter- switch to using pg for production as it is compatible with heroku
+gem 'sqlite3'
 end
 
 group :development do
@@ -62,5 +63,5 @@ group :development do
 end
 
 group :production do
- 
+   gem'pg'
  end

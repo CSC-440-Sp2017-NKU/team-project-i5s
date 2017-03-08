@@ -35,7 +35,7 @@
 </nav>
 <div class="container nav-forums-list collapse" id="nav-forums-list">
     <ul>
-    <% list_forums().each do |forum| %>
+    <% test_list_forums().each do |forum| %>
     <li><a href="/Forums/<%= forum.id %>"><%= forum.name %></a></li>
     <% end %>
     </ul>
