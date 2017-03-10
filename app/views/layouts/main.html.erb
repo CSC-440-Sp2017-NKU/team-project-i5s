@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Nkunet</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <script src="https://use.fontawesome.com/fbe7d17ae4.js"></script>
+</head>
+<body class="nkuBackground">
+<div >
+  <nav class="navbar navbar-inverse">
+  <div class="container">
+    <div class="navbar-header">
+      
+       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+      
+      <a class="navbar-brand" href="<%= url_for(action:"index", controller:"forum") %>"><%= image_tag("logo.png", {:class=>"logo", :alt=>"NKUNet"}) %></a>
+    </div>
+    
+    <div class="collapse navbar-collapse" id="nav-collapse">
+    <ul class="nav navbar-nav navbar-right vertical-center-content">
+      <li><a class="pointer" data-toggle="collapse" data-target="#nav-forums-list" >FORUMS<span class="fa fa-caret-down caret-padding"></span></a></li>
+      <li><div class="search"><input type="text" ><span class="fa fa-search"></span></div></li>
+      <li><a href="#"><%= image_tag("userIcon.png", {:class=>"user-icon", :alt=>"user"}) %></a></li>
+    </ul>
+    </div>
+  </div>
+</nav>
+<div class="container nav-forums-list collapse" id="nav-forums-list">
+    <ul>
+    <% test_list_forums().each do |forum| %>
+    <li><a href="/Forums/<%= forum.id %>"><%= forum.name %></a></li>
+    <% end %>
+    </ul>
+</div>
+ 
+ <div class="container main-content">
+  <%= yield %>
+</div>
+
+</div>
+   <footer>
+     <div class="container">
+     <div class="footer-info">
+       Created by I5S
+     </div>
+     </div>
+   </footer>
+</body>
+</html>

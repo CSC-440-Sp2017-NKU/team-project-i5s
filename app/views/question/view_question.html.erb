@@ -1,0 +1,27 @@
+
+<div class="question-forum">
+    <h3><span>FORUM<span class="arial">//</span></span> 
+    <a href="<%= url_for(action:"view_forum",
+    controller:"forum", 
+    id:@question.forum.id)%>"><%= @question.forum.name %></a></h3>
+</div>
+
+<div class="question">
+    <h1>
+        <%= @question.title %>
+    </h1>
+    <div class="question-info">
+        Asked by <%= @question.author %> on <%= @question.created_on %> 
+    </div>
+    <div class="question-description">
+         <%= @question.description %>
+    </div>
+</div>
+
+<div class="answers-header">
+Answers<i class="fa fa-sort icon-padding small-icon"></i>
+</div>
+<div class="answers">
+    
+    
+</div>
