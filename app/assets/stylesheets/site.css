@@ -26,8 +26,12 @@ footer {
 
 .main-content
 {
+    background-color: white;
+    min-height: calc(100vh - 80px - 50px);
+    padding-top: 22px;
     padding-left: 30px;
     padding-right: 30px;
+    padding-bottom: 50px;
 }
 
 /*Navbar*/
@@ -166,9 +170,7 @@ a:hover{
 }
 .main-content
 {
-    background-color: white;
-    min-height: calc(100vh - 80px - 50px);
-    padding-top: 22px;
+
 }
 
 h2
@@ -367,7 +369,7 @@ h2
 
 .forum-list
 {
-    margin-bottom: 50px;
+
 }
 .fl-forum-col
 {
@@ -412,16 +414,16 @@ h2
     border-bottom: 1px solid #ececec;;
     margin-bottom: 10px;
 }
-.question-header
+.q-question-header
 {
     width: 79%;
 }
 
-.post-header
+.q-post-header
 {
     width: 10%;
 }
-.answers-header
+.q-answers-header
 {
     width: 10%;
 }
@@ -517,7 +519,71 @@ vertical-align: top;
 {
     font-weight: 900;
 }
+.answer{
+    
+    border-bottom: 1px solid #ececec;
+    border-radius: 10px;
+    margin-bottom:  5px;
+    background-color: white;
+    width: 100%;
+    min-height: 105px;
+}
 
+.answer-pad
+{
+    padding: 10px;
+}
+.answer-votes
+{
+    display: inline-block;
+    max-width: 100px;
+    vertical-align: top;
+    background-color: #ececec;
+    padding: 5px;
+    border-radius: 5px;
+}
+.answer-info
+{
+    display: inline-block;
+    width: calc(100% - 100px);
+    padding-left: 10px;
+}
+.answer-text
+{
+    padding-bottom: 10px;
+}
+.answer-author
+{
+    color: #5b5b5b;
+}
+.answer-votes
+{
+    text-align: center;
+    font-weight: 900;
+}
+.fa-check
+{
+    color: #138e24;
+}
+
+.fa-times
+{
+    color: 	#8e1313;
+}
+
+.answer-col-headers
+{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.answer-col-headers .col-header
+{
+    margin-right: 15px;
+}
+
+a{
+    cursor: pointer;
+}
 
 @font-face {
   font-family: 'Avenir';

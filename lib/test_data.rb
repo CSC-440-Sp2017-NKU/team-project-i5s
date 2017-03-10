@@ -67,4 +67,28 @@ Sed in diam sit amet lacus malesuada fringilla. Lorem ipsum dolor sit amet, cons
     return @popQs
    end
    
+   def test_list_answers()
+    answers = []
+    
+    answers.push Answer.new
+    answers[0].created_on = "1/3/2017 2:10PM"
+    answers[0].author = "John Henry"
+    answers[0].text = "Corem ipsum dolor sit amet."
+    answers[0].score = 15
+    
+    answers.push Answer.new
+    answers[1].created_on = "2/1/2017 5:10AM"
+    answers[1].author = "Jill Smith"
+    answers[1].text = "Auisque nulla nibh, pulvinar euismod molestie id, maximus non felis. Pellentesque faucibus egestas magna, non molestie mauris. Aliquam maximus lectus tortor, sit amet gravida nibh rhoncus nec. "
+    answers[1].score = 21
+    
+    answers.push Answer.new
+    answers[2].created_on = "3/19/2017 3:25PM"
+    answers[2].author = "Harry Jones"
+    answers[2].text = "Berci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean a ultrices tortor. Mauris sagittis lacus sed neque tincidunt efficitur. Maecenas eget est egestas, consectetur nibh ac, iaculis eros. Cras et pharetra nibh, et sollicitudin velit."
+    answers[2].score = -5
+    
+    return answers
+   end
+   
 end
