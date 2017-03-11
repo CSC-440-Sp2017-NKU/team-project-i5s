@@ -21,6 +21,7 @@ class QaController < ApplicationController
   
   def answer_question
     if request.post?
+      redirect_to ({controller:"qa",action:"view_question", id:Integer(params["question_id"])})
     else
       @question = test_list_questions()[Integer(params["question_id"])]
     end

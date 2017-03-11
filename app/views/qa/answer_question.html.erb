@@ -23,6 +23,9 @@
       <%= label_tag(:answer, "Answer") %>
       <%= text_area_tag(:answer, "",{class:"form-control", rows:4}) %>
       </div>
+      
+      <%= hidden_field_tag "question_id", @question.id %>
+      
       <%= submit_tag("Post",{class:"btn btn-default btn-dark"}) %>
       <a href="<%= url_for(action:"view_question",controller:"qa", id: @question.id )%>" class="btn btn-default">Cancel</a>
     <% end %>
