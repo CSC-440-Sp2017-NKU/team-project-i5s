@@ -8,4 +8,5 @@
   end
 
 class Answer
+  attr_accessor :author, :text, :created_on, :score
 end

@@ -1,10 +1,7 @@
 require "test_classes"
 
-class ForumController < ActionController::Base
-    layout "main"
-    require "test_data"
-    include TestData
-    helper TestData
+class ForumController < ApplicationController
+    
     
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -12,7 +9,7 @@ class ForumController < ActionController::Base
   
   def index
     @forums = test_list_forums()
-    @popQs = test_list_questions()
+    @popular_questions = test_list_questions()
   end
   
   

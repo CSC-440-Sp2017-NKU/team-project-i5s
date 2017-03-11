@@ -2,9 +2,7 @@
     <div class="forum-header">
     <div class="forum-name"><h1 ><%= @forum.name %></h1>
     </div>
-    
-    
-       <a class="post-button">
+       <a href="<%= url_for(action:"post_question", controller:"qa", forum_id:@forum.id) %>"class="post-button post-question">
         Post a Question
        </a>
    </div>
@@ -13,14 +11,14 @@
    <div class="forum-questions-container">
        
        <div class="forum-col-headers">
-       <div class="col-header question-header pointer" data-sort-by="question" data-ascending="false">
+       <div class="col-header q-question-header pointer" data-sort-by="question" data-ascending="false">
            Question<i class="fa fa-caret-down caret-padding" ></i>
        </div>
        
-       <div class="col-header post-header pointer" data-sort-by="time" data-ascending="false">
+       <div class="col-header q-post-header pointer" data-sort-by="time" data-ascending="false">
            Posted<i class="fa fa-caret-down caret-padding"></i>
        </div>
-       <div class="col-header answers-header pointer" data-sort-by="answers" data-ascending="false">
+       <div class="col-header q-answers-header pointer" data-sort-by="answers" data-ascending="false">
            Answers <i class="fa fa-caret-down caret-padding"></i>
        </div>
    </div>
@@ -28,7 +26,7 @@
     <%@questions.each do |question|%>
     <div class="question-summary">
         <div class="qs-question">
-            <a href="/Question/<%= question.id %>" class="qs-question-data">
+            <a href="<%= url_for(action:"view_question",controller:"qa",id: question.id) %>" class="qs-question-data">
             <%= question.title %>
             </a>
         </div>
