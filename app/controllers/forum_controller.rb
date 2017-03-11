@@ -9,7 +9,7 @@ class ForumController < ApplicationController
   
   def index
     @forums = test_list_forums()
-    @popQs = test_list_questions()
+    @popular_questions = test_list_questions()
   end
   
   

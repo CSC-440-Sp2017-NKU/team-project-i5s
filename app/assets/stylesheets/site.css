@@ -76,15 +76,21 @@ a:hover{
  opacity: 0.92;   
 }
 
-.navbar-nav
+.navbar-nav, .navbar-header
 {
  height: 80px;   
 }
 .vertical-center-content
 {
+    display: block;
+}
+@media(min-width: 768px){
+.vertical-center-content
+{
      display: flex;
      justify-content: center;
      align-items: center;
+}
 }
 .nav>li
 {
@@ -153,10 +159,7 @@ a:hover{
 }
 .nav-forums-list li{
     display: inline-block;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 10px 20px;
     
 }
 
@@ -165,13 +168,11 @@ a:hover{
 .nkuBackground
 {
     background-image: url("background.jpg");
-    background-size: cover;
+    background-attachment: fixed;
+    background-size: 100vw 100vh;
     background-position: center;
 }
-.main-content
-{
 
-}
 
 h2
 {
@@ -240,7 +241,7 @@ h2
 .forum-questions .qs-author
 
 {
-    max-width: 18%;
+    max-width: 14%;
 }
 
 .forum-questions .qs-right
@@ -358,8 +359,8 @@ h2
 .more-link
 {
     text-align: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     
 }
 .more-link a{
@@ -405,7 +406,15 @@ h2
 
 .col-header 
 {
- display: inline-block;   
+ display: inline-block; 
+ font-size: 14px;
+}
+
+@media(min-width:768px)
+{
+    .col-header{
+    font-size:18px;
+}
 }
 .forum-col-headers
 {
@@ -414,18 +423,36 @@ h2
     border-bottom: 1px solid #ececec;;
     margin-bottom: 10px;
 }
+
+
+@media(min-width:768px){
 .q-question-header
 {
-    width: 79%;
+    width: 72%;
+}
+}
+@media(min-width:992px){
+.q-question-header
+{
+    width: 75%;
+}
+}
+@media(min-width:1200px){
+.q-question-header
+{
+    width: 77%;
+}
 }
 
 .q-post-header
 {
-    width: 10%;
+    min-width:80px;
+    width: 11%;
 }
 .q-answers-header
 {
-    width: 10%;
+    min-width:95px;
+    width: 11%;
 }
 /*Forum page*/
 
@@ -453,18 +480,49 @@ vertical-align: top;
 
 .post-button
 {
-    margin-left: 50px;
-    margin-top: 15px;
+    
     border-radius: 5px;
     background-color: #ececec;
     color: #5b5b5b;
     padding: 7px 10px;
     display: inline-block;
-    vertical-align: super;
+         vertical-align: super;
+   
+    font-weight: 700;
     
+}
+@media(min-width:768px)
+{
+    .post-button{
+        
+}
 }
 .post-button:hover{
     text-decoration: none;
+}
+
+
+.post-question
+{
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+@media(min-width:768px){
+.post-question
+{
+    margin-left: 50px;
+    
+    margin-right: 0px;
+
+}
+}
+
+.post-answer
+{
+    margin-bottom: 10px;
 }
 
 .forum-questions-container
@@ -489,7 +547,7 @@ footer
 }
 
 /*Post page*/
-.question-forum h3
+.question-forum h3, .question-forum h4
 {
     font-weight: 900;
 vertical-align: top;
@@ -583,6 +641,29 @@ vertical-align: top;
 
 a{
     cursor: pointer;
+}
+
+
+/*Forms*/
+
+.form-element
+{
+    margin-bottom: 10px;
+}
+
+.btn{
+    font-weight: 900;
+}
+.btn-dark
+{
+    background-color:#ececec;
+    color: black;
+    
+}
+
+.bottom-margin
+{
+ margin-bottom: 10px;   
 }
 
 @font-face {

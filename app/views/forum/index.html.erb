@@ -2,17 +2,17 @@
     Popular Questions
 </h2>
 <div class="popular-questions">
-    <%@popQs.each do |question|%>
+    <%@popular_questions.each do |question|%>
     <div class="question-summary">
         
-             <a href="/Forums/<%= question.forum.id %>">
+             <a href="<%= url_for(action:"view_forum",controller:"forum",id: question.forum.id) %>">
         <div class="qs-forum">
             <%= question.forum.name %>
            
         </div>
          </a>
         <div class="qs-question">
-             <a href="/Question/<%= question.id %>">
+             <a href="<%= url_for(action:"view_question",controller:"qa",id: question.id) %>">
             <%= question.title %>
             </a>
         </div>
@@ -21,7 +21,7 @@
             - <%= question.author %>
             </a>
         </div>
-        <a href="/Question/<%= question.id %>">
+        <a href="<%= url_for(action:"view_question",controller:"qa",id: question.id) %>">
         <div class="qs-answers">
         
             <span class="qs-a-expand">View </span> <%= question.num_answers %> <span class="qs-a-expand">Answers <i class="fa fa-arrow-right"></i></span>
@@ -36,29 +36,8 @@
     <%end %>
     
     <div class="more-link">
-        <a>View More</a>
+      <!--<a>View More</a>-->
     </div>
 </div>
 
-<h2>
-    Forums
-</h2>
-<div class="forum-toggle">
-    
-</div>
-<div class="forum-list">
-    <div class="row">
-        <% @forums.each do |forum| %>
-        <div class="col-xs-6 col-sm-4 col-md-3 fl-forum-col">
-            <div class="fl-forum-tile">
-        <a class="fl-forum-link" href="/Forums/<%= forum.id %>">
-            <%= image_tag(forum.image,{:class=>"fl-forum-icon center-block img-responsive"})%>
-            <div class="fl-forum-name">
-                <%= forum.name %>
-            </div>
-            </div>
-        </a>
-        </div>
-        <%end %>
-    </div>
-</div>
+<%= render "list_forums" %>
