@@ -1,6 +1,6 @@
 <div class="forum-page">
     <div class="forum-header">
-    <div class="forum-name"><h1 ><%= @forum.name %></h1>
+   # <div class="forum-name"><h1 ><%= @forum.try(:name) %></h1>
     </div>
        <a href="<%= url_for(action:"post_question", controller:"qa", forum_id:@forum.id) %>"class="post-button post-question">
         Post a Question

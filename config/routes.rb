@@ -62,6 +62,6 @@ Rails.application.routes.draw do
   post '/Question/Post', to: 'qa#post_question'
   get '/Question/Answer/:question_id', to: 'qa#answer_question'
   post '/Question/Answer', to: 'qa#answer_question'
-  get 'forum_controller/index'
-  get 'forum_controller/view_forum'
+  get 'forum/index'
+  get 'forum/view_forum'
 end
