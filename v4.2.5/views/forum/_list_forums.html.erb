@@ -1,0 +1,22 @@
+<h2>
+    Forums
+</h2>
+<div class="forum-toggle">
+    
+</div>
+<div class="forum-list">
+    <div class="row">
+        <% forum_list().each do |forum| %>
+        <div class="col-xs-6 col-sm-4 col-md-3 fl-forum-col">
+            <div class="fl-forum-tile">
+        <a class="fl-forum-link" href="<%= url_for(action:"view_forum",controller:"forum",id: forum.id) %>">
+            <%= image_tag(forum.image,{:class=>"fl-forum-icon center-block img-responsive"})%>
+            <div class="fl-forum-name">
+                <%= forum.name %>
+            </div>
+            </div>
+        </a>
+        </div>
+        <%end %>
+    </div>
+</div>
