@@ -66,6 +66,3 @@ Answer.create!([{answer:"Corem ipsum dolor sit amet.", question_id:1, active:tru
 {answer:"Corem ipsum dolor sit amet.", question_id:5, active:true, user_id:2}])
 p "Created #{Answer.count} answers"
 p "Answers: #{Answer.pluck :answer_id}" 
-
-
-
