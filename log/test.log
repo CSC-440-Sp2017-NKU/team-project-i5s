@@ -1,0 +1,480 @@
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------
+StaticPagesControllerTest: test_should_get_index
+------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------
+StaticPagesControllerTest: test_should_get_forum
+------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------------
+StaticPagesControllerTest: test_should_get_home
+-----------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------------
+StaticPagesControllerTest: test_should_get_root
+-----------------------------------------------
+Started GET "/" for 127.0.0.1 at 2017-03-12 20:20:11 +0000
+Processing by ForumController#index as HTML
+  Rendering forum/index.html.erb within layouts/main
+  Rendered forum/_list_forums.html.erb (2569.3ms)
+  Rendered forum/index.html.erb within layouts/main (2579.0ms)
+Completed 200 OK in 2609ms (Views: 2592.8ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------
+ForumControllerTest: test_should_get_home
+-----------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------
+ForumControllerTest: test_should_get_forum
+------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------
+ForumControllerTest: test_should_get_index
+------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------
+ForumControllerTest: test_should_get_root
+-----------------------------------------
+Started GET "/" for 127.0.0.1 at 2017-03-12 20:21:28 +0000
+Processing by ForumController#index as HTML
+  Rendering forum/index.html.erb within layouts/main
+  Rendered forum/_list_forums.html.erb (179.8ms)
+  Rendered forum/index.html.erb within layouts/main (184.1ms)
+Completed 200 OK in 202ms (Views: 192.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------
+ForumControllerTest: test_should_get_forum
+------------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------
+ForumControllerTest: test_should_get_home
+-----------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------
+ForumControllerTest: test_should_get_root
+-----------------------------------------
+Started GET "/" for 127.0.0.1 at 2017-03-12 20:24:23 +0000
+Processing by ForumController#index as HTML
+  Rendering forum/index.html.erb within layouts/main
+  Rendered forum/_list_forums.html.erb (518.1ms)
+  Rendered forum/index.html.erb within layouts/main (527.3ms)
+Completed 200 OK in 562ms (Views: 543.6ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------
+ForumControllerTest: test_should_get_index
+------------------------------------------
+Started GET "/forum/index" for 127.0.0.1 at 2017-03-12 20:24:24 +0000
+Processing by ForumController#index as HTML
+  Rendering forum/index.html.erb within layouts/main
+  Rendered forum/_list_forums.html.erb (5.3ms)
+  Rendered forum/index.html.erb within layouts/main (10.7ms)
+Completed 200 OK in 19ms (Views: 17.8ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------
+ForumControllerTest: test_should_get_forum
+------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------
+ForumControllerTest: test_should_get_index
+------------------------------------------
+Started GET "/forum/index" for 127.0.0.1 at 2017-03-12 20:25:50 +0000
+Processing by ForumController#index as HTML
+  Rendering forum/index.html.erb within layouts/main
+  Rendered forum/_list_forums.html.erb (183.0ms)
+  Rendered forum/index.html.erb within layouts/main (187.3ms)
+Completed 200 OK in 205ms (Views: 195.9ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------
+ForumControllerTest: test_should_get_root
+-----------------------------------------
+Started GET "/" for 127.0.0.1 at 2017-03-12 20:25:50 +0000
+Processing by ForumController#index as HTML
+  Rendering forum/index.html.erb within layouts/main
+  Rendered forum/_list_forums.html.erb (2.6ms)
+  Rendered forum/index.html.erb within layouts/main (5.4ms)
+Completed 200 OK in 10ms (Views: 9.1ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------
+ForumControllerTest: test_should_get_index
+------------------------------------------
+Started GET "/forum/index" for 127.0.0.1 at 2017-03-12 20:27:54 +0000
+Processing by ForumController#index as HTML
+  Rendering forum/index.html.erb within layouts/main
+  Rendered forum/_list_forums.html.erb (181.1ms)
+  Rendered forum/index.html.erb within layouts/main (185.6ms)
+Completed 200 OK in 203ms (Views: 194.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------
+ForumControllerTest: test_should_get_root
+-----------------------------------------
+Started GET "/" for 127.0.0.1 at 2017-03-12 20:27:54 +0000
+Processing by ForumController#index as HTML
+  Rendering forum/index.html.erb within layouts/main
+  Rendered forum/_list_forums.html.erb (2.5ms)
+  Rendered forum/index.html.erb within layouts/main (5.0ms)
+Completed 200 OK in 10ms (Views: 8.5ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------------
+ForumControllerTest: test_should_get_view_forum
+-----------------------------------------------
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------
+ForumControllerTest: test_should_get_root
+-----------------------------------------
+Started GET "/" for 127.0.0.1 at 2017-03-12 20:30:12 +0000
+Processing by ForumController#index as HTML
+  Rendering forum/index.html.erb within layouts/main
+  Rendered forum/_list_forums.html.erb (211.4ms)
+  Rendered forum/index.html.erb within layouts/main (215.9ms)
+Completed 200 OK in 234ms (Views: 224.5ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------------
+ForumControllerTest: test_should_get_view_forum
+-----------------------------------------------
+Started GET "/forum/view_forum" for 127.0.0.1 at 2017-03-12 20:30:12 +0000
+Processing by ForumController#view_forum as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------
+ForumControllerTest: test_should_get_index
+------------------------------------------
+Started GET "/forum/index" for 127.0.0.1 at 2017-03-12 20:30:12 +0000
+Processing by ForumController#index as HTML
+  Rendering forum/index.html.erb within layouts/main
+  Rendered forum/_list_forums.html.erb (3.4ms)
+  Rendered forum/index.html.erb within layouts/main (7.4ms)
+Completed 200 OK in 13ms (Views: 12.1ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------
+ForumControllerTest: test_should_get_index
+------------------------------------------
+Started GET "/forum/index" for 127.0.0.1 at 2017-03-12 20:32:00 +0000
+Processing by ForumController#index as HTML
+  Rendering forum/index.html.erb within layouts/main
+  Rendered forum/_list_forums.html.erb (188.2ms)
+  Rendered forum/index.html.erb within layouts/main (192.7ms)
+Completed 200 OK in 210ms (Views: 201.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------
+ForumControllerTest: test_should_get_root
+-----------------------------------------
+Started GET "/" for 127.0.0.1 at 2017-03-12 20:32:01 +0000
+Processing by ForumController#index as HTML
+  Rendering forum/index.html.erb within layouts/main
+  Rendered forum/_list_forums.html.erb (2.5ms)
+  Rendered forum/index.html.erb within layouts/main (5.2ms)
+Completed 200 OK in 10ms (Views: 8.7ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------------
+ForumControllerTest: test_should_get_view_forum
+-----------------------------------------------
+Started GET "/forum/view_forum" for 127.0.0.1 at 2017-03-12 20:32:01 +0000
+Processing by ForumController#view_forum as HTML
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------
+ForumControllerTest: test_should_get_index
+------------------------------------------
+Started GET "/forum/index" for 127.0.0.1 at 2017-03-12 20:35:10 +0000
+Processing by ForumController#index as HTML
+  Rendering forum/index.html.erb within layouts/main
+  Rendered forum/_list_forums.html.erb (212.3ms)
+  Rendered forum/index.html.erb within layouts/main (218.3ms)
+Completed 200 OK in 245ms (Views: 229.8ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------------
+ForumControllerTest: test_should_get_view_forum
+-----------------------------------------------
+Started GET "/forum/view_forum" for 127.0.0.1 at 2017-03-12 20:35:10 +0000
+Processing by ForumController#view_forum as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------
+ForumControllerTest: test_should_get_root
+-----------------------------------------
+Started GET "/" for 127.0.0.1 at 2017-03-12 20:35:10 +0000
+Processing by ForumController#index as HTML
+  Rendering forum/index.html.erb within layouts/main
+  Rendered forum/_list_forums.html.erb (2.5ms)
+  Rendered forum/index.html.erb within layouts/main (5.0ms)
+Completed 200 OK in 9ms (Views: 8.5ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------------
+ForumControllerTest: test_should_get_view_forum
+-----------------------------------------------
+Started GET "/forum/view_forum" for 127.0.0.1 at 2017-03-12 20:36:27 +0000
+Processing by ForumController#view_forum as HTML
+  Rendering forum/view_forum.html.erb within layouts/main
+  Rendered forum/view_forum.html.erb within layouts/main (15.9ms)
+Completed 500 Internal Server Error in 32ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------
+ForumControllerTest: test_should_get_index
+------------------------------------------
+Started GET "/forum/index" for 127.0.0.1 at 2017-03-12 20:36:27 +0000
+Processing by ForumController#index as HTML
+  Rendering forum/index.html.erb within layouts/main
+  Rendered forum/_list_forums.html.erb (290.9ms)
+  Rendered forum/index.html.erb within layouts/main (294.7ms)
+Completed 200 OK in 302ms (Views: 300.7ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------
+ForumControllerTest: test_should_get_root
+-----------------------------------------
+Started GET "/" for 127.0.0.1 at 2017-03-12 20:36:28 +0000
+Processing by ForumController#index as HTML
+  Rendering forum/index.html.erb within layouts/main
+  Rendered forum/_list_forums.html.erb (4.3ms)
+  Rendered forum/index.html.erb within layouts/main (8.9ms)
+Completed 200 OK in 16ms (Views: 14.6ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------------
+ForumControllerTest: test_should_get_view_forum
+-----------------------------------------------
+Started GET "/forum/view_forum" for 127.0.0.1 at 2017-03-12 20:37:00 +0000
+Processing by ForumController#view_forum as HTML
+  Rendering forum/view_forum.html.erb within layouts/main
+  Rendered forum/view_forum.html.erb within layouts/main (5.4ms)
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------
+ForumControllerTest: test_should_get_root
+-----------------------------------------
+Started GET "/" for 127.0.0.1 at 2017-03-12 20:37:00 +0000
+Processing by ForumController#index as HTML
+  Rendering forum/index.html.erb within layouts/main
+  Rendered forum/_list_forums.html.erb (243.6ms)
+  Rendered forum/index.html.erb within layouts/main (247.1ms)
+Completed 200 OK in 252ms (Views: 251.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------
+ForumControllerTest: test_should_get_index
+------------------------------------------
+Started GET "/forum/index" for 127.0.0.1 at 2017-03-12 20:37:00 +0000
+Processing by ForumController#index as HTML
+  Rendering forum/index.html.erb within layouts/main
+  Rendered forum/_list_forums.html.erb (3.0ms)
+  Rendered forum/index.html.erb within layouts/main (6.6ms)
+Completed 200 OK in 13ms (Views: 11.3ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------
+ForumControllerTest: test_should_get_root
+-----------------------------------------
+Started GET "/" for 127.0.0.1 at 2017-03-12 20:39:38 +0000
+Processing by ForumController#index as HTML
+  Rendering forum/index.html.erb within layouts/main
+  Rendered forum/_list_forums.html.erb (247.4ms)
+  Rendered forum/index.html.erb within layouts/main (252.2ms)
+Completed 200 OK in 273ms (Views: 262.8ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------------
+ForumControllerTest: test_should_get_view_forum
+-----------------------------------------------
+Started GET "/forum/view_forum" for 127.0.0.1 at 2017-03-12 20:39:38 +0000
+Processing by ForumController#view_forum as HTML
+  Rendering forum/view_forum.html.erb within layouts/main
+  Rendered forum/view_forum.html.erb within layouts/main (6.2ms)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------
+ForumControllerTest: test_should_get_index
+------------------------------------------
+Started GET "/forum/index" for 127.0.0.1 at 2017-03-12 20:39:38 +0000
+Processing by ForumController#index as HTML
+  Rendering forum/index.html.erb within layouts/main
+  Rendered forum/_list_forums.html.erb (2.9ms)
+  Rendered forum/index.html.erb within layouts/main (5.7ms)
+Completed 200 OK in 11ms (Views: 9.6ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------
+ForumControllerTest: test_should_get_index
+------------------------------------------
+Started GET "/forum/index" for 127.0.0.1 at 2017-03-12 20:43:51 +0000
+Processing by ForumController#index as HTML
+  Rendering forum/index.html.erb within layouts/main
+  Rendered forum/_list_forums.html.erb (200.9ms)
+  Rendered forum/index.html.erb within layouts/main (205.6ms)
+Completed 200 OK in 229ms (Views: 214.7ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------
+ForumControllerTest: test_should_get_root
+-----------------------------------------
+Started GET "/" for 127.0.0.1 at 2017-03-12 20:43:52 +0000
+Processing by ForumController#index as HTML
+  Rendering forum/index.html.erb within layouts/main
+  Rendered forum/_list_forums.html.erb (2.5ms)
+  Rendered forum/index.html.erb within layouts/main (5.1ms)
+Completed 200 OK in 10ms (Views: 8.7ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------------
+ForumControllerTest: test_should_get_view_forum
+-----------------------------------------------
+Started GET "/forum/view_forum" for 127.0.0.1 at 2017-03-12 20:43:52 +0000
+Processing by ForumController#view_forum as HTML
+  Rendering forum/view_forum.html.erb within layouts/main
+  Rendered forum/view_forum.html.erb within layouts/main (19.0ms)
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------
+ForumControllerTest: test_should_get_root
+-----------------------------------------
+Started GET "/" for 127.0.0.1 at 2017-03-12 20:44:21 +0000
+Processing by ForumController#index as HTML
+  Rendering forum/index.html.erb within layouts/main
+  Rendered forum/_list_forums.html.erb (181.7ms)
+  Rendered forum/index.html.erb within layouts/main (186.1ms)
+Completed 200 OK in 204ms (Views: 194.3ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------------
+ForumControllerTest: test_should_get_view_forum
+-----------------------------------------------
+Started GET "/forum/view_forum" for 127.0.0.1 at 2017-03-12 20:44:22 +0000
+Processing by ForumController#view_forum as HTML
+  Rendering forum/view_forum.html.erb within layouts/main
+  Rendered forum/view_forum.html.erb within layouts/main (4.1ms)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------
+ForumControllerTest: test_should_get_index
+------------------------------------------
+Started GET "/forum/index" for 127.0.0.1 at 2017-03-12 20:44:22 +0000
+Processing by ForumController#index as HTML
+  Rendering forum/index.html.erb within layouts/main
+  Rendered forum/_list_forums.html.erb (2.5ms)
+  Rendered forum/index.html.erb within layouts/main (5.2ms)
+Completed 200 OK in 10ms (Views: 8.8ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------
+ForumControllerTest: test_should_get_root
+-----------------------------------------
+Started GET "/" for 127.0.0.1 at 2017-03-12 20:44:51 +0000
+Processing by ForumController#index as HTML
+  Rendering forum/index.html.erb within layouts/main
+  Rendered forum/_list_forums.html.erb (213.9ms)
+  Rendered forum/index.html.erb within layouts/main (218.6ms)
+Completed 200 OK in 237ms (Views: 226.9ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------------
+ForumControllerTest: test_should_get_view_forum
+-----------------------------------------------
+Started GET "/forum/view_forum" for 127.0.0.1 at 2017-03-12 20:44:51 +0000
+Processing by ForumController#view_forum as HTML
+  Rendering forum/view_forum.html.erb within layouts/main
+  Rendered forum/view_forum.html.erb within layouts/main (5.0ms)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------
+ForumControllerTest: test_should_get_index
+------------------------------------------
+Started GET "/forum/index" for 127.0.0.1 at 2017-03-12 20:44:51 +0000
+Processing by ForumController#index as HTML
+  Rendering forum/index.html.erb within layouts/main
+  Rendered forum/_list_forums.html.erb (4.5ms)
+  Rendered forum/index.html.erb within layouts/main (8.7ms)
+Completed 200 OK in 14ms (Views: 12.9ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------
+ForumControllerTest: test_should_get_index
+------------------------------------------
+Started GET "/forum/index" for 127.0.0.1 at 2017-03-12 20:50:50 +0000
+Processing by ForumController#index as HTML
+  Rendering forum/index.html.erb within layouts/main
+  Rendered forum/index.html.erb within layouts/main (7.6ms)
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------
+ForumControllerTest: test_should_get_root
+-----------------------------------------
+Started GET "/" for 127.0.0.1 at 2017-03-12 20:50:50 +0000
+Processing by ForumController#index as HTML
+  Rendering forum/index.html.erb within layouts/main
+  Rendered forum/index.html.erb within layouts/main (3.8ms)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------------
+ForumControllerTest: test_should_get_view_forum
+-----------------------------------------------
+Started GET "/forum/view_forum" for 127.0.0.1 at 2017-03-12 20:50:50 +0000
+Processing by ForumController#view_forum as HTML
+  Rendering forum/view_forum.html.erb within layouts/main
+  Rendered forum/view_forum.html.erb within layouts/main (2.5ms)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------
+ForumControllerTest: test_should_get_index
+------------------------------------------
+Started GET "/forum/index" for 127.0.0.1 at 2017-03-12 20:52:04 +0000
+Processing by ForumController#index as HTML
+  Rendering forum/index.html.erb within layouts/main
+  Rendered forum/index.html.erb within layouts/main (5.4ms)
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------
+ForumControllerTest: test_should_get_root
+-----------------------------------------
+Started GET "/" for 127.0.0.1 at 2017-03-12 20:52:04 +0000
+Processing by ForumController#index as HTML
+  Rendering forum/index.html.erb within layouts/main
+  Rendered forum/index.html.erb within layouts/main (2.2ms)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------------
+ForumControllerTest: test_should_get_view_forum
+-----------------------------------------------
+Started GET "/forum/view_forum" for 127.0.0.1 at 2017-03-12 20:52:04 +0000
+Processing by ForumController#view_forum as HTML
+  Rendering forum/view_forum.html.erb within layouts/main
+  Rendered forum/view_forum.html.erb within layouts/main (2.0ms)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
