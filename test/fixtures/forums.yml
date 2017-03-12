@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  forum_id: 1
+  forum_name: MyString
+  forum_description: MyString
+  forum_id: 
+
+two:
+  forum_id: 1
+  forum_name: MyString
+  forum_description: MyString
+  forum_id: 
