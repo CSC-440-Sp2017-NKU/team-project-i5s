@@ -12,8 +12,6 @@ class ForumController < ApplicationController
     @popular_questions = test_list_questions()
   end
   
-  
-  
   def view_forum
       @forum = test_list_forums()[Integer(params["id"])]
       @questions = test_list_questions()
