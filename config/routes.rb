@@ -67,4 +67,5 @@ Rails.application.routes.draw do
   get 'qa/answer_question'
   get 'qa/post_question'
   get 'qa/view_question'
+  get 'forum/list_forums'
 end
