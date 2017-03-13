@@ -3,22 +3,22 @@
     <h3><span>FORUM<span class="arial">//</span></span> 
     <a href="<%= url_for(action:"view_forum",
     controller:"forum", 
-    id:@question.forum.id) %>"><%= @question.forum.name %></a></h3>
+    id:@question.forum_id) %>"><%= @question.forum_name %></a></h3>
 </div>
 
 <div class="question">
     <h1>
-        <%= @question.title %>
+        <%= @question.question_title %>
     </h1>
     <div class="question-info">
-        Asked by <%= @question.author %> on <%= @question.created_on %> 
+        Asked by <%= @question.author %> on <%= @question.created_at %> 
     </div>
     <div class="question-description">
-         <%= @question.description %>
+         <%= @question.question_description %>
     </div>
 </div>
 
-<a href="<%= url_for(action:"answer_question", controller:"qa", question_id:@question.id) %>" class="post-button post-answer">
+<a href="<%= url_for(action:"answer_question", controller:"qa", question_id:@question.question_id) %>" class="post-button post-answer">
         Post an Answer
 </a>
 
@@ -45,26 +45,26 @@
 </div>
 <div class="answers">
     <% @answers.each do |answer| %>
-    <div class="answer">
-   <div class="answer-pad">
-   <div class="answer-votes">
+      <div class="answer">
+      <div class="answer-pad">
+     <div class="answer-votes">
            <a><i class="fa fa-check"></i> </a>
            <div class="a-score">
                <%= answer.score %>
            </div>
           <a><i class="fa fa-times"></i></a>
-   </div>
-   <div class="answer-info">
-    <div class="a-text">
+     </div>
+     <div class="answer-info">
+     <div class="a-text">
         <%= answer.text %>
-    </div>
+      </div>
     
      <div class="answer-author">
-        -<span class="a-author"><%= answer.author %></span> on <span class="a-time"><%= answer.created_on %> </span>
-    </div>
-    </div>
-    </div>
-    </div>
+        -<span class="a-author"><%= answer.user_name %></span> on <span class="a-time"><%= answer.created_on %> </span>
+     </div>
+     </div>
+     </div>
+     </div>
     <% end %>
     
 </div>

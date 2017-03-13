@@ -1,3 +1,3 @@
-class UserFile < ActiveRecord::Base
+class UserFile < ApplicationRecord
   belongs_to :user
 end
