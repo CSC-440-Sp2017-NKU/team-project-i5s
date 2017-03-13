@@ -9,8 +9,8 @@ class QaController < ApplicationController
   #POST -- write a question to the db
   def post_question
     if request.post? # we would like to add a NEW question to the current forum.
-      f_id = params[:forum_id]
-      s_text = params[:forum_id]
+      #f_id = params[:forum_id]
+      #s_text = params[:forum_id]
       #redirect_to ({controller:"forum",action:"view_forum", id:Integer(params["forum"])})
     else
       @forum_id = Integer(params["forum_id"])
