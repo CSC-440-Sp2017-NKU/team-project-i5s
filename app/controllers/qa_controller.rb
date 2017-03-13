@@ -4,6 +4,7 @@ class QaController < ApplicationController
   def view_question
     @question = Question.find(params[:id]) # return the question object
     @answers = Answer.find_by(question_id: params[:id]) # return the associated answers
+    #comment
   end
   
   #POST -- write a question to the db
