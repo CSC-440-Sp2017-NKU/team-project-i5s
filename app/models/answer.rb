@@ -1,10 +1,10 @@
-class Answer < ActiveRecord::Base
+class Answer < ApplicationRecord
   belongs_to :user
   belongs_to :question
 
 #class Answer < ApplicationRecord
-belongs_to :user
-belongs_to :question
+#belongs_to :user
+#belongs_to :question
 #attr_accessor :answer, :question_id, :user_id, :answer_datetime
 
 #def initialize(attributes = {})

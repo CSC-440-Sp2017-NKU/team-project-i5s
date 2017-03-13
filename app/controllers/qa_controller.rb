@@ -1,31 +1,28 @@
-require "test_classes"
-
 class QaController < ApplicationController
-
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :exception
   
+  #GET -- return question/answers objects
   def view_question
-      @question = test_list_questions()[Integer(params["id"])]
-      @answers = test_list_answers()
+    @question = Question.find(params[:id]) # return the question object
+    @answers = Answer.find_by(question_id: params[:id]) # return the associated answers
+    #comment
   end
   
+  #POST -- write a question to the db
   def post_question
-    if request.post?
-      redirect_to ({controller:"forum",action:"view_forum", id:Integer(params["forum"])})
+    if request.post? # we would like to add a NEW question to the current forum.
+      #f_id = params[:forum_id]
+      #s_text = params[:forum_id]
+      #redirect_to ({controller:"forum",action:"view_forum", id:Integer(params["forum"])})
     else
-    @forum_id = Integer(params["forum_id"])
+      @forum_id = Integer(params["forum_id"])
     end
   end
   
-  def answer_question
-    if request.post?
-      redirect_to ({controller:"qa",action:"view_question", id:Integer(params["question_id"])})
-    else
-      @question = test_list_questions()[Integer(params["question_id"])]
-    end
-  end
   
-end
+private
 
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def qa_params
+      params.require(:question).permit(:question_description, :question_title, :user_id, :forum_id)
+    end
+end
