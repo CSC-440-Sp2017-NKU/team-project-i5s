@@ -21,5 +21,13 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  adapter: postgresql
+  encoding: unicode
+  database: myapp_production
+  username: myapp
+  
+  #database: 'postgresql-acute-73298'
+  #pool: 5
+  #username: nkunet
+  #password:
+  #host: localhost
