@@ -1,9 +1,9 @@
-
+<%@answers = @question.answers %>
 <div class="question-forum">
     <h3><span>FORUM<span class="arial">//</span></span> 
     <a href="<%= url_for(action:"view_forum",
     controller:"forum", 
-    id:@question.forum_id) %>"><%= @question.forum_name %></a></h3>
+    id:@question.forum_id) %>"><%= @question.try(forum_name) %></a></h3>
 </div>
 
 <div class="question">
@@ -50,17 +50,17 @@
      <div class="answer-votes">
            <a><i class="fa fa-check"></i> </a>
            <div class="a-score">
-               <%= answer.score %>
+               <%= answer.try(:score) %>
            </div>
           <a><i class="fa fa-times"></i></a>
      </div>
      <div class="answer-info">
      <div class="a-text">
-        <%= answer.text %>
+        <%= answer.answer %>
       </div>
     
      <div class="answer-author">
-        -<span class="a-author"><%= answer.user_name %></span> on <span class="a-time"><%= answer.created_on %> </span>
+        -<span class="a-author"><%= answer.try(:author) %></span> on <span class="a-time"><%= answer.created_on %> </span>
      </div>
      </div>
      </div>

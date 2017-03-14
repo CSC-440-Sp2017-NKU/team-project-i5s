@@ -9,10 +9,10 @@
         <% forum_list().each do |forum| %>
         <div class="col-xs-6 col-sm-4 col-md-3 fl-forum-col">
             <div class="fl-forum-tile">
-        <a class="fl-forum-link" href="<%= url_for(action:"view_forum",controller:"forum",id: forum.id) %>">
-            <%= image_tag(forum.image,{:class=>"fl-forum-icon center-block img-responsive"})%>
+        <a class="fl-forum-link" href="<%= url_for(action:"view_forum",controller:"forum",id: forum.forum_id) %>">
+            <%= image_tag("icons/"+forum.forum_name+"_icon.svg",{:class=>"fl-forum-icon center-block img-responsive"})%>
             <div class="fl-forum-name">
-                <%= forum.name %>
+                <%= forum.forum_name %>
             </div>
             </div>
         </a>
