@@ -2,8 +2,13 @@ class QaController < ApplicationController
   
   #GET -- return question/answers objects
   def view_question
-    @question = Question.find(params[:id]) # return the question object
-    @answers = Answer.find_by(question_id: params[:id]) # return the associated answers
+    if (!params[:id].nil?)
+      id = Integer(param[:id])
+      @question = Question.find(id) # return the question object
+      #@answers = Question.answers # return the associated answers
+    else
+      render 'forum/index'
+    end
     #comment
   end
   

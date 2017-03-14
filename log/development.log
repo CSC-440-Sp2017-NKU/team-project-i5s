@@ -1936,3 +1936,31 @@ Completed 200 OK in 46ms (Views: 41.7ms | ActiveRecord: 0.0ms)
 
 
 >>>>>>> 7dfee4da175b67021ea15e96fd448f9e18cd5441
+Started GET "/" for 192.122.237.252 at 2017-03-14 00:14:11 +0000
+Cannot render console from 192.122.237.252! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ForumController#index as HTML
+  Rendering forum/index.html.erb within layouts/main
+  Rendered forum/index.html.erb within layouts/main (7.3ms)
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    2:     Popular Questions
+    3: </h2>
+    4: <div class="popular-questions">
+    5:     <%@popular_questions.each do |question|%>
+    6:     <div class="question-summary">
+    7:         
+    8:              <a href="<%= url_for(action:"view_forum",controller:"forum",id: question.forum.id) %>">
+  
+app/views/forum/index.html.erb:5:in `_app_views_forum_index_html_erb__2781157281042178261_33498680'
+  Rendering /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.9ms)
+  Rendering /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendering /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (46.2ms)

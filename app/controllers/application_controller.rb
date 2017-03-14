@@ -7,6 +7,7 @@ layout "main"
     helper_method :forum_list
     
     def forum_list
-       return test_list_forums() 
+        return Forum.all
+#       return test_list_forums() 
     end
 end
