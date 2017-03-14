@@ -39,7 +39,7 @@
         </div>
         <div class="qs-right">
         <div class="qs-time">
-            <%= question.created_at %>
+            <%=format_datetime question.created_at %>
         </div>
         <a href="/Question/<%= question.question_id %>">
         <div class="qs-answers qs-answers-grey">

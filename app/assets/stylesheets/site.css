@@ -239,9 +239,15 @@ h2
     width: 100%;
 }
 .forum-questions .qs-author
-
 {
     max-width: 14%;
+}
+@media(min-width:1200px)
+{
+    .forum-questions .qs-author
+    {
+    max-width: 20%;
+    }
 }
 
 .forum-questions .qs-right

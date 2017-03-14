@@ -11,7 +11,7 @@
         <%= @question.question_title %>
     </h1>
     <div class="question-info">
-        Asked by <%= @question.author %> on <%= @question.created_at %> 
+        Asked by <%= @question.author %> on <%=format_datetime @question.created_at %> 
     </div>
     <div class="question-description">
          <%= @question.question_description %>
@@ -60,7 +60,7 @@
       </div>
     
      <div class="answer-author">
-        -<span class="a-author"><%= answer.try(:author) %></span> on <span class="a-time"><%= answer.created_at %> </span>
+        -<span class="a-author"><%= answer.try(:author) %></span> on <span class="a-time"><%=format_datetime answer.created_at %> </span>
      </div>
      </div>
      </div>

@@ -31,17 +31,14 @@ class QaController < ApplicationController
   def answer_question
     if request.post?
       @answer = Answer.new(answer_params)
- 
       if @answer.save
-        
         redirect_to controller:"qa", action:"view_question", id:@answer.question_id
       else
-        
+         @question = Question.find(@answer.question_id)
         render 'answer_question'
       end
     else
       @question = Question.find(Integer(params["question_id"]))
-      @question_id =Integer(params["question_id"])
     end
     
   end

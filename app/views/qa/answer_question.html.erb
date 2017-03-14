@@ -16,10 +16,10 @@
       
       <div class="form-element">
       <%= label_tag("answer[answer]", "Answer") %>
-      <%= text_area_tag(:answer, "",{class:"form-control", rows:4}) %>
+      <%= text_area_tag("answer[answer]", "",{class:"form-control", rows:4}) %>
       </div>
       
-      <%= hidden_field_tag "answer[question_id]", 1 %>
+      <%= hidden_field_tag "answer[user_id]", 1 %>
       <%= hidden_field_tag "answer[question_id]", @question.question_id %>
       
       <%= submit_tag("Post",{class:"btn btn-default btn-dark"}) %>
