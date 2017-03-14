@@ -3,7 +3,7 @@
     <h3><span>FORUM<span class="arial">//</span></span> 
     <a href="<%= url_for(action:"view_forum",
     controller:"forum", 
-    id:@question.forum_id) %>"><%= @question.try(forum_name) %></a></h3>
+    id:@question.forum_id) %>"><%= @question.try(:forum_name) %></a></h3>
 </div>
 
 <div class="question">
@@ -60,7 +60,7 @@
       </div>
     
      <div class="answer-author">
-        -<span class="a-author"><%= answer.try(:author) %></span> on <span class="a-time"><%= answer.created_on %> </span>
+        -<span class="a-author"><%= answer.try(:author) %></span> on <span class="a-time"><%= answer.created_at %> </span>
      </div>
      </div>
      </div>

@@ -9,17 +9,21 @@ class Question < ApplicationRecord
 
   #return the associated forum name with the question object
   def forum_name
-    return @forum_name = Forum.find(self.forum_id).forum_name
+    return Forum.find(self.forum_id).forum_name
   end
   
   #lookup the author of the question
   def author
-    return @forum_name = User.find(self.user_id).user_name
+    return User.find(self.user_id).user_name
   end
   
   # return the associated answers
   def answers
-    return Answer.find_all_by(question_id: self.question_id) 
+    return Answer.where(question_id: self.question_id) 
+  end
+  
+  def num_answers
+    return self.answers.where(question_id: self.question_id).count
   end
 
 end

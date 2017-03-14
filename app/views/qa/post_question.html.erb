@@ -4,7 +4,7 @@
         <%= form_tag("/Question/Post" ,method: "post") do %>
         <div class="form-element">
       <%= label_tag(:forum_id, "Forum") %>
-      <%= select_tag(:forum_id, options_from_collection_for_select(forum_list(), "id", "name", @forum_id), class:"form-control") %>
+      <%= select_tag(:forum_id, options_from_collection_for_select(forum_list(), "id", "forum_name", @forum_id), class:"form-control") %>
       </div>
     
       <%= hidden_field_tag "user_id", 1 %>

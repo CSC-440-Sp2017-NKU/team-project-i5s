@@ -24,7 +24,7 @@
         <a href="<%= url_for(action:"view_question",controller:"qa",id: question.question_id) %>">
         <div class="qs-answers">
         
-            <span class="qs-a-expand">View </span> <%= question.try(num_answers) %> <span class="qs-a-expand">Answers <i class="fa fa-arrow-right"></i></span>
+            <span class="qs-a-expand">View </span> <%= question.try(:num_answers) %> <span class="qs-a-expand">Answers <i class="fa fa-arrow-right"></i></span>
        
         </div>
          </a>

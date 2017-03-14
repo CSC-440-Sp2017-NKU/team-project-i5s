@@ -4,7 +4,7 @@ class ForumController < ApplicationController
     # view. 
     def index #needs to return the popular forums
      #   @forums = Forum.all
-      @popular_questions = Forum.most_popular_questions # return the most recent
+      @popular_questions = most_popular_questions # return the most recent
     end
     
     # GET -- gets passed a params oject containing
@@ -22,5 +22,11 @@ class ForumController < ApplicationController
     # contains 
     def list_forums
     end
+    
+  private
+      #we want the most popular, but for now it's the most recent 5
+  def most_popular_questions
+     @questions = Question.order(:created_at).first(5)
+  end 
     
 end
