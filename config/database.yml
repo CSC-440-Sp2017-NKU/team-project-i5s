@@ -23,11 +23,8 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: myapp_production
-  username: myapp
-  
-  #database: 'postgresql-acute-73298'
-  #pool: 5
+  database: 'postgresql-acute-73298'
+  pool: 5
   #username: nkunet
   #password:
   #host: localhost
