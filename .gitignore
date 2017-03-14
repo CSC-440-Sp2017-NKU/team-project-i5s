@@ -1,2 +1,2 @@
 #ignore the tmp cache..
-**/tmp/cache/*.cache
+*/tmp**/**.cache
