@@ -5,31 +5,31 @@
     <%@popular_questions.each do |question|%>
     <div class="question-summary">
         
-             <a href="<%= url_for(action:"view_forum",controller:"forum",id: question.forum.id) %>">
+             <a href="<%= url_for(action:"view_forum",controller:"forum",id: question.forum_id) %>">
         <div class="qs-forum">
-            <%= question.forum.name %>
+            <%= question.forum_name %>
            
         </div>
          </a>
         <div class="qs-question">
-             <a href="<%= url_for(action:"view_question",controller:"qa",id: question.id) %>">
-            <%= question.title %>
+             <a href="<%= url_for(action:"view_question",controller:"qa",id: question.question_id) %>">
+            <%= question.question_title %>
             </a>
         </div>
         <div class="qs-author">
             <a href="">
-            - <%= question.author %>
+            - <%= question.try(:author) %>
             </a>
         </div>
-        <a href="<%= url_for(action:"view_question",controller:"qa",id: question.id) %>">
+        <a href="<%= url_for(action:"view_question",controller:"qa",id: question.question_id) %>">
         <div class="qs-answers">
         
-            <span class="qs-a-expand">View </span> <%= question.num_answers %> <span class="qs-a-expand">Answers <i class="fa fa-arrow-right"></i></span>
+            <span class="qs-a-expand">View </span> <%= question.try(num_answers) %> <span class="qs-a-expand">Answers <i class="fa fa-arrow-right"></i></span>
        
         </div>
          </a>
         <div class="qs-time">
-            <%= question.created_on %>
+            <%= question.created_at %>
         </div>
         
     </div>
