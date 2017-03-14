@@ -3,20 +3,19 @@
 <div class="form">
         <%= form_tag("/Question/Post" ,method: "post") do %>
         <div class="form-element">
-      <%= label_tag(:forum_id, "Forum") %>
-      <%= select_tag(:forum_id, options_from_collection_for_select(forum_list(), "id", "forum_name", @forum_id), class:"form-control") %>
+      <%= label_tag("question[forum_id]", "Forum") %>
+      <%= select_tag("question[forum_id]", options_from_collection_for_select(forum_list(), "id", "forum_name", @forum_id), class:"form-control") %>
       </div>
     
-      <%= hidden_field_tag "user_id", 1 %>
- 
+      <%= hidden_field_tag "question[user_id]", 1 %>
       
         <div class="form-element">
-      <%= label_tag(:question_title, "Question") %>
-      <%= text_field_tag(:question_title, "",{class:"form-control"}) %>
+      <%= label_tag("question[question_title]", "Question") %>
+      <%= text_field_tag("question[question_title]", "",{class:"form-control"}) %>
       </div>
       <div class="form-element">
-      <%= label_tag(:question_description, "Description") %>
-      <%= text_area_tag(:question_description, "",{class:"form-control", rows:4}) %>
+      <%= label_tag("question[question_description]", "Description") %>
+      <%= text_area_tag("question[question_description]", "",{class:"form-control", rows:4}) %>
       </div>
       <%= submit_tag("Post",{class:"btn btn-default btn-dark"}) %>
       <a href="<%= url_for(action:"view_forum",controller:"forum", id: @forum_id )%>" class="btn btn-default">Cancel</a>

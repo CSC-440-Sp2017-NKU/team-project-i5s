@@ -15,12 +15,12 @@
         <%= form_tag("/Question/Answer" ,method: "post") do %>
       
       <div class="form-element">
-      <%= label_tag(:answer, "Answer") %>
+      <%= label_tag("answer[answer]", "Answer") %>
       <%= text_area_tag(:answer, "",{class:"form-control", rows:4}) %>
       </div>
       
-      <%= hidden_field_tag "user_id", 1 %>
-      <%= hidden_field_tag "question_id", @question.question_id %>
+      <%= hidden_field_tag "answer[question_id]", 1 %>
+      <%= hidden_field_tag "answer[question_id]", @question.question_id %>
       
       <%= submit_tag("Post",{class:"btn btn-default btn-dark"}) %>
       <a href="<%= url_for(action:"view_question",controller:"qa", id: @question.question_id )%>" class="btn btn-default">Cancel</a>
