@@ -13548,3 +13548,248 @@ puma (3.8.1) lib/puma/server.rb:590:in `handle_request'
 puma (3.8.1) lib/puma/server.rb:425:in `process_client'
 puma (3.8.1) lib/puma/server.rb:289:in `block in run'
 puma (3.8.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", :environment]]
+DEPRECATION WARNING: Passing #original_exception is deprecated and has no effect. Exceptions will automatically capture the original exception. (called from load at /usr/local/rvm/gems/ruby-2.3.0/bin/rake:23)
+  [1m[35m (15.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (13.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateRoles (20170316140857)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "roles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "role" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170316140857"]]
+  [1m[35m (12.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateUsers (20170316140859)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_name" varchar, "password" varchar, "role_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mselect sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_users_on_role_id" ON "users" ("role_id")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170316140859"]]
+  [1m[35m (12.9ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateUserFiles (20170316140900)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "user_files" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "resource_text" varchar, "resource_url" varchar, "attached_file" blob, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_user_files_on_user_id" ON "user_files" ("user_id")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170316140900"]]
+  [1m[35m (10.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateForums (20170316140902)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "forums" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "forum_name" varchar, "forum_description" varchar, "resource_url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170316140902"]]
+  [1m[35m (10.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateQuestions (20170316140904)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "questions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "text" varchar, "active" boolean, "user_id" integer, "forum_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_questions_on_user_id" ON "questions" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_questions_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_questions_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_questions_on_forum_id" ON "questions" ("forum_id")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170316140904"]]
+  [1m[35m (10.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateAnswers (20170316140905)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "answers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" varchar, "active" boolean, "user_id" integer, "question_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_answers_on_user_id" ON "answers" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_answers_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_answers_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_answers_on_question_id" ON "answers" ("question_id")[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170316140905"]]
+  [1m[35m (12.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", 2017-03-16 15:06:14 UTC], ["updated_at", 2017-03-16 15:06:14 UTC]]
+  [1m[35m (12.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_answers_on_question_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_answers_on_question_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_answers_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_answers_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.3ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_questions_on_forum_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_questions_on_forum_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_questions_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_questions_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_user_files_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_user_files_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.3ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_role_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_role_id' AND type='index'
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mRole Load (0.4ms)[0m  [1m[34mSELECT "roles".* FROM "roles"[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "roles" ("role", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["role", "Administrator"], ["created_at", 2017-03-16 15:06:23 UTC], ["updated_at", 2017-03-16 15:06:23 UTC]]
+  [1m[35m (15.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "roles" ("role", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["role", "Student"], ["created_at", 2017-03-16 15:06:23 UTC], ["updated_at", 2017-03-16 15:06:23 UTC]]
+  [1m[35m (13.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "roles" ("role", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["role", "Faculty"], ["created_at", 2017-03-16 15:06:23 UTC], ["updated_at", 2017-03-16 15:06:23 UTC]]
+  [1m[35m (12.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "roles"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "roles"."id" FROM "roles"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRole Load (0.4ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (3.9ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "password", "role_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_name", "Joe Deer"], ["password", "password"], ["role_id", 2], ["created_at", 2017-03-16 15:06:23 UTC], ["updated_at", 2017-03-16 15:06:23 UTC]]
+  [1m[35m (18.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "password", "role_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_name", "Jane Deer"], ["password", "password"], ["role_id", 2], ["created_at", 2017-03-16 15:06:23 UTC], ["updated_at", 2017-03-16 15:06:23 UTC]]
+  [1m[35m (15.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRole Load (0.3ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "password", "role_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_name", "Scott Summers"], ["password", "password"], ["role_id", 2], ["created_at", 2017-03-16 15:06:23 UTC], ["updated_at", 2017-03-16 15:06:23 UTC]]
+  [1m[35m (34.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "password", "role_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_name", "Hermoine Granger"], ["password", "password"], ["role_id", 2], ["created_at", 2017-03-16 15:06:23 UTC], ["updated_at", 2017-03-16 15:06:23 UTC]]
+  [1m[35m (15.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "password", "role_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_name", "Robert Plant"], ["password", "password"], ["role_id", 3], ["created_at", 2017-03-16 15:06:23 UTC], ["updated_at", 2017-03-16 15:06:23 UTC]]
+  [1m[35m (17.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "password", "role_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_name", "Major Shake"], ["password", "password"], ["role_id", 3], ["created_at", 2017-03-16 15:06:23 UTC], ["updated_at", 2017-03-16 15:06:23 UTC]]
+  [1m[35m (18.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRole Load (0.3ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "password", "role_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_name", "Eli Driver"], ["password", "password"], ["role_id", 3], ["created_at", 2017-03-16 15:06:24 UTC], ["updated_at", 2017-03-16 15:06:24 UTC]]
+  [1m[35m (13.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "password", "role_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_name", "Beatrix Kiddo"], ["password", "password"], ["role_id", 3], ["created_at", 2017-03-16 15:06:24 UTC], ["updated_at", 2017-03-16 15:06:24 UTC]]
+  [1m[35m (15.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+  [1m[36mForum Load (0.3ms)[0m  [1m[34mSELECT "forums".* FROM "forums"[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "forums" ("forum_name", "forum_description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["forum_name", "ART"], ["forum_description", "art is fine."], ["created_at", 2017-03-16 15:06:24 UTC], ["updated_at", 2017-03-16 15:06:24 UTC]]
+  [1m[35m (12.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "forums" ("forum_name", "forum_description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["forum_name", "BIO"], ["forum_description", "bio is fine."], ["created_at", 2017-03-16 15:06:24 UTC], ["updated_at", 2017-03-16 15:06:24 UTC]]
+  [1m[35m (13.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "forums" ("forum_name", "forum_description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["forum_name", "CHE"], ["forum_description", "che is fine."], ["created_at", 2017-03-16 15:06:24 UTC], ["updated_at", 2017-03-16 15:06:24 UTC]]
+  [1m[35m (10.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "forums" ("forum_name", "forum_description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["forum_name", "CSC"], ["forum_description", "csc is fine."], ["created_at", 2017-03-16 15:06:24 UTC], ["updated_at", 2017-03-16 15:06:24 UTC]]
+  [1m[35m (15.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "forums"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "forums"."id" FROM "forums"[0m
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mForum Load (0.2ms)[0m  [1m[34mSELECT  "forums".* FROM "forums" WHERE "forums"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "questions" ("title", "text", "active", "user_id", "forum_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "How many cups of sugar does it take to get to the moon?"], ["text", "First: Space. Second: Sugar. Third: Moon."], ["active", true], ["user_id", 7], ["forum_id", 1], ["created_at", 2017-03-16 15:06:24 UTC], ["updated_at", 2017-03-16 15:06:24 UTC]]
+  [1m[35m (13.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mForum Load (0.1ms)[0m  [1m[34mSELECT  "forums".* FROM "forums" WHERE "forums"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "questions" ("title", "text", "active", "user_id", "forum_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "How do I recognize a coral snake?"], ["text", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nulla nibh, pulvinar euismod molestie id, maximus non felis. Pellentesque faucibus egestas magna, non molestie mauris. Aliquam maximus lectus tortor, sit amet gravida nibh rhoncus nec. Aenean imperdiet non orci sed condimentum. Suspendisse ligula nulla, dapibus fringilla ipsum eget, tempus imperdiet libero. Vestibulum non lectus at lorem fermentum lacinia vestibulum et nisl. Praesent cursus orci lorem, vestibulum hendrerit metus posuere id. Integer congue tellus euismod, maximus nisl eget, porta velit. Etiam nec bibendum lectus. Praesent elementum sapien id velit iaculis scelerisque ut a dui."], ["active", true], ["user_id", 4], ["forum_id", 3], ["created_at", 2017-03-16 15:06:24 UTC], ["updated_at", 2017-03-16 15:06:24 UTC]]
+  [1m[35m (16.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mForum Load (0.1ms)[0m  [1m[34mSELECT  "forums".* FROM "forums" WHERE "forums"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "text", "active", "user_id", "forum_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "What is the difference between C and C++?"], ["text", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nulla nibh, pulvinar euismod molestie id, maximus non felis. Pellentesque faucibus egestas magna, non molestie mauris. Aliquam maximus lectus tortor, sit amet gravida nibh rhoncus nec. Aenean imperdiet non orci sed condimentum. Suspendisse ligula nulla, dapibus fringilla ipsum eget, tempus imperdiet libero. Vestibulum non lectus at lorem fermentum lacinia vestibulum et nisl. Praesent cursus orci lorem, vestibulum hendrerit metus posuere id. Integer congue tellus euismod, maximus nisl eget, porta velit. Etiam nec bibendum lectus. Praesent elementum sapien id velit iaculis scelerisque ut a dui."], ["active", true], ["user_id", 1], ["forum_id", 1], ["created_at", 2017-03-16 15:06:24 UTC], ["updated_at", 2017-03-16 15:06:24 UTC]]
+  [1m[35m (14.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mForum Load (0.1ms)[0m  [1m[34mSELECT  "forums".* FROM "forums" WHERE "forums"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "questions" ("title", "text", "active", "user_id", "forum_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Corem ipsum dolor sit amet."], ["text", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nulla nibh, pulvinar euismod molestie id, maximus non felis. Pellentesque faucibus egestas magna, non molestie mauris. Aliquam maximus lectus tortor, sit amet gravida nibh rhoncus nec. Aenean imperdiet non orci sed condimentum. Suspendisse ligula nulla, dapibus fringilla ipsum eget, tempus imperdiet libero. Vestibulum non lectus at lorem fermentum lacinia vestibulum et nisl. Praesent cursus orci lorem, vestibulum hendrerit metus posuere id. Integer congue tellus euismod, maximus nisl eget, porta velit. Etiam nec bibendum lectus. Praesent elementum sapien id velit iaculis scelerisque ut a dui."], ["active", true], ["user_id", 2], ["forum_id", 2], ["created_at", 2017-03-16 15:06:24 UTC], ["updated_at", 2017-03-16 15:06:24 UTC]]
+  [1m[35m (14.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mForum Load (0.1ms)[0m  [1m[34mSELECT  "forums".* FROM "forums" WHERE "forums"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "questions" ("title", "text", "active", "user_id", "forum_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Who is stealing my water?"], ["text", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nulla nibh, pulvinar euismod molestie id, maximus non felis. Pellentesque faucibus egestas magna, non molestie mauris. Aliquam maximus lectus tortor, sit amet gravida nibh rhoncus nec. Aenean imperdiet non orci sed condimentum. Suspendisse ligula nulla, dapibus fringilla ipsum eget, tempus imperdiet libero. Vestibulum non lectus at lorem fermentum lacinia vestibulum et nisl. Praesent cursus orci lorem, vestibulum hendrerit metus posuere id. Integer congue tellus euismod, maximus nisl eget, porta velit. Etiam nec bibendum lectus. Praesent elementum sapien id velit iaculis scelerisque ut a dui."], ["active", true], ["user_id", 3], ["forum_id", 1], ["created_at", 2017-03-16 15:06:24 UTC], ["updated_at", 2017-03-16 15:06:24 UTC]]
+  [1m[35m (13.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mForum Load (0.1ms)[0m  [1m[34mSELECT  "forums".* FROM "forums" WHERE "forums"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (1.4ms)[0m  [1m[32mINSERT INTO "questions" ("title", "text", "active", "user_id", "forum_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "This is a really really long question title to test how overflow works when question stitles get really long. That wasn't long enough. I mean seriosuly long. What does it look like?"], ["text", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nulla nibh, pulvinar euismod molestie id, maximus non felis. Pellentesque faucibus egestas magna, non molestie mauris. Aliquam maximus lectus tortor, sit amet gravida nibh rhoncus nec. Aenean imperdiet non orci sed condimentum. Suspendisse ligula nulla, dapibus fringilla ipsum eget, tempus imperdiet libero. Vestibulum non lectus at lorem fermentum lacinia vestibulum et nisl. Praesent cursus orci lorem, vestibulum hendrerit metus posuere id. Integer congue tellus euismod, maximus nisl eget, porta velit. Etiam nec bibendum lectus. Praesent elementum sapien id velit iaculis scelerisque ut a dui."], ["active", true], ["user_id", 4], ["forum_id", 2], ["created_at", 2017-03-16 15:06:24 UTC], ["updated_at", 2017-03-16 15:06:24 UTC]]
+  [1m[35m (16.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "questions"."id" FROM "questions"[0m
+  [1m[36mAnswer Load (0.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (2.8ms)[0m  [1m[32mINSERT INTO "answers" ("text", "active", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["text", "Corem ipsum dolor sit amet."], ["active", true], ["user_id", 3], ["question_id", 1], ["created_at", 2017-03-16 15:06:24 UTC], ["updated_at", 2017-03-16 15:06:24 UTC]]
+  [1m[35m (15.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "answers" ("text", "active", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["text", "Corem ipsum dolor sit amet."], ["active", true], ["user_id", 6], ["question_id", 1], ["created_at", 2017-03-16 15:06:24 UTC], ["updated_at", 2017-03-16 15:06:24 UTC]]
+  [1m[35m (22.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "answers" ("text", "active", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["text", "Corem ipsum dolor sit amet."], ["active", true], ["user_id", 7], ["question_id", 2], ["created_at", 2017-03-16 15:06:24 UTC], ["updated_at", 2017-03-16 15:06:24 UTC]]
+  [1m[35m (17.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "answers" ("text", "active", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["text", "Corem ipsum dolor sit amet."], ["active", true], ["user_id", 3], ["question_id", 3], ["created_at", 2017-03-16 15:06:24 UTC], ["updated_at", 2017-03-16 15:06:24 UTC]]
+  [1m[35m (14.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "answers" ("text", "active", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["text", "Corem ipsum dolor sit amet."], ["active", true], ["user_id", 5], ["question_id", 4], ["created_at", 2017-03-16 15:06:24 UTC], ["updated_at", 2017-03-16 15:06:24 UTC]]
+  [1m[35m (11.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "answers" ("text", "active", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["text", "Corem ipsum dolor sit amet."], ["active", true], ["user_id", 2], ["question_id", 5], ["created_at", 2017-03-16 15:06:24 UTC], ["updated_at", 2017-03-16 15:06:24 UTC]]
+  [1m[35m (13.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "answers"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "answers"."id" FROM "answers"[0m
