@@ -1,7 +1,7 @@
 class Question < ApplicationRecord
   belongs_to :user
   belongs_to :forum
-  #has_many :answer
+  has_many :answer
   validates :title, presence: true
   validates :text, presence: true
   validates :forum_id, presence: true         
