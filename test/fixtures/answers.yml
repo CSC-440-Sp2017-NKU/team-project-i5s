@@ -1,21 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  answer_id: 1
-  answer: MyString
+  text: MyString
   active: false
-  user_id: 1
-  answer_id: 
-  question_id: 1
-  user_id: 
-  question_id: 
+  user: one
+  question: one
 
 two:
-  answer_id: 1
-  answer: MyString
+  text: MyString
   active: false
-  user_id: 1
-  answer_id: 
-  question_id: 1
-  user_id: 
-  question_id: 
+  user: two
+  question: two

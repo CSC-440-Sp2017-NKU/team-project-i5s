@@ -40,7 +40,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   
   # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
+  gem 'sqlite3' #, '1.3.12'
 end
 
 group :development do
@@ -56,6 +56,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :production do
-   gem'pg'
-   gem 'rails_12factor'
+   gem'pg' #, '0.18.4'
+ #  gem 'rails_12factor'
  end

@@ -2,14 +2,12 @@
 
 one:
   resource_text: MyString
-  user_id: 1
   resource_url: MyString
   attached_file: 
-  user_id: 
+  user: one
 
 two:
   resource_text: MyString
-  user_id: 1
   resource_url: MyString
   attached_file: 
-  user_id: 
+  user: two
