@@ -1,0 +1,106 @@
+<%@answers = @question.answers %>
+<div class="question-forum">
+    <h3><span>FORUM<span class="arial">//</span></span> 
+    <a href="<%= url_for(action:"view_forum",
+    controller:"forum", 
+    id:@question.forum_id) %>"><%= @question.try(:forum_name) %></a></h3>
+</div>
+
+<div class="question">
+    <h1>
+        <%= @question.title %>
+    </h1>
+    <div class="question-info">
+        Asked by <%= @question.author %> on <%=format_datetime @question.created_at %> 
+    </div>
+    <div class="question-description">
+         <%= @question.text %>
+    </div>
+</div>
+
+<a href="<%= url_for(action:"answer_question", controller:"qa", question_id:@question.id) %>" class="post-button post-answer">
+        Post an Answer
+</a>
+
+<div class="answers-header">
+    <div class="collapsed pointer" data-toggle="collapse" data-target="#sort-collapse">
+    Answers<i class="fa fa-sort icon-padding small-icon"></i>
+    </div>
+    
+<div class="answers-sort collapse" id="sort-collapse">
+    
+    
+    <div class="answer-col-headers">
+       <div class="col-header a-score-header pointer" data-sort-by="score" data-ascending="false">
+           Score<i class="fa fa-caret-down caret-padding" ></i>
+       </div>
+       <div class="col-header a-answer-header pointer" data-sort-by="answers" data-ascending="false">
+           Answer <i class="fa fa-caret-down caret-padding"></i>
+       </div>
+       <div class="col-header a-posted-header pointer" data-sort-by="time" data-ascending="false">
+           Posted<i class="fa fa-caret-down caret-padding"></i>
+       </div>
+       </div>
+</div>
+</div>
+<div class="answers">
+    <% @answers.each do |answer| %>
+      <div class="answer">
+      <div class="answer-pad">
+     <div class="answer-votes">
+           <a><i class="fa fa-check"></i> </a>
+           <div class="a-score">
+               <%= answer.try(:score) %>
+           </div>
+          <a><i class="fa fa-times"></i></a>
+     </div>
+     <div class="answer-info">
+     <div class="a-text">
+        <%= answer.text %>
+      </div>
+    
+     <div class="answer-author">
+        -<span class="a-author"><%= answer.try(:author) %></span> on <span class="a-time"><%=format_datetime answer.created_at %> </span>
+     </div>
+     </div>
+     </div>
+     </div>
+    <% end %>
+    
+</div>
+
+<script>
+
+var questions = $('.answers').isotope({
+  // options
+  itemSelector: '.answer',
+  layoutMode: 'vertical',
+   getSortData:{
+        answer:".a-text",
+        time: ".a-time parseTime",
+        score: ".a-score parseInt"
+    }
+});
+
+
+  
+$('.answer-col-headers').on( 'click', '.col-header', function() {
+    var sortAscendingValue= false;
+    if($(this).data("ascending") == "false")
+    {
+        $(this).data("ascending", "true");
+        $(this).children("i").attr("class","fa fa-caret-up");
+    }
+    else
+    {
+         $(this).data("ascending", "false");
+          $(this).children("i").attr("class", "fa fa-caret-down");
+         sortAscendingValue = true;
+    }
+    
+  var sortByValue = $(this).attr('data-sort-by');
+  questions.isotope({ sortBy: sortByValue ,
+      sortAscending: sortAscendingValue
+  });
+});
+</script>
