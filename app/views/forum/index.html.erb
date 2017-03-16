@@ -12,8 +12,8 @@
         </div>
          </a>
         <div class="qs-question">
-             <a href="<%= url_for(action:"view_question",controller:"qa",id: question.question_id) %>">
-            <%= question.question_title %>
+             <a href="<%= url_for(action:"view_question",controller:"qa",id: question.id) %>">
+            <%= question.title %>
             </a>
         </div>
         <div class="qs-author">
@@ -21,7 +21,7 @@
             - <%= question.try(:author) %>
             </a>
         </div>
-        <a href="<%= url_for(action:"view_question",controller:"qa",id: question.question_id) %>">
+        <a href="<%= url_for(action:"view_question",controller:"qa",id: question.id) %>">
         <div class="qs-answers">
         
             <span class="qs-a-expand">View </span> <%= question.try(:num_answers) %> <span class="qs-a-expand">Answers <i class="fa fa-arrow-right"></i></span>

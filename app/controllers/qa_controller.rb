@@ -47,10 +47,10 @@ class QaController < ApplicationController
 private
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(:question_description, :question_title, :user_id, :forum_id)
+      params.require(:question).permit(:text, :title, :user_id, :forum_id)
     end
     
     def answer_params
-      params.require(:answer).permit(:answer, :user_id, :question_id)
+      params.require(:answer).permit(:text, :user_id, :question_id)
     end
 end

@@ -4,7 +4,7 @@
     <div class="forum-header">
     <div class="forum-name"><h1 ><%= @forum.forum_name %></h1>
     </div>
-       <a href="<%= url_for(action:"post_question", controller:"qa", forum_id:@forum.forum_id) %>"class="post-button post-question">
+       <a href="<%= url_for(action:"post_question", controller:"qa", forum_id:@forum.id) %>"class="post-button post-question">
         Post a Question
        </a>
    </div>
@@ -28,8 +28,8 @@
     <%@questions.each do |question|%>
     <div class="question-summary">
         <div class="qs-question">
-            <a href="<%= url_for(action:"view_question",controller:"qa",id: question.question_id) %>" class="qs-question-data">
-            <%= question.question_title %>
+            <a href="<%= url_for(action:"view_question",controller:"qa",id: question.id) %>" class="qs-question-data">
+            <%= question.title %>
             </a>
         </div>
         <div class="qs-author">
@@ -41,7 +41,7 @@
         <div class="qs-time">
             <%=format_datetime question.created_at %>
         </div>
-        <a href="/Question/<%= question.question_id %>">
+        <a href="/Question/<%= question.id %>">
         <div class="qs-answers qs-answers-grey">
         
            <%= question.try(:num_answers) %>

@@ -9,21 +9,21 @@
     <h4><span>QUESTION<span class="arial">//</span></span> 
     <a href="<%= url_for(action:"view_question",
     controller:"qa", 
-    id:@question.question_id) %>"><%= @question.question_title %></a></h4>
+    id:@question.id) %>"><%= @question.title %></a></h4>
 </div>
 <div class="form">
         <%= form_tag("/Question/Answer" ,method: "post") do %>
       
       <div class="form-element">
-      <%= label_tag("answer[answer]", "Answer") %>
-      <%= text_area_tag("answer[answer]", "",{class:"form-control", rows:4}) %>
+      <%= label_tag("answer[text]", "Answer") %>
+      <%= text_area_tag("answer[text]", "",{class:"form-control", rows:4}) %>
       </div>
       
       <%= hidden_field_tag "answer[user_id]", 1 %>
-      <%= hidden_field_tag "answer[question_id]", @question.question_id %>
+      <%= hidden_field_tag "answer[question_id]", @question.id %>
       
       <%= submit_tag("Post",{class:"btn btn-default btn-dark"}) %>
-      <a href="<%= url_for(action:"view_question",controller:"qa", id: @question.question_id )%>" class="btn btn-default">Cancel</a>
+      <a href="<%= url_for(action:"view_question",controller:"qa", id: @question.id )%>" class="btn btn-default">Cancel</a>
     <% end %>
     
 </div>

@@ -1,12 +1,9 @@
-#class Forum < ApplicationRecord
-#end
-
 class Forum < ApplicationRecord
 #attr_accessor :forum_name, :forum_description
   has_many :question
   
   def questions
-    return Question.where(forum_id: self.id) 
+    return Question.where(forum_id: self.forum_id) 
   end
 
 #def initialize(attributes = {})

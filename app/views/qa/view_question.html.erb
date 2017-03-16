@@ -8,17 +8,17 @@
 
 <div class="question">
     <h1>
-        <%= @question.question_title %>
+        <%= @question.title %>
     </h1>
     <div class="question-info">
         Asked by <%= @question.author %> on <%=format_datetime @question.created_at %> 
     </div>
     <div class="question-description">
-         <%= @question.question_description %>
+         <%= @question.text %>
     </div>
 </div>
 
-<a href="<%= url_for(action:"answer_question", controller:"qa", question_id:@question.question_id) %>" class="post-button post-answer">
+<a href="<%= url_for(action:"answer_question", controller:"qa", question_id:@question.id) %>" class="post-button post-answer">
         Post an Answer
 </a>
 
@@ -56,7 +56,7 @@
      </div>
      <div class="answer-info">
      <div class="a-text">
-        <%= answer.answer %>
+        <%= answer.text %>
       </div>
     
      <div class="answer-author">

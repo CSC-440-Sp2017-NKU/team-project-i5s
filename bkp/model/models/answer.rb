@@ -1,12 +1,7 @@
-#class Answer < ApplicationRecord
-#  belongs_to :user
-#  belongs_to :question
-#end
-
 class Answer < ApplicationRecord
   belongs_to :user
   belongs_to :question
-  validates :text, presence: true
+  validates :answer, presence: true
   validates :question_id, presence: true        
 #class Answer < ApplicationRecord
 #belongs_to :user
@@ -25,7 +20,7 @@ def score
 end
 
 def author
-  return User.find(self.user_id).user_name
+    return User.find(self.user_id).user_name
 end
 
 end

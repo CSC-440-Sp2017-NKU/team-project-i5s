@@ -10,40 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170315033705) do
+ActiveRecord::Schema.define(version: 20170312190014) do
 
-  create_table "answers", force: :cascade do |t|
-    t.string   "text"
-    t.boolean  "active",      default: true
+  create_table "answers", primary_key: "answer_id", force: :cascade do |t|
+    t.string   "answer"
+    t.boolean  "active"
     t.integer  "user_id"
     t.integer  "question_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.index ["question_id"], name: "index_answers_on_question_id"
     t.index ["user_id"], name: "index_answers_on_user_id"
   end
 
-  create_table "forums", force: :cascade do |t|
+  create_table "forums", primary_key: "forum_id", force: :cascade do |t|
     t.string   "forum_name"
     t.string   "forum_description"
-    t.string   "resource_url"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "questions", force: :cascade do |t|
-    t.string   "title"
-    t.string   "text"
-    t.boolean  "active",     default: true
+  create_table "questions", primary_key: "question_id", force: :cascade do |t|
+    t.string   "question_title"
+    t.string   "question_description"
+    t.boolean  "active"
     t.integer  "user_id"
     t.integer  "forum_id"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.index ["forum_id"], name: "index_questions_on_forum_id"
     t.index ["user_id"], name: "index_questions_on_user_id"
   end
 
-  create_table "roles", force: :cascade do |t|
+  create_table "roles", primary_key: "role_id", force: :cascade do |t|
     t.string   "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -51,15 +50,15 @@ ActiveRecord::Schema.define(version: 20170315033705) do
 
   create_table "user_files", force: :cascade do |t|
     t.string   "resource_text"
+    t.integer  "user_id"
     t.string   "resource_url"
     t.binary   "attached_file"
-    t.integer  "user_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.index ["user_id"], name: "index_user_files_on_user_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", primary_key: "user_id", force: :cascade do |t|
     t.string   "user_name"
     t.string   "password"
     t.integer  "role_id"

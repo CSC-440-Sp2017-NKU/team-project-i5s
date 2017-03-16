@@ -1,14 +1,9 @@
-#class Question < ApplicationRecord
-#  belongs_to :user
-#  belongs_to :forum
-#end
-
 class Question < ApplicationRecord
   belongs_to :user
   belongs_to :forum
   has_many :answer
-  validates :title, presence: true
-  validates :text, presence: true
+  validates :question_title, presence: true
+  validates :question_description, presence: true
   validates :forum_id, presence: true         
  # @forum_name = Forum.find_by()
 
@@ -24,11 +19,11 @@ class Question < ApplicationRecord
   
   # return the associated answers
   def answers
-    return Answer.where(question_id: self.id) 
+    return Answer.where(question_id: self.question_id) 
   end
   
   def num_answers
-    return self.answers.where(question_id: self.id).count
+    return self.answers.where(question_id: self.question_id).count
   end
 
 end
