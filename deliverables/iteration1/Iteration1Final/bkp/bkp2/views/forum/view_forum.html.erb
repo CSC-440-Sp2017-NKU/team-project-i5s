@@ -1,0 +1,94 @@
+<%@questions = @forum.questions %>
+
+<div class="forum-page">
+    <div class="forum-header">
+    <div class="forum-name"><h1 ><%= @forum.forum_name %></h1>
+    </div>
+       <a href="<%= url_for(action:"post_question", controller:"qa", forum_id:@forum.id) %>"class="post-button post-question">
+        Post a Question
+       </a>
+   </div>
+   
+   
+   <div class="forum-questions-container">
+       
+       <div class="forum-col-headers">
+       <div class="col-header q-question-header pointer" data-sort-by="question" data-ascending="false">
+           Question<i class="fa fa-caret-down caret-padding" ></i>
+       </div>
+       
+       <div class="col-header q-post-header pointer" data-sort-by="time" data-ascending="false">
+           Posted<i class="fa fa-caret-down caret-padding"></i>
+       </div>
+       <div class="col-header q-answers-header pointer" data-sort-by="answers" data-ascending="false">
+           Answers <i class="fa fa-caret-down caret-padding"></i>
+       </div>
+   </div>
+   <div class="forum-questions">
+    <%@questions.each do |question|%>
+    <div class="question-summary">
+        <div class="qs-question">
+            <a href="<%= url_for(action:"view_question",controller:"qa",id: question.id) %>" class="qs-question-data">
+            <%= question.title %>
+            </a>
+        </div>
+        <div class="qs-author">
+            <a>
+            - <%= question.author %>
+            </a>
+        </div>
+        <div class="qs-right">
+        <div class="qs-time">
+            <%=format_datetime question.created_at %>
+        </div>
+        <a href="/Question/<%= question.id %>">
+        <div class="qs-answers qs-answers-grey">
+        
+           <%= question.try(:num_answers) %>
+       
+        </div>
+         </a>
+        
+        </div>
+        
+    </div>
+    <%end %>
+    </div>
+</div>
+    
+</div>
+<script>
+
+var questions = $('.forum-questions').isotope({
+  // options
+  itemSelector: '.question-summary',
+  layoutMode: 'vertical',
+   getSortData:{
+        question:".qs-question parseString",
+        time: ".qs-time parseTime",
+        answers: ".qs-answers parseInt"
+    }
+});
+
+
+  
+$('.forum-col-headers').on( 'click', '.col-header', function() {
+    var sortAscendingValue= false;
+    if($(this).data("ascending") == "false")
+    {
+        $(this).data("ascending", "true");
+        $(this).children("i").attr("class","fa fa-caret-up");
+    }
+    else
+    {
+         $(this).data("ascending", "false");
+          $(this).children("i").attr("class", "fa fa-caret-down");
+         sortAscendingValue = true;
+    }
+    
+  var sortByValue = $(this).attr('data-sort-by');
+  questions.isotope({ sortBy: sortByValue ,
+      sortAscending: sortAscendingValue
+  });
+});
+</script>

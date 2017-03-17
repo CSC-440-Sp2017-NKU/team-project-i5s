@@ -14927,6 +14927,7 @@ Processing by QaController#view_question as HTML
 Completed 200 OK in 262ms (Views: 81.9ms | ActiveRecord: 3.1ms)
 
 
+<<<<<<< HEAD
 Started GET "/" for 72.49.116.231 at 2017-03-16 16:46:40 +0000
 Cannot render console from 72.49.116.231! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
   [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
@@ -14953,6 +14954,34 @@ Processing by ForumController#index as HTML
   Rendered forum/index.html.erb within layouts/main (432.7ms)
   [1m[36mForum Load (0.2ms)[0m  [1m[34mSELECT "forums".* FROM "forums"[0m
 Completed 200 OK in 602ms (Views: 550.0ms | ActiveRecord: 8.7ms)
+=======
+Started GET "/" for 192.180.23.183 at 2017-03-16 16:57:40 +0000
+Cannot render console from 192.180.23.183! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ForumController#index as HTML
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" ORDER BY "questions"."created_at" ASC LIMIT ?[0m  [["LIMIT", 5]]
+  Rendering forum/index.html.erb within layouts/main
+  [1m[36mForum Load (0.2ms)[0m  [1m[34mSELECT  "forums".* FROM "forums" WHERE "forums"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "answers" WHERE "answers"."question_id" = ? AND "answers"."question_id" = ?[0m  [["question_id", 1], ["question_id", 1]]
+  [1m[36mForum Load (0.1ms)[0m  [1m[34mSELECT  "forums".* FROM "forums" WHERE "forums"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "answers" WHERE "answers"."question_id" = ? AND "answers"."question_id" = ?[0m  [["question_id", 2], ["question_id", 2]]
+  [1m[36mForum Load (0.1ms)[0m  [1m[34mSELECT  "forums".* FROM "forums" WHERE "forums"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "answers" WHERE "answers"."question_id" = ? AND "answers"."question_id" = ?[0m  [["question_id", 3], ["question_id", 3]]
+  [1m[36mForum Load (0.1ms)[0m  [1m[34mSELECT  "forums".* FROM "forums" WHERE "forums"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "answers" WHERE "answers"."question_id" = ? AND "answers"."question_id" = ?[0m  [["question_id", 4], ["question_id", 4]]
+  [1m[36mForum Load (0.1ms)[0m  [1m[34mSELECT  "forums".* FROM "forums" WHERE "forums"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "answers" WHERE "answers"."question_id" = ? AND "answers"."question_id" = ?[0m  [["question_id", 5], ["question_id", 5]]
+  [1m[36mForum Load (0.2ms)[0m  [1m[34mSELECT "forums".* FROM "forums"[0m
+  Rendered forum/_list_forums.html.erb (960.2ms)
+  Rendered forum/index.html.erb within layouts/main (995.6ms)
+  [1m[36mForum Load (0.2ms)[0m  [1m[34mSELECT "forums".* FROM "forums"[0m
+Completed 200 OK in 1118ms (Views: 1079.2ms | ActiveRecord: 4.9ms)
+>>>>>>> c254a5e132adc07b3d1b1019faa80f2bc9d605ce
 
 
   
@@ -14989,6 +15018,7 @@ puma (3.8.1) lib/puma/server.rb:590:in `handle_request'
 puma (3.8.1) lib/puma/server.rb:425:in `process_client'
 puma (3.8.1) lib/puma/server.rb:289:in `block in run'
 puma (3.8.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+<<<<<<< HEAD
 Started GET "/Forums/3" for 72.49.116.231 at 2017-03-16 16:46:55 +0000
 Cannot render console from 72.49.116.231! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
 Processing by ForumController#view_forum as HTML
@@ -15072,3 +15102,84 @@ Completed 200 OK in 126ms (Views: 119.6ms | ActiveRecord: 2.7ms)
   [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
   [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+=======
+Started GET "/Forums/1" for 192.180.23.183 at 2017-03-16 16:57:46 +0000
+Cannot render console from 192.180.23.183! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ForumController#view_forum as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mForum Load (0.6ms)[0m  [1m[34mSELECT  "forums".* FROM "forums" WHERE "forums"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering forum/view_forum.html.erb within layouts/main
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."forum_id" = ?[0m  [["forum_id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "answers" WHERE "answers"."question_id" = ? AND "answers"."question_id" = ?[0m  [["question_id", 1], ["question_id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "answers" WHERE "answers"."question_id" = ? AND "answers"."question_id" = ?[0m  [["question_id", 3], ["question_id", 3]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "answers" WHERE "answers"."question_id" = ? AND "answers"."question_id" = ?[0m  [["question_id", 5], ["question_id", 5]]
+  Rendered forum/view_forum.html.erb within layouts/main (7.0ms)
+  [1m[36mForum Load (0.2ms)[0m  [1m[34mSELECT "forums".* FROM "forums"[0m
+Completed 200 OK in 35ms (Views: 31.3ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/Question/1" for 192.180.23.183 at 2017-03-16 16:57:49 +0000
+Cannot render console from 192.180.23.183! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by QaController#view_question as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering qa/view_question.html.erb within layouts/main
+  [1m[36mForum Load (0.2ms)[0m  [1m[34mSELECT  "forums".* FROM "forums" WHERE "forums"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = ?[0m  [["question_id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendered qa/view_question.html.erb within layouts/main (9.9ms)
+  [1m[36mForum Load (0.2ms)[0m  [1m[34mSELECT "forums".* FROM "forums"[0m
+Completed 200 OK in 40ms (Views: 36.1ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/Forums/1" for 192.180.23.183 at 2017-03-16 16:57:51 +0000
+Cannot render console from 192.180.23.183! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ForumController#view_forum as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mForum Load (0.1ms)[0m  [1m[34mSELECT  "forums".* FROM "forums" WHERE "forums"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering forum/view_forum.html.erb within layouts/main
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."forum_id" = ?[0m  [["forum_id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "answers" WHERE "answers"."question_id" = ? AND "answers"."question_id" = ?[0m  [["question_id", 1], ["question_id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "answers" WHERE "answers"."question_id" = ? AND "answers"."question_id" = ?[0m  [["question_id", 3], ["question_id", 3]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "answers" WHERE "answers"."question_id" = ? AND "answers"."question_id" = ?[0m  [["question_id", 5], ["question_id", 5]]
+  Rendered forum/view_forum.html.erb within layouts/main (9.0ms)
+  [1m[36mForum Load (0.4ms)[0m  [1m[34mSELECT "forums".* FROM "forums"[0m
+Completed 200 OK in 62ms (Views: 58.4ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/" for 192.180.23.183 at 2017-03-16 16:57:53 +0000
+Cannot render console from 192.180.23.183! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ForumController#index as HTML
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" ORDER BY "questions"."created_at" ASC LIMIT ?[0m  [["LIMIT", 5]]
+  Rendering forum/index.html.erb within layouts/main
+  [1m[36mForum Load (0.2ms)[0m  [1m[34mSELECT  "forums".* FROM "forums" WHERE "forums"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "answers" WHERE "answers"."question_id" = ? AND "answers"."question_id" = ?[0m  [["question_id", 1], ["question_id", 1]]
+  [1m[36mForum Load (0.2ms)[0m  [1m[34mSELECT  "forums".* FROM "forums" WHERE "forums"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "answers" WHERE "answers"."question_id" = ? AND "answers"."question_id" = ?[0m  [["question_id", 2], ["question_id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "forums".* FROM "forums" WHERE "forums"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "answers" WHERE "answers"."question_id" = ? AND "answers"."question_id" = ?[0m  [["question_id", 3], ["question_id", 3]]
+  [1m[36mForum Load (0.2ms)[0m  [1m[34mSELECT  "forums".* FROM "forums" WHERE "forums"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "answers" WHERE "answers"."question_id" = ? AND "answers"."question_id" = ?[0m  [["question_id", 4], ["question_id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "forums".* FROM "forums" WHERE "forums"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "answers" WHERE "answers"."question_id" = ? AND "answers"."question_id" = ?[0m  [["question_id", 5], ["question_id", 5]]
+  [1m[36mForum Load (0.3ms)[0m  [1m[34mSELECT "forums".* FROM "forums"[0m
+  Rendered forum/_list_forums.html.erb (31.1ms)
+  Rendered forum/index.html.erb within layouts/main (45.2ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "forums".* FROM "forums"[0m
+Completed 200 OK in 88ms (Views: 82.4ms | ActiveRecord: 2.7ms)
+
+
+>>>>>>> c254a5e132adc07b3d1b1019faa80f2bc9d605ce
