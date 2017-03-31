@@ -69,4 +69,17 @@ Rails.application.routes.draw do
   get 'qa/post_question'
   get 'qa/view_question'
   get 'forum/list_forums'
+  
+  #authlogic
+  resources :user_sessions
+
+  match 'login' => "user_sessions#new",      :as => :login, via: [:get, :post]
+  match 'logout' => "user_sessions#destroy", :as => :logout, via: [:get, :post]
+
+  resources :users  # give us our some normal resource routes for users
+  resource :user, :as => 'account'  # a convenience route
+
+  match 'signup' => 'users#new', :as => :signup, via: [:get, :post]
+
+  root :to => 'users#new'
 end

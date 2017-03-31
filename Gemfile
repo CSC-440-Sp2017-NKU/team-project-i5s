@@ -10,6 +10,9 @@ end
 gem 'rails', '~> 5.0.2'
 ruby '2.3.0'
 
+#Use authloig for user authentication
+gem 'authlogic'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
