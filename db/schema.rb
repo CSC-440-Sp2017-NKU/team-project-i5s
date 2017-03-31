@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170316140905) do
+ActiveRecord::Schema.define(version: 20170330235245) do
 
   create_table "answers", force: :cascade do |t|
     t.string   "text"
@@ -59,12 +59,34 @@ ActiveRecord::Schema.define(version: 20170316140905) do
     t.index ["user_id"], name: "index_user_files_on_user_id"
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string   "user_name"
-    t.string   "password"
-    t.integer  "role_id"
+  create_table "user_sessions", force: :cascade do |t|
+    t.string   "session_id", null: false
+    t.text     "data"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["session_id"], name: "index_user_sessions_on_session_id"
+    t.index ["updated_at"], name: "index_user_sessions_on_updated_at"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "user_name",           default: "",         null: false
+    t.integer  "role_id"
+    t.string   "login",               default: "",         null: false
+    t.string   "crypted_password",    default: "12345678", null: false
+    t.string   "password_salt",       default: "",         null: false
+    t.string   "email",               default: "",         null: false
+    t.string   "persistence_token",   default: "",         null: false
+    t.string   "single_access_token", default: "",         null: false
+    t.string   "perishable_token",    default: "",         null: false
+    t.integer  "login_count",         default: 0,          null: false
+    t.integer  "failed_login_count",  default: 0,          null: false
+    t.datetime "last_request_at"
+    t.datetime "current_login_at"
+    t.datetime "last_login_at"
+    t.string   "current_login_ip"
+    t.string   "last_login_ip"
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
