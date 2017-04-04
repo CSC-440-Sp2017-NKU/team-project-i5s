@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170330235245) do
+ActiveRecord::Schema.define(version: 20170404212650) do
 
   create_table "answers", force: :cascade do |t|
     t.string   "text"
@@ -88,6 +88,16 @@ ActiveRecord::Schema.define(version: 20170330235245) do
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
     t.index ["role_id"], name: "index_users_on_role_id"
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.integer  "direction"
+    t.integer  "answers_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["answers_id"], name: "index_votes_on_answers_id"
+    t.index ["user_id"], name: "index_votes_on_user_id"
   end
 
 end
