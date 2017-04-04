@@ -9,7 +9,7 @@ class QaController < ApplicationController
       #@answers = Question.answers # return the associated answers
     else
       #render 'forum/index'
-      redirect_to controller:"application", action:"error_handler", "This is not a good question."
+     # redirect_to controller:"application", action:"error_handler", "This is not a good question."
     end
     #comment
   end
@@ -80,7 +80,10 @@ class QaController < ApplicationController
   # GET : input: answer_id, returns the answer form
   # POST : input: Answer object fed in from the view, output: redirect to view the question
   def edit_answer
-    
+    @answer = Answer.find(edit_answer_params.id) #inbound data object with 2 params(possibly 3 if we need to include question id)
+    @answer.text = edit_answer_params.text
+    @answer.save() #save to the db
+    #@answer.questionId = edit_question_params.questionId
   end
   
   
@@ -88,7 +91,11 @@ class QaController < ApplicationController
   # add to routes
   # implement
   def delete_question
-    # set the question visible flag to false
+    if request.post?
+      # set the question visible flag to false
+      @question.visible = false
+    end
+
   end
   
   
@@ -96,14 +103,18 @@ class QaController < ApplicationController
   # add to routes
   # impelement
   def delete_answer
-     # set the question visible flag to false
+    if request.post?
+      # set the question visible flag to false
+      @answer.isVisible = false
+    end
+    
   end
   
   
   # TODO :
   #add to routes,
   #implemenet
-  #hunter
+  #hunter using AJAX
   def vote
   
   end
