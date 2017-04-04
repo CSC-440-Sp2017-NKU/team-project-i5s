@@ -93,7 +93,7 @@ class QaController < ApplicationController
   def delete_question
     if request.post?
       # set the question visible flag to false
-      @question.visible = false
+      @question.isVisible = false
     end
 
   end
