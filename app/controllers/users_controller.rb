@@ -37,9 +37,28 @@ class UsersController < ApplicationController
     end
   end
   
+  # TODO : 
+  #the user page!
+  #GET -- accepts user_id only !! 
+  #todo: add to routes, implement function
+  #create a view file under 
+  #/users/view.html.erb
+  #update routes
+  def view
+    #@question = User.find(Integer(params["id"]))
+    if (!params[:id].nil?)
+      id = Integer(params[:id])
+      @user = User.find(id) # return the user object
+    else
+      #trying to view a user page without a user-id
+      #to be done -- this is an error state, just display an error message
+     # redirect_to controller:"qa", action:"view_question", id:@question.id
+      #render 'forum/index'
+    end
+  end
+  
   private
   def user_params
     params.require(:user).permit(:user_name, :email, :password, :password_confirmation)
   end
-
 end

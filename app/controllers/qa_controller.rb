@@ -1,5 +1,6 @@
 class QaController < ApplicationController
   
+  # TODO : impelement visibility check -- if not visible, don't render.
   #GET -- return question/answers objects
   def view_question
     if (!params[:id].nil?)
@@ -7,11 +8,13 @@ class QaController < ApplicationController
       @question = Question.find(id) # return the question object
       #@answers = Question.answers # return the associated answers
     else
-      render 'forum/index'
+      #render 'forum/index'
+      redirect_to controller:"application", action:"error_handler", "This is not a good question."
     end
     #comment
   end
 
+  # TODO : impelement visibility check -- if not visible, don't render.
   #POST -- write the data written in the form to the db
   #GET --  return the form to write a question
   def post_question
@@ -28,6 +31,7 @@ class QaController < ApplicationController
     end
   end
   
+  # TODO : impelement visibility check -- if not visible, don't render.
   def answer_question
     if request.post?
       @answer = Answer.new(answer_params)
@@ -43,6 +47,8 @@ class QaController < ApplicationController
     
   end
   
+  
+  # TODO : impelement visibility check -- if not visible, don't render.
   # allows a user to edit the question
   # change text, change title :: user has to be admin!
   # check for POST/GET request sent in
@@ -59,13 +65,15 @@ class QaController < ApplicationController
       @question.text = edit_question_params.text
       @question.save() # save the db!
       
+      #send the user back to the view_question with hte question id we just saved
+      redirect_to controller:"qa", action:"view_question", id:@question.id
       #returns the form
     else # handles the get request which is to return a single question
-      @question = Question.find(Integer(params["question_id"]))
+      @question = Question.find(Integer(params["id"]))
     end
   end
   
-  
+  # TODO : 
   # allows a user to edit the answer
   # change text, change title :: user has to be admin!
   # check for POST/GET request sent in
@@ -74,6 +82,32 @@ class QaController < ApplicationController
   def edit_answer
     
   end
+  
+  
+  # TODO : 
+  # add to routes
+  # implement
+  def delete_question
+    # set the question visible flag to false
+  end
+  
+  
+  # TODO : 
+  # add to routes
+  # impelement
+  def delete_answer
+     # set the question visible flag to false
+  end
+  
+  
+  # TODO :
+  #add to routes,
+  #implemenet
+  #hunter
+  def vote
+  
+  end
+  
   
   
   

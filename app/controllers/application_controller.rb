@@ -46,6 +46,7 @@ layout "main"
         return false
       end
     end
+    
     def require_no_user
       logger.debug "ApplicationController::require_no_user"
       if current_user
@@ -54,6 +55,11 @@ layout "main"
        # redirect_to home_index_path
         return false
       end
+    end
+    
+    # TODO :
+    def error_handler
+      flash[:notice] = "Something went wrong here..."
     end
 
     def store_location

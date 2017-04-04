@@ -20,6 +20,7 @@ class Answer < ApplicationRecord
 #@answer_datetime = attributes[:answer_datetime]
 #end
 
+# TODO : 
 def score
   return 0
 end
