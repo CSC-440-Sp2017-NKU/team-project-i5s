@@ -11,6 +11,7 @@ class User < ApplicationRecord
     # return the street cred...
     #lookup the DB data.
     street_cred = {:num_questions => 1, :num_answers => 1, :up_votes => 1, :down_votes => 1}
+    street_cred
   end
   
   # TODO : 
@@ -36,7 +37,7 @@ class User < ApplicationRecord
   
   # returns whether or not hte user is an admin!?
   def admin?()
-    return User.role == 0
+    return User.role == 0 #Role.find()
   end
 
   
