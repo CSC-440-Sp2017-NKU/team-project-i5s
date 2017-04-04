@@ -24,8 +24,7 @@ p "Roles: #{Role.pluck :id}"
 
 # User.destroy_all
  
-# User.create!([
-# {user_name: "Joe Deer", email:"test@test.com", password: "password", role_id: 2},
+ User.create!([ {user_name: "Test", email:"test@test.com", password: "12345678", password_confirmation: "12345678" }])
 # {user_name: "Jane Deer", email:"test@test.com", password: "password", role_id: 2},
 # {user_name: "Scott Summers", email:"test@test.com", password: "password", role_id: 2},
 # {user_name: "Hermoine Granger", email:"test@test.com", password: "password", role_id: 2},
@@ -34,8 +33,8 @@ p "Roles: #{Role.pluck :id}"
 # {user_name: "Eli Driver", email:"test@test.com", password: "password", role_id: 3},
 # {user_name: "Beatrix Kiddo", email:"test@test.com", password: "password", role_id: 3}])
  
-# p "Created #{User.count} users"
-# p "Users: #{User.pluck :id}" 
+ p "Created #{User.count} users"
+ p "Users: #{User.pluck :id}" 
 
 Forum.destroy_all
 Forum.create!([{forum_name:"ART", forum_description:"art is fine."},
