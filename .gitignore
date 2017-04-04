@@ -11,3 +11,6 @@ capybara-*.html
 **.orig
 rerun.txt
 pickle-email-*.html
+
+/deliverables/inception #updates after due date
+/deliverables/iteration1 #updated after due date

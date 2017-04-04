@@ -70,6 +70,18 @@ Rails.application.routes.draw do
   get 'qa/view_question'
   get 'forum/list_forums'
   
+  get 'Question/Edit/:id', to: 'qa#edit_question'
+  post 'Question/Edit', to: 'qa#edit_question'
+  post 'Question/Delete', to 'qa#delete_question'
+  
+  get 'Answer/Edit/:id', to: 'qa#edit_answer'
+  post 'Answer/Edit', to: 'qa#edit_answer'
+  post 'Answer/Delete', to 'qa#delete_answer'
+  
+  get 'users/:id', to: 'users#view'
+  
+  post 'vote/:answer_id/:direction', to 'qa#vote'
+  
   #authlogic
   resources :user_sessions
 

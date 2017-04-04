@@ -29,15 +29,24 @@ layout "main"
     end
 
     def require_user
+      require_boolean current_user
+    end
+    
+    def require_admin
+     require_boolean current_user.admin?
+    end
+
+
+  def require_boolean(bool)
       logger.debug "ApplicationController::require_user"
-      unless current_user
+      unless bool
         store_location
         flash[:notice] = "You must be logged in to access this page"
         redirect_to new_user_session_url
         return false
       end
     end
-
+    
     def require_no_user
       logger.debug "ApplicationController::require_no_user"
       if current_user
@@ -46,6 +55,11 @@ layout "main"
        # redirect_to home_index_path
         return false
       end
+    end
+    
+    # TODO :
+    def error_handler
+      flash[:notice] = "Something went wrong here..."
     end
 
     def store_location
@@ -57,4 +71,5 @@ layout "main"
       session[:return_to] = nil
     end
     
+   
 end

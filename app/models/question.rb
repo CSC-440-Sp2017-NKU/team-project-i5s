@@ -19,11 +19,11 @@ class Question < ApplicationRecord
   
   # return the associated answers
   def answers
-    return Answer.where(question_id: self.id) 
+    return Answer.where(question_id: self.id, visible: true) 
   end
   
   def num_answers
-    return self.answers.where(question_id: self.id).count
+    return self.answers.where(question_id: self.id, visible: true).count
   end
 
 end
