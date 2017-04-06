@@ -6,8 +6,11 @@ class CreateQuestions < ActiveRecord::Migration[5.0]
       t.boolean :active
       t.references :user, foreign_key: true
       t.references :forum, foreign_key: true
-
+      
       t.timestamps
     end
   end
+  
+
+  
 end

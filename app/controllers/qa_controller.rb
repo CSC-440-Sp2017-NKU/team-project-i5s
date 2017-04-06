@@ -9,7 +9,7 @@ class QaController < ApplicationController
       #@answers = Question.answers # return the associated answers
     else
       #render 'forum/index'
-     # redirect_to controller:"application", action:"error_handler", "This is not a good question."
+      redirect_to controller:"application", action:"error_handler", message:"This is not a good question."
     end
     #comment
   end

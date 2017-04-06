@@ -45,7 +45,7 @@ layout "main"
         redirect_to new_user_session_url
         return false
       end
-    end
+  end
     
     def require_no_user
       logger.debug "ApplicationController::require_no_user"
