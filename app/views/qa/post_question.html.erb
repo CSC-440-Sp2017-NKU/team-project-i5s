@@ -1,8 +1,8 @@
 <h2>Post a Question</h2>
 
 <div class="form">
-        <%= form_tag("/Question/Post" ,method: "post") do %>
-        <div class="form-element">
+      <%= form_tag("/Question/Post" ,method: "post") do %>
+      <div class="form-element">
       <%= label_tag("question[forum_id]", "Forum") %>
       <%= select_tag("question[forum_id]", options_from_collection_for_select(forum_list(), "id", "forum_name", @forum_id), class:"form-control") %>
       </div>
