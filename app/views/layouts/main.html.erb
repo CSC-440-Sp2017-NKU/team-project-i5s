@@ -28,7 +28,19 @@
     <ul class="nav navbar-nav navbar-right vertical-center-content">
       <li><a class="pointer" data-toggle="collapse" data-target="#nav-forums-list" >FORUMS<span class="fa fa-caret-down caret-padding"></span></a></li>
       <li><div class="search"><input type="text" ><span class="fa fa-search"></span></div></li>
-      <li><a href="#"><%= image_tag("userIcon.png", {:class=>"user-icon", :alt=>"user"}) %></a></li>
+      <li>
+          <a class="dropdown-toggle" data-toggle="dropdown"><%= image_tag("userIcon.png", {:class=>"user-icon", :alt=>"user"}) %></a>
+          
+          <ul class="dropdown-menu">
+              <% if !current_user %>
+              <a href=<%= url_for(action:"new", controller:"user_sessions") %>><li>Login</li></a>
+              <% else %>
+              <li>Hello <%= current_user.user_name %></li>
+              <a href=<%= url_for(action:"destroy", controller:"user_sessions") %>><li>Logout</li></a>
+              <% end %>
+              
+          </ul>
+          </li>
     </ul>
     </div>
   </div>

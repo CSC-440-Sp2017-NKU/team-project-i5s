@@ -1,0 +1,19 @@
+<%= form_for @question, :as => :question, :url => { :action => "edit_question" } do |f| %>
+
+<%= f.hidden_field :user_id %>
+
+  <%= f.label :forum %>
+  <br />
+  <% #f.dropdown :forum %>
+  <br />
+  <br />
+  <%= f.label :title %>
+  <br />
+  <%= f.text_field :title %>
+  <br />
+  <%= f.label :text %>
+  <br />
+  <%= f.text_field :text %>
+  <br />
+  <%= f.submit "Edit" %>
+<% end %>
