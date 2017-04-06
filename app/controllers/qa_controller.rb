@@ -94,6 +94,7 @@ class QaController < ApplicationController
     if request.post?
       # set the question visible flag to false
       @question.isVisible = false
+      #@questions = Question.where column: "isVisible"
     end
 
   end
@@ -106,6 +107,7 @@ class QaController < ApplicationController
     if request.post?
       # set the question visible flag to false
       @answer.isVisible = false
+      #@answers = Answer.where column: "isVisible"
     end
     
   end
