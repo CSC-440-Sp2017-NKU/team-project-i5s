@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170404213044) do
+#<<<<<<< HEAD
+#ActiveRecord::Schema.define(version: 20170404213044) do
+#=======
+ActiveRecord::Schema.define(version: 20170404212650) do
+#>>>>>>> ec379849a99f4b9f04c61f66ffed0edded2c1510
 
   create_table "answers", force: :cascade do |t|
     t.string   "text"
@@ -128,7 +132,7 @@ ActiveRecord::Schema.define(version: 20170404213044) do
 
   create_table "users", force: :cascade do |t|
     t.string   "user_name",           default: "",         null: false
-    t.integer  "role_id"
+    t.integer  "role_id",             default: 2
     t.string   "login",               default: "",         null: false
     t.string   "crypted_password",    default: "12345678", null: false
     t.string   "password_salt",       default: "",         null: false
@@ -148,5 +152,17 @@ ActiveRecord::Schema.define(version: 20170404213044) do
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
+#<<<<<<< HEAD
+#=======
+  create_table "votes", force: :cascade do |t|
+    t.integer  "direction"
+    t.integer  "answers_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["answers_id"], name: "index_votes_on_answers_id"
+    t.index ["user_id"], name: "index_votes_on_user_id"
+  end
+#>>>>>>> ec379849a99f4b9f04c61f66ffed0edded2c1510
 
 end

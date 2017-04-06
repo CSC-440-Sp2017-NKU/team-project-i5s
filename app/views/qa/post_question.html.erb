@@ -4,7 +4,7 @@
         <%= form_tag("/Question/Post" ,method: "post") do %>
         <div class="form-element">
       <%= label_tag("question[forum_id]", "Forum") %>
-      <%= select_tag("question[forum_id]", options_from_collection_for_select(forum_list(), "id", "forum_name", @id), class:"form-control") %>
+      <%= select_tag("question[forum_id]", options_from_collection_for_select(forum_list(), "id", "forum_name", @forum_id), class:"form-control") %>
       </div>
     
       <%= hidden_field_tag "question[user_id]", 1 %>
@@ -18,7 +18,7 @@
       <%= text_area_tag("question[text]", "",{class:"form-control", rows:4}) %>
       </div>
       <%= submit_tag("Post",{class:"btn btn-default btn-dark"}) %>
-      <a href="<%= url_for(action:"view_forum",controller:"forum", id: @id )%>" class="btn btn-default">Cancel</a>
+      <a href="<%= url_for(action:"view_forum",controller:"forum", id: @forum_id )%>" class="btn btn-default">Cancel</a>
     <% end %>
     
 </div>
