@@ -39667,3 +39667,1050 @@ puma (3.8.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
   Rendering /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
   Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.1ms)
   Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (87.6ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", :environment]]
+  [1m[35m (14.8ms)[0m  [1m[35mCREATE TABLE "answers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" varchar, "active" boolean, "user_id" integer, "question_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mselect sqlite_version(*)[0m
+  [1m[35m (16.6ms)[0m  [1m[35mCREATE  INDEX "index_answers_on_question_id" ON "answers" ("question_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_answers_on_question_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_answers_on_question_id' AND type='index'
+[0m
+  [1m[35m (20.6ms)[0m  [1m[35mCREATE  INDEX "index_answers_on_user_id" ON "answers" ("user_id")[0m
+  [1m[35m (16.5ms)[0m  [1m[35mCREATE TABLE "courses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "course_name" varchar, "program_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (11.9ms)[0m  [1m[35mCREATE  INDEX "index_courses_on_program_id" ON "courses" ("program_id")[0m
+  [1m[35m (17.1ms)[0m  [1m[35mCREATE TABLE "forums" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "forum_name" varchar, "forum_description" varchar, "resource_url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (13.4ms)[0m  [1m[35mCREATE TABLE "keywords" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "keyword" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (11.5ms)[0m  [1m[35mCREATE TABLE "programs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "program_name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (17.9ms)[0m  [1m[35mCREATE TABLE "question_keywords" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "question_id" integer, "keyword_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (11.3ms)[0m  [1m[35mCREATE  INDEX "index_question_keywords_on_keyword_id" ON "question_keywords" ("keyword_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_question_keywords_on_keyword_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_question_keywords_on_keyword_id' AND type='index'
+[0m
+  [1m[35m (14.6ms)[0m  [1m[35mCREATE  INDEX "index_question_keywords_on_question_id" ON "question_keywords" ("question_id")[0m
+  [1m[35m (16.7ms)[0m  [1m[35mCREATE TABLE "questions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "text" varchar, "active" boolean, "user_id" integer, "forum_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (12.4ms)[0m  [1m[35mCREATE  INDEX "index_questions_on_forum_id" ON "questions" ("forum_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_questions_on_forum_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_questions_on_forum_id' AND type='index'
+[0m
+  [1m[35m (12.3ms)[0m  [1m[35mCREATE  INDEX "index_questions_on_user_id" ON "questions" ("user_id")[0m
+  [1m[35m (17.6ms)[0m  [1m[35mCREATE TABLE "roles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "role" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (15.6ms)[0m  [1m[35mCREATE TABLE "sections" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "semester_id" integer, "course_id" integer, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (14.0ms)[0m  [1m[35mCREATE  INDEX "index_sections_on_course_id" ON "sections" ("course_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_sections_on_course_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_sections_on_course_id' AND type='index'
+[0m
+  [1m[35m (12.7ms)[0m  [1m[35mCREATE  INDEX "index_sections_on_semester_id" ON "sections" ("semester_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_sections_on_semester_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_sections_on_semester_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_sections_on_course_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_sections_on_course_id' AND type='index'
+[0m
+  [1m[35m (14.1ms)[0m  [1m[35mCREATE  INDEX "index_sections_on_user_id" ON "sections" ("user_id")[0m
+  [1m[35m (16.7ms)[0m  [1m[35mCREATE TABLE "semesters" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "academic_year" integer, "session" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (19.6ms)[0m  [1m[35mCREATE TABLE "student_sections" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "section_id" integer, "course_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (15.5ms)[0m  [1m[35mCREATE  INDEX "index_student_sections_on_course_id" ON "student_sections" ("course_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_student_sections_on_course_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_student_sections_on_course_id' AND type='index'
+[0m
+  [1m[35m (16.9ms)[0m  [1m[35mCREATE  INDEX "index_student_sections_on_section_id" ON "student_sections" ("section_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_student_sections_on_section_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_student_sections_on_section_id' AND type='index'
+[0m
+  [1m[35m (0.3ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_student_sections_on_course_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_student_sections_on_course_id' AND type='index'
+[0m
+  [1m[35m (13.1ms)[0m  [1m[35mCREATE  INDEX "index_student_sections_on_user_id" ON "student_sections" ("user_id")[0m
+  [1m[35m (14.8ms)[0m  [1m[35mCREATE TABLE "user_files" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "resource_text" varchar, "resource_url" varchar, "attached_file" blob, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (13.9ms)[0m  [1m[35mCREATE  INDEX "index_user_files_on_user_id" ON "user_files" ("user_id")[0m
+  [1m[35m (13.2ms)[0m  [1m[35mCREATE TABLE "user_sessions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "session_id" varchar NOT NULL, "data" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (10.7ms)[0m  [1m[35mCREATE  INDEX "index_user_sessions_on_session_id" ON "user_sessions" ("session_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_user_sessions_on_session_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_user_sessions_on_session_id' AND type='index'
+[0m
+  [1m[35m (14.4ms)[0m  [1m[35mCREATE  INDEX "index_user_sessions_on_updated_at" ON "user_sessions" ("updated_at")[0m
+  [1m[35m (17.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_name" varchar DEFAULT '' NOT NULL, "role_id" integer DEFAULT 2, "login" varchar DEFAULT '' NOT NULL, "crypted_password" varchar DEFAULT '12345678' NOT NULL, "password_salt" varchar DEFAULT '' NOT NULL, "email" varchar DEFAULT '' NOT NULL, "persistence_token" varchar DEFAULT '' NOT NULL, "single_access_token" varchar DEFAULT '' NOT NULL, "perishable_token" varchar DEFAULT '' NOT NULL, "login_count" integer DEFAULT 0 NOT NULL, "failed_login_count" integer DEFAULT 0 NOT NULL, "last_request_at" datetime, "current_login_at" datetime, "last_login_at" datetime, "current_login_ip" varchar, "last_login_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (12.4ms)[0m  [1m[35mCREATE  INDEX "index_users_on_role_id" ON "users" ("role_id")[0m
+  [1m[35m (15.4ms)[0m  [1m[35mCREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "direction" integer, "answers_id" integer, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (13.0ms)[0m  [1m[35mCREATE  INDEX "index_votes_on_answers_id" ON "votes" ("answers_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_votes_on_answers_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_votes_on_answers_id' AND type='index'
+[0m
+  [1m[35m (25.4ms)[0m  [1m[35mCREATE  INDEX "index_votes_on_user_id" ON "votes" ("user_id")[0m
+  [1m[35m (24.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (13.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20170404213044)[0m
+  [1m[35m (13.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20170404213038),
+(20170330235245),
+(20170404212813),
+(20170316140904),
+(20170316140857),
+(20170404213031),
+(20170404212941),
+(20170316140902),
+(20170316140859),
+(20170404213023),
+(20170404212650),
+(20170316140905),
+(20170316140900),
+(20170404212949);
+
+[0m
+  [1m[35m (16.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", 2017-04-07 01:35:16 UTC], ["updated_at", 2017-04-07 01:35:16 UTC]]
+  [1m[35m (13.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (19.7ms)[0m  [1m[35mCREATE TABLE "answers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" varchar, "active" boolean, "user_id" integer, "question_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mselect sqlite_version(*)[0m
+  [1m[35m (17.0ms)[0m  [1m[35mCREATE  INDEX "index_answers_on_question_id" ON "answers" ("question_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_answers_on_question_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_answers_on_question_id' AND type='index'
+[0m
+  [1m[35m (16.4ms)[0m  [1m[35mCREATE  INDEX "index_answers_on_user_id" ON "answers" ("user_id")[0m
+  [1m[35m (16.9ms)[0m  [1m[35mCREATE TABLE "courses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "course_name" varchar, "program_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (22.1ms)[0m  [1m[35mCREATE  INDEX "index_courses_on_program_id" ON "courses" ("program_id")[0m
+  [1m[35m (20.9ms)[0m  [1m[35mCREATE TABLE "forums" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "forum_name" varchar, "forum_description" varchar, "resource_url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (20.2ms)[0m  [1m[35mCREATE TABLE "keywords" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "keyword" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (13.7ms)[0m  [1m[35mCREATE TABLE "programs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "program_name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (13.1ms)[0m  [1m[35mCREATE TABLE "question_keywords" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "question_id" integer, "keyword_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (15.6ms)[0m  [1m[35mCREATE  INDEX "index_question_keywords_on_keyword_id" ON "question_keywords" ("keyword_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_question_keywords_on_keyword_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_question_keywords_on_keyword_id' AND type='index'
+[0m
+  [1m[35m (17.3ms)[0m  [1m[35mCREATE  INDEX "index_question_keywords_on_question_id" ON "question_keywords" ("question_id")[0m
+  [1m[35m (14.4ms)[0m  [1m[35mCREATE TABLE "questions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "text" varchar, "active" boolean, "user_id" integer, "forum_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (15.9ms)[0m  [1m[35mCREATE  INDEX "index_questions_on_forum_id" ON "questions" ("forum_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_questions_on_forum_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_questions_on_forum_id' AND type='index'
+[0m
+  [1m[35m (14.8ms)[0m  [1m[35mCREATE  INDEX "index_questions_on_user_id" ON "questions" ("user_id")[0m
+  [1m[35m (18.1ms)[0m  [1m[35mCREATE TABLE "roles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "role" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (15.5ms)[0m  [1m[35mCREATE TABLE "sections" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "semester_id" integer, "course_id" integer, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (18.2ms)[0m  [1m[35mCREATE  INDEX "index_sections_on_course_id" ON "sections" ("course_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_sections_on_course_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_sections_on_course_id' AND type='index'
+[0m
+  [1m[35m (13.4ms)[0m  [1m[35mCREATE  INDEX "index_sections_on_semester_id" ON "sections" ("semester_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_sections_on_semester_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_sections_on_semester_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_sections_on_course_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_sections_on_course_id' AND type='index'
+[0m
+  [1m[35m (16.1ms)[0m  [1m[35mCREATE  INDEX "index_sections_on_user_id" ON "sections" ("user_id")[0m
+  [1m[35m (20.5ms)[0m  [1m[35mCREATE TABLE "semesters" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "academic_year" integer, "session" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (17.0ms)[0m  [1m[35mCREATE TABLE "student_sections" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "section_id" integer, "course_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (12.7ms)[0m  [1m[35mCREATE  INDEX "index_student_sections_on_course_id" ON "student_sections" ("course_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_student_sections_on_course_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_student_sections_on_course_id' AND type='index'
+[0m
+  [1m[35m (13.5ms)[0m  [1m[35mCREATE  INDEX "index_student_sections_on_section_id" ON "student_sections" ("section_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_student_sections_on_section_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_student_sections_on_section_id' AND type='index'
+[0m
+  [1m[35m (0.4ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_student_sections_on_course_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_student_sections_on_course_id' AND type='index'
+[0m
+  [1m[35m (12.1ms)[0m  [1m[35mCREATE  INDEX "index_student_sections_on_user_id" ON "student_sections" ("user_id")[0m
+  [1m[35m (14.8ms)[0m  [1m[35mCREATE TABLE "user_files" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "resource_text" varchar, "resource_url" varchar, "attached_file" blob, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (15.5ms)[0m  [1m[35mCREATE  INDEX "index_user_files_on_user_id" ON "user_files" ("user_id")[0m
+  [1m[35m (13.3ms)[0m  [1m[35mCREATE TABLE "user_sessions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "session_id" varchar NOT NULL, "data" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (13.2ms)[0m  [1m[35mCREATE  INDEX "index_user_sessions_on_session_id" ON "user_sessions" ("session_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_user_sessions_on_session_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_user_sessions_on_session_id' AND type='index'
+[0m
+  [1m[35m (16.1ms)[0m  [1m[35mCREATE  INDEX "index_user_sessions_on_updated_at" ON "user_sessions" ("updated_at")[0m
+  [1m[35m (14.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_name" varchar DEFAULT '' NOT NULL, "role_id" integer DEFAULT 2, "login" varchar DEFAULT '' NOT NULL, "crypted_password" varchar DEFAULT '12345678' NOT NULL, "password_salt" varchar DEFAULT '' NOT NULL, "email" varchar DEFAULT '' NOT NULL, "persistence_token" varchar DEFAULT '' NOT NULL, "single_access_token" varchar DEFAULT '' NOT NULL, "perishable_token" varchar DEFAULT '' NOT NULL, "login_count" integer DEFAULT 0 NOT NULL, "failed_login_count" integer DEFAULT 0 NOT NULL, "last_request_at" datetime, "current_login_at" datetime, "last_login_at" datetime, "current_login_ip" varchar, "last_login_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (21.2ms)[0m  [1m[35mCREATE  INDEX "index_users_on_role_id" ON "users" ("role_id")[0m
+  [1m[35m (17.7ms)[0m  [1m[35mCREATE TABLE "votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "direction" integer, "answers_id" integer, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (13.7ms)[0m  [1m[35mCREATE  INDEX "index_votes_on_answers_id" ON "votes" ("answers_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_votes_on_answers_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_votes_on_answers_id' AND type='index'
+[0m
+  [1m[35m (16.2ms)[0m  [1m[35mCREATE  INDEX "index_votes_on_user_id" ON "votes" ("user_id")[0m
+  [1m[35m (19.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (17.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20170404213044)[0m
+  [1m[35m (17.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20170404213038),
+(20170330235245),
+(20170404212813),
+(20170316140904),
+(20170316140857),
+(20170404213031),
+(20170404212941),
+(20170316140902),
+(20170316140859),
+(20170404213023),
+(20170404212650),
+(20170316140905),
+(20170316140900),
+(20170404212949);
+
+[0m
+  [1m[35m (13.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", 2017-04-07 01:35:16 UTC], ["updated_at", 2017-04-07 01:35:16 UTC]]
+  [1m[35m (12.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mRole Load (0.4ms)[0m  [1m[34mSELECT "roles".* FROM "roles"[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "roles" ("role", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["role", "Administrator"], ["created_at", 2017-04-07 01:35:17 UTC], ["updated_at", 2017-04-07 01:35:17 UTC]]
+  [1m[35m (20.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "roles" ("role", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["role", "Student"], ["created_at", 2017-04-07 01:35:17 UTC], ["updated_at", 2017-04-07 01:35:17 UTC]]
+  [1m[35m (12.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "roles" ("role", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["role", "Faculty"], ["created_at", 2017-04-07 01:35:17 UTC], ["updated_at", 2017-04-07 01:35:17 UTC]]
+  [1m[35m (16.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "roles"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "roles"."id" FROM "roles"[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."persistence_token" = ? LIMIT ?[0m  [["persistence_token", "063838711a15778355495b7239533e2eb576479d39c036beccbf74d03a8a6d86e53b469a74a43e8ac2d79575695689969f3a23380906b8062796728bfae03228"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."single_access_token" = ? LIMIT ?[0m  [["single_access_token", "PzKbBqQSMSN1m9eQzboE"], ["LIMIT", 1]]
+  [1m[35mSQL (1.4ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "crypted_password", "password_salt", "email", "persistence_token", "single_access_token", "perishable_token", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_name", "Test"], ["crypted_password", "400$8$1e$a68014d9f186bb9f$b2815b723de00d584bf43b9504d197ea9c0847463a1ea23c0a4f9765eba0c486"], ["password_salt", "maWRq8ITL3WBGZULsG"], ["email", "test@test.com"], ["persistence_token", "063838711a15778355495b7239533e2eb576479d39c036beccbf74d03a8a6d86e53b469a74a43e8ac2d79575695689969f3a23380906b8062796728bfae03228"], ["single_access_token", "PzKbBqQSMSN1m9eQzboE"], ["perishable_token", "R2uqxdlZNcpIJWOio"], ["created_at", 2017-04-07 01:35:17 UTC], ["updated_at", 2017-04-07 01:35:17 UTC]]
+  [1m[35m (15.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "hermoine@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "hermoine@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."persistence_token" = ? LIMIT ?[0m  [["persistence_token", "815fdb5f0a15f66edf8203034890b518c3d1da4c0235182264c943734d9095490ed6488e8813076dbba06c94eaf1da1d1fb6569c959ee93ee92ee0f8443214ba"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."single_access_token" = ? LIMIT ?[0m  [["single_access_token", "1i0IjoQEgsRWVJbgw"], ["LIMIT", 1]]
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "crypted_password", "password_salt", "email", "persistence_token", "single_access_token", "perishable_token", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_name", "Hermoine Granger"], ["crypted_password", "400$8$27$2ba807f28a91f502$d3670cc3badaceed419c68ae9a6b7720b06ae2ffda484f404e7b2ddf4a670d16"], ["password_salt", "dTJEk0BQD4ThNmxXX0co"], ["email", "hermoine@test.com"], ["persistence_token", "815fdb5f0a15f66edf8203034890b518c3d1da4c0235182264c943734d9095490ed6488e8813076dbba06c94eaf1da1d1fb6569c959ee93ee92ee0f8443214ba"], ["single_access_token", "1i0IjoQEgsRWVJbgw"], ["perishable_token", "ek5ETyLKa5gJKAnEePIb"], ["created_at", 2017-04-07 01:35:17 UTC], ["updated_at", 2017-04-07 01:35:17 UTC]]
+  [1m[35m (14.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "harry@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "harry@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."persistence_token" = ? LIMIT ?[0m  [["persistence_token", "93fd5471741b9df0fcbfa226388ba1911dfd323f402914e94c89f490a60612bbd2dc63d015c56098210f33b796c860663a88a152ffd9e5e0331f27864ea57055"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."single_access_token" = ? LIMIT ?[0m  [["single_access_token", "TyrdnSORyoRA8u3CHN"], ["LIMIT", 1]]
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "crypted_password", "password_salt", "email", "persistence_token", "single_access_token", "perishable_token", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_name", "Harry Potter"], ["crypted_password", "400$8$1b$43b2ed0464ad65e8$9bdf1dd07ef951a3a41550ad976668b4c667720e4df5b6e28b62fe5949b56742"], ["password_salt", "YCU7knhBWFcCt43mVpCq"], ["email", "harry@test.com"], ["persistence_token", "93fd5471741b9df0fcbfa226388ba1911dfd323f402914e94c89f490a60612bbd2dc63d015c56098210f33b796c860663a88a152ffd9e5e0331f27864ea57055"], ["single_access_token", "TyrdnSORyoRA8u3CHN"], ["perishable_token", "fITBt93cuXQbGS2SxeUK"], ["created_at", 2017-04-07 01:35:17 UTC], ["updated_at", 2017-04-07 01:35:17 UTC]]
+  [1m[35m (15.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "scott@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "scott@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."persistence_token" = ? LIMIT ?[0m  [["persistence_token", "452dc2159cbf9d0f6575f1afc05a218e2fcfd2808f124b54f8fcf7215c789a1a25a53c01b5f1be8c3483b7603bf3c0512be4d79efb6c6ce7698b4693e07f3d2b"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."single_access_token" = ? LIMIT ?[0m  [["single_access_token", "z9PmFHIXHhat2joKb"], ["LIMIT", 1]]
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "crypted_password", "password_salt", "email", "persistence_token", "single_access_token", "perishable_token", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_name", "Scott Summers"], ["crypted_password", "400$8$1e$bc07001262dbb2c6$93072a3ac71df088074169dc9cad26e3c4e0098428246e5e493b21f7a11ded25"], ["password_salt", "G6hgkhTn4JMh8f5eGgUb"], ["email", "scott@test.com"], ["persistence_token", "452dc2159cbf9d0f6575f1afc05a218e2fcfd2808f124b54f8fcf7215c789a1a25a53c01b5f1be8c3483b7603bf3c0512be4d79efb6c6ce7698b4693e07f3d2b"], ["single_access_token", "z9PmFHIXHhat2joKb"], ["perishable_token", "Py8GorNm5kiQcEXegCHy"], ["created_at", 2017-04-07 01:35:17 UTC], ["updated_at", 2017-04-07 01:35:17 UTC]]
+  [1m[35m (17.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "lisa@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "lisa@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."persistence_token" = ? LIMIT ?[0m  [["persistence_token", "d3c8237d5166255e0c9b90e77447f90212f2e111b3d496091c2bb24bfacc9621b7dae15b83d1f08af54250a03af1fd6b4e218c7682d2dc7a6d2ed0d2ca94361b"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."single_access_token" = ? LIMIT ?[0m  [["single_access_token", "M8R8fHjTkCtYeJNzLBmN"], ["LIMIT", 1]]
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "crypted_password", "password_salt", "email", "persistence_token", "single_access_token", "perishable_token", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_name", "Lisa Simpson"], ["crypted_password", "400$8$1b$fdd6224db547278f$40cabe3e0c41b555173363a5ecd3d2cbbea0686b4ac22443f9e6480f82e7b410"], ["password_salt", "PbtXlJh6X7BXdlHKLLP4"], ["email", "lisa@test.com"], ["persistence_token", "d3c8237d5166255e0c9b90e77447f90212f2e111b3d496091c2bb24bfacc9621b7dae15b83d1f08af54250a03af1fd6b4e218c7682d2dc7a6d2ed0d2ca94361b"], ["single_access_token", "M8R8fHjTkCtYeJNzLBmN"], ["perishable_token", "Z2yRmAA4MIpFVjbDT9Lv"], ["created_at", 2017-04-07 01:35:18 UTC], ["updated_at", 2017-04-07 01:35:18 UTC]]
+  [1m[35m (18.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "stu1@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "stu1@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."persistence_token" = ? LIMIT ?[0m  [["persistence_token", "91f79433fac3610e083d8fb2a1f8118502945a8cf731f1ac55d565be9f4357650716fe234c5596c2f38d3a816d1e61e980ee8bf9db572abeceecfa1d03dd9085"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."single_access_token" = ? LIMIT ?[0m  [["single_access_token", "GlXPKvO2s8vAWepvdfq"], ["LIMIT", 1]]
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "crypted_password", "password_salt", "email", "persistence_token", "single_access_token", "perishable_token", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_name", "Stu1"], ["crypted_password", "400$8$1c$38a880671b5ab206$e4ea17c20a51623e5c758db56ac55211df69f821cfdc4148e8eaf271ed316edb"], ["password_salt", "9I03esLzQXBiBdnRQiWE"], ["email", "stu1@test.com"], ["persistence_token", "91f79433fac3610e083d8fb2a1f8118502945a8cf731f1ac55d565be9f4357650716fe234c5596c2f38d3a816d1e61e980ee8bf9db572abeceecfa1d03dd9085"], ["single_access_token", "GlXPKvO2s8vAWepvdfq"], ["perishable_token", "KbBi4uL5gpD39522BSz"], ["created_at", 2017-04-07 01:35:18 UTC], ["updated_at", 2017-04-07 01:35:18 UTC]]
+  [1m[35m (16.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "stu2@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "stu2@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."persistence_token" = ? LIMIT ?[0m  [["persistence_token", "e929483f89396def9731317dafb29c82f008b8607a211ff0dd870033ca5b2942557477e57301b1cae63a94e5ce7583fb1d93271562da3cd9898f7f948bb584b6"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."single_access_token" = ? LIMIT ?[0m  [["single_access_token", "1XUGxinravsB6IijBwX"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "crypted_password", "password_salt", "email", "persistence_token", "single_access_token", "perishable_token", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_name", "Stu2"], ["crypted_password", "400$8$30$523d0d0ca24e6469$81feb4980e8f658e11fff73c56d6dfd770db5a1d5db7f5969024ce814ada8977"], ["password_salt", "IDxO8Y1cruH8nJ6L0g9R"], ["email", "stu2@test.com"], ["persistence_token", "e929483f89396def9731317dafb29c82f008b8607a211ff0dd870033ca5b2942557477e57301b1cae63a94e5ce7583fb1d93271562da3cd9898f7f948bb584b6"], ["single_access_token", "1XUGxinravsB6IijBwX"], ["perishable_token", "d4dYyhNOwSEGKPMngpmz"], ["created_at", 2017-04-07 01:35:18 UTC], ["updated_at", 2017-04-07 01:35:18 UTC]]
+  [1m[35m (15.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "stu3@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "stu3@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."persistence_token" = ? LIMIT ?[0m  [["persistence_token", "26805d0257a687f95ed35b92da8f436953463374d2121e6a36f571ba67d74bdb8876f2ae51d77fcfe3c3be61778adc75293c20da6cca35d26c5a6d4515037752"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."single_access_token" = ? LIMIT ?[0m  [["single_access_token", "b5j9dEmNnzOlcAaQEd1"], ["LIMIT", 1]]
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "crypted_password", "password_salt", "email", "persistence_token", "single_access_token", "perishable_token", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_name", "Stu3"], ["crypted_password", "400$8$27$611ee4c6eafe34d9$25e98378ee5cf3eb3539964a7cbc20496f1029c71ee514cc2f82698b96dbff53"], ["password_salt", "DQ9qcx1P9ZR7WhGsdwe"], ["email", "stu3@test.com"], ["persistence_token", "26805d0257a687f95ed35b92da8f436953463374d2121e6a36f571ba67d74bdb8876f2ae51d77fcfe3c3be61778adc75293c20da6cca35d26c5a6d4515037752"], ["single_access_token", "b5j9dEmNnzOlcAaQEd1"], ["perishable_token", "evNTkzaBOtwIQhhrA70R"], ["created_at", 2017-04-07 01:35:18 UTC], ["updated_at", 2017-04-07 01:35:18 UTC]]
+  [1m[35m (11.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "stu4@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "stu4@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."persistence_token" = ? LIMIT ?[0m  [["persistence_token", "4b31b4299f2c85029b43e8a9374cb44fc639717f3efc0b0c365c623e9d98b18e34eff0e72053a39f752a0552c91c7ddbcf1060360545d4851d5477c6b75941ad"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."single_access_token" = ? LIMIT ?[0m  [["single_access_token", "l3ToembELwRkL1TECBpY"], ["LIMIT", 1]]
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "crypted_password", "password_salt", "email", "persistence_token", "single_access_token", "perishable_token", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_name", "Stu4"], ["crypted_password", "400$8$2f$589fc28d4c5f33a5$9328ce2692f46ce6b0554a3a534a61068f7db49c5c483582baaa26c1f66b62b8"], ["password_salt", "n5yDxN1Ku6IyozNIGMF"], ["email", "stu4@test.com"], ["persistence_token", "4b31b4299f2c85029b43e8a9374cb44fc639717f3efc0b0c365c623e9d98b18e34eff0e72053a39f752a0552c91c7ddbcf1060360545d4851d5477c6b75941ad"], ["single_access_token", "l3ToembELwRkL1TECBpY"], ["perishable_token", "7BPMisTDG6tJUwLwBL"], ["created_at", 2017-04-07 01:35:18 UTC], ["updated_at", 2017-04-07 01:35:18 UTC]]
+  [1m[35m (14.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "stu5@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "stu5@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."persistence_token" = ? LIMIT ?[0m  [["persistence_token", "5b8986ea0962267c2d70861e2a149d099d6f51f7111663cef89e6e3c96c81bc720cb7c3b87a8b2098e641539a86934ce0a84da8cb30c13c1ec50325e1180f90e"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."single_access_token" = ? LIMIT ?[0m  [["single_access_token", "EJnBf3a478MoebJU9GWJ"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "crypted_password", "password_salt", "email", "persistence_token", "single_access_token", "perishable_token", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_name", "Stu5"], ["crypted_password", "400$8$1d$543ebdae0916f5fb$7e7b6bf6dfec60ede98cff796f8e1515465672b3472ca1dcbf6a36f8ed93f698"], ["password_salt", "bbTZxS5M0mxP4f5m1jwN"], ["email", "stu5@test.com"], ["persistence_token", "5b8986ea0962267c2d70861e2a149d099d6f51f7111663cef89e6e3c96c81bc720cb7c3b87a8b2098e641539a86934ce0a84da8cb30c13c1ec50325e1180f90e"], ["single_access_token", "EJnBf3a478MoebJU9GWJ"], ["perishable_token", "3FS3sv83pEbyV3rhrfu9"], ["created_at", 2017-04-07 01:35:18 UTC], ["updated_at", 2017-04-07 01:35:18 UTC]]
+  [1m[35m (11.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "stu6@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "stu6@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."persistence_token" = ? LIMIT ?[0m  [["persistence_token", "bf63337aa5cbbb4f27aa0525cd844cedea939f0fb9568672042774818c75842a13d3964987c0cac171b7b9ed890a0ec620f5d55db3906070226921c0192a5bae"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."single_access_token" = ? LIMIT ?[0m  [["single_access_token", "yAbQJwETJdSUStXpxcXC"], ["LIMIT", 1]]
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "crypted_password", "password_salt", "email", "persistence_token", "single_access_token", "perishable_token", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_name", "Stu6"], ["crypted_password", "400$8$1e$b72720cbfc8a6d96$c62ec55baf1f7ba0536f2b470dcb04fad2a67f9866c9f3d95ef87fec72993f51"], ["password_salt", "vMhwekylOemyhCiY8nSA"], ["email", "stu6@test.com"], ["persistence_token", "bf63337aa5cbbb4f27aa0525cd844cedea939f0fb9568672042774818c75842a13d3964987c0cac171b7b9ed890a0ec620f5d55db3906070226921c0192a5bae"], ["single_access_token", "yAbQJwETJdSUStXpxcXC"], ["perishable_token", "091Hkrfbuh6uJBQtcTqF"], ["created_at", 2017-04-07 01:35:19 UTC], ["updated_at", 2017-04-07 01:35:19 UTC]]
+  [1m[35m (13.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "stu7@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "stu7@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."persistence_token" = ? LIMIT ?[0m  [["persistence_token", "6f86c6f3f79888eec849348747e2ead11a82ba81c0c5f21cf08caa4ad4e38ab3ac2215b928de8e16708d8ebea2cef835faf4b51fd547f8f5232c833329a38c0f"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."single_access_token" = ? LIMIT ?[0m  [["single_access_token", "WqkMqY0KJGHExex9g3"], ["LIMIT", 1]]
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "crypted_password", "password_salt", "email", "persistence_token", "single_access_token", "perishable_token", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_name", "Stu7"], ["crypted_password", "400$8$1b$247c822a515b87c4$e89d4eac35255470838d083d0fbc821e3fec6167f5b944b3c214907abb537826"], ["password_salt", "f6HJJXTFPgV8isxTCmBa"], ["email", "stu7@test.com"], ["persistence_token", "6f86c6f3f79888eec849348747e2ead11a82ba81c0c5f21cf08caa4ad4e38ab3ac2215b928de8e16708d8ebea2cef835faf4b51fd547f8f5232c833329a38c0f"], ["single_access_token", "WqkMqY0KJGHExex9g3"], ["perishable_token", "hHdfS5i5V7DgxAns2ZJE"], ["created_at", 2017-04-07 01:35:19 UTC], ["updated_at", 2017-04-07 01:35:19 UTC]]
+  [1m[35m (12.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "stu8@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "stu8@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."persistence_token" = ? LIMIT ?[0m  [["persistence_token", "b31f61b394109cb9e96cce5c9fd2ae6cd209cd58c3de077449aac0c97c59785dad712e1fefcb8e6c163557e1327b7cec6a015fb021641fee5754c95099142936"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."single_access_token" = ? LIMIT ?[0m  [["single_access_token", "9Cs1GPVvITrrIlBtOOKm"], ["LIMIT", 1]]
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "crypted_password", "password_salt", "email", "persistence_token", "single_access_token", "perishable_token", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_name", "Stu8"], ["crypted_password", "400$8$2f$77deda51bc263df9$7e8de27a2fb32b675514a4830e34f26315f36b5e3d5e266f60da13a6c8614862"], ["password_salt", "xG12Cw2BsWZ3l4NZKJzM"], ["email", "stu8@test.com"], ["persistence_token", "b31f61b394109cb9e96cce5c9fd2ae6cd209cd58c3de077449aac0c97c59785dad712e1fefcb8e6c163557e1327b7cec6a015fb021641fee5754c95099142936"], ["single_access_token", "9Cs1GPVvITrrIlBtOOKm"], ["perishable_token", "ihGZbAF7iZhaYr2mRIee"], ["created_at", 2017-04-07 01:35:19 UTC], ["updated_at", 2017-04-07 01:35:19 UTC]]
+  [1m[35m (12.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "fac1@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "fac1@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."persistence_token" = ? LIMIT ?[0m  [["persistence_token", "80c33497d72df4deb41341aef0329c5c25914c3702aa4aae6c326e5314c1ef7a89bc65ef0f4fd23aa11cf1632426a71f1cfaf14fdd936b10142cd7ac61eee41e"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."single_access_token" = ? LIMIT ?[0m  [["single_access_token", "REfBZ8N1rwNSlIQtEEm"], ["LIMIT", 1]]
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "role_id", "crypted_password", "password_salt", "email", "persistence_token", "single_access_token", "perishable_token", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_name", "Fac1"], ["role_id", 3], ["crypted_password", "400$8$18$f5ce5f8cf17c5716$8390d43fc171a0178b3e606774765c1b17faf00ed851153d62a3b43108977d16"], ["password_salt", "8bUnsTImprtKWoSdGtlM"], ["email", "fac1@test.com"], ["persistence_token", "80c33497d72df4deb41341aef0329c5c25914c3702aa4aae6c326e5314c1ef7a89bc65ef0f4fd23aa11cf1632426a71f1cfaf14fdd936b10142cd7ac61eee41e"], ["single_access_token", "REfBZ8N1rwNSlIQtEEm"], ["perishable_token", "gCS5c6yjoxnHx3h1RW"], ["created_at", 2017-04-07 01:35:19 UTC], ["updated_at", 2017-04-07 01:35:19 UTC]]
+  [1m[35m (12.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "fac2@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "fac2@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."persistence_token" = ? LIMIT ?[0m  [["persistence_token", "9b248a00efd61296d3edf17f9c8bd8121bd4ad07458f017afa199a1669048349d0728dd3dee3253b31ef0e5927421cbc92eff970099e202eaf5f201511ae22b1"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."single_access_token" = ? LIMIT ?[0m  [["single_access_token", "4kCxh3Q6Bhc9rYbYJY"], ["LIMIT", 1]]
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "role_id", "crypted_password", "password_salt", "email", "persistence_token", "single_access_token", "perishable_token", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_name", "Fac2"], ["role_id", 3], ["crypted_password", "400$8$1c$4e69213894490fc9$bbad3e9e9a6b89b32d3e228e48cc7a8bb2d4e1e039e97f13f048b488f53d4abd"], ["password_salt", "TGDBU7Zm1VigYfEHBUl"], ["email", "fac2@test.com"], ["persistence_token", "9b248a00efd61296d3edf17f9c8bd8121bd4ad07458f017afa199a1669048349d0728dd3dee3253b31ef0e5927421cbc92eff970099e202eaf5f201511ae22b1"], ["single_access_token", "4kCxh3Q6Bhc9rYbYJY"], ["perishable_token", "uK3P7igqfHWxzSbQxFc6"], ["created_at", 2017-04-07 01:35:19 UTC], ["updated_at", 2017-04-07 01:35:19 UTC]]
+  [1m[35m (13.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "fac3@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "fac3@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."persistence_token" = ? LIMIT ?[0m  [["persistence_token", "3eab61b55151784f60164d70932e2927180ee07fe7ee5fe6671879f2d9df3948ba16a14c777dd3fdc1d83f9fc1226d3eea2a338f1a39c5c53ae0efbc6a0b59c8"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."single_access_token" = ? LIMIT ?[0m  [["single_access_token", "A3h9iTqSGcq2SDEdO"], ["LIMIT", 1]]
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "role_id", "crypted_password", "password_salt", "email", "persistence_token", "single_access_token", "perishable_token", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_name", "Fac3"], ["role_id", 3], ["crypted_password", "400$8$20$8cdf2ab79bb6558b$76f41be1cb9b65b10ca6180420701d37f17c0018c43222f3e810ab637fed1368"], ["password_salt", "FELMGVHOnGlPtH7iyf4U"], ["email", "fac3@test.com"], ["persistence_token", "3eab61b55151784f60164d70932e2927180ee07fe7ee5fe6671879f2d9df3948ba16a14c777dd3fdc1d83f9fc1226d3eea2a338f1a39c5c53ae0efbc6a0b59c8"], ["single_access_token", "A3h9iTqSGcq2SDEdO"], ["perishable_token", "iUdggPpcuRtwDynbrV"], ["created_at", 2017-04-07 01:35:19 UTC], ["updated_at", 2017-04-07 01:35:19 UTC]]
+  [1m[35m (17.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "fac4@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "fac4@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."persistence_token" = ? LIMIT ?[0m  [["persistence_token", "2f43ad1e14798c7aeb7336642aa9c7d07646aad8d56c8303984a9fe0e4f5c37831edc3df75c24ac615e69977c522f6c96e60fa868fdfec340968ad831d79ef26"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."single_access_token" = ? LIMIT ?[0m  [["single_access_token", "HyLtqLUIrznUqDMOWGh"], ["LIMIT", 1]]
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "role_id", "crypted_password", "password_salt", "email", "persistence_token", "single_access_token", "perishable_token", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_name", "Fac4"], ["role_id", 3], ["crypted_password", "400$8$2f$e8de4b6d069fe060$3af44b74189cb272c51fa8ca11b5755af9c857fe430ed38299b7aceb89c8f0d7"], ["password_salt", "Be7PqWV3e1sRJ9WHMKeG"], ["email", "fac4@test.com"], ["persistence_token", "2f43ad1e14798c7aeb7336642aa9c7d07646aad8d56c8303984a9fe0e4f5c37831edc3df75c24ac615e69977c522f6c96e60fa868fdfec340968ad831d79ef26"], ["single_access_token", "HyLtqLUIrznUqDMOWGh"], ["perishable_token", "9H9QRLN42J3m6vxEn0VU"], ["created_at", 2017-04-07 01:35:20 UTC], ["updated_at", 2017-04-07 01:35:20 UTC]]
+  [1m[35m (14.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "fac5@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "fac5@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."persistence_token" = ? LIMIT ?[0m  [["persistence_token", "8e6e8b52febfd56e4f7f2cb9d392439e3eddba0ec5ef1ef3389ad453d33b690a3e79796bd4184462a7ece65567b0f7654ac10b2fbacdf8b8ffccc285e4099edb"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."single_access_token" = ? LIMIT ?[0m  [["single_access_token", "ZtqyODMyLz0TKyJKMDGM"], ["LIMIT", 1]]
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "role_id", "crypted_password", "password_salt", "email", "persistence_token", "single_access_token", "perishable_token", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_name", "Fac5"], ["role_id", 3], ["crypted_password", "400$8$23$0747007ca9f97497$0776758c0f2d1900ea3b62e9a86e4070ceff3249b61846eec5d178f390128adc"], ["password_salt", "tmiuACFoL0lo0W9Z8CA"], ["email", "fac5@test.com"], ["persistence_token", "8e6e8b52febfd56e4f7f2cb9d392439e3eddba0ec5ef1ef3389ad453d33b690a3e79796bd4184462a7ece65567b0f7654ac10b2fbacdf8b8ffccc285e4099edb"], ["single_access_token", "ZtqyODMyLz0TKyJKMDGM"], ["perishable_token", "WSf1GyvSLxgYfugiwsv"], ["created_at", 2017-04-07 01:35:20 UTC], ["updated_at", 2017-04-07 01:35:20 UTC]]
+  [1m[35m (11.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "fac6@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "fac6@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."persistence_token" = ? LIMIT ?[0m  [["persistence_token", "c62fd07013cc65da3ef074b76be300a4c66344bf414da0df59482f7d96e448c6f4a01985e3e5f8cb84b96f69c04766a5b22821f88013f9d4cabd9831d35a2a14"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."single_access_token" = ? LIMIT ?[0m  [["single_access_token", "PYdFYCGcbr2WIhyUahlk"], ["LIMIT", 1]]
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "role_id", "crypted_password", "password_salt", "email", "persistence_token", "single_access_token", "perishable_token", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_name", "Fac6"], ["role_id", 3], ["crypted_password", "400$8$23$6b595eeaa7d0d438$c0c87cd57e495fbb4088a77a37f4bd9d22091fd618fc5446504d224a2f02a6f3"], ["password_salt", "Wy0GRqG4I6F1UTh0JMkG"], ["email", "fac6@test.com"], ["persistence_token", "c62fd07013cc65da3ef074b76be300a4c66344bf414da0df59482f7d96e448c6f4a01985e3e5f8cb84b96f69c04766a5b22821f88013f9d4cabd9831d35a2a14"], ["single_access_token", "PYdFYCGcbr2WIhyUahlk"], ["perishable_token", "BVO19tn4RCllFCDiBlYR"], ["created_at", 2017-04-07 01:35:20 UTC], ["updated_at", 2017-04-07 01:35:20 UTC]]
+  [1m[35m (11.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "fac7@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "fac7@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."persistence_token" = ? LIMIT ?[0m  [["persistence_token", "1927aa48bc58d810370308ca3253413ea72cd8b354dcce1c3236f2ec87dc1a14344336cd8f0c008839155551e2d51be8abf1a7a775dbcc4f3e702665a3c08b5a"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."single_access_token" = ? LIMIT ?[0m  [["single_access_token", "LCdT9gxEyyaLQTxczHY"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "role_id", "crypted_password", "password_salt", "email", "persistence_token", "single_access_token", "perishable_token", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_name", "Fac7"], ["role_id", 3], ["crypted_password", "400$8$d$50329da32b9557e1$1624ffa7a8d08ef61dc4a91f4e4cbc82614cc002b450d43c9a362ae5b8164a70"], ["password_salt", "SAIR7BFmrU2CVn5O9e2k"], ["email", "fac7@test.com"], ["persistence_token", "1927aa48bc58d810370308ca3253413ea72cd8b354dcce1c3236f2ec87dc1a14344336cd8f0c008839155551e2d51be8abf1a7a775dbcc4f3e702665a3c08b5a"], ["single_access_token", "LCdT9gxEyyaLQTxczHY"], ["perishable_token", "4Ht4ZPaHr5wqlX0yulnQ"], ["created_at", 2017-04-07 01:35:20 UTC], ["updated_at", 2017-04-07 01:35:20 UTC]]
+  [1m[35m (12.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "fac8@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "fac8@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."persistence_token" = ? LIMIT ?[0m  [["persistence_token", "8acd79c5bf759a1b08e52bd478adcf4e18a28dfc019419cd7b4e83064354a7d64bb20ca2215aa18c2f1da90d2c72993917d8efb29e01d77a917aecd8560d215b"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."single_access_token" = ? LIMIT ?[0m  [["single_access_token", "RScaccTeqG5KeJCfWeUZ"], ["LIMIT", 1]]
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "role_id", "crypted_password", "password_salt", "email", "persistence_token", "single_access_token", "perishable_token", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_name", "Fac8"], ["role_id", 3], ["crypted_password", "400$8$20$cebe0758d4f523d0$5d0f1bfa8882c05855efc00c3c41eb467091503c601f4eb3c970d13da1d173f9"], ["password_salt", "oZcWlo9GjgMzgxosxmOD"], ["email", "fac8@test.com"], ["persistence_token", "8acd79c5bf759a1b08e52bd478adcf4e18a28dfc019419cd7b4e83064354a7d64bb20ca2215aa18c2f1da90d2c72993917d8efb29e01d77a917aecd8560d215b"], ["single_access_token", "RScaccTeqG5KeJCfWeUZ"], ["perishable_token", "PhDJLNOCPT57DMSPbKq8"], ["created_at", 2017-04-07 01:35:20 UTC], ["updated_at", 2017-04-07 01:35:20 UTC]]
+  [1m[35m (11.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "admin@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "admin@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."persistence_token" = ? LIMIT ?[0m  [["persistence_token", "154c93a269f9ee71724d3741df00195327b86738ccfbf883c00f3fcf4b888364f8441c56918842079859c9e1f55b87897d88822072f4d78ede54234b90d892da"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."single_access_token" = ? LIMIT ?[0m  [["single_access_token", "Ehs0nbqk5PpOc8HIj99"], ["LIMIT", 1]]
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "role_id", "crypted_password", "password_salt", "email", "persistence_token", "single_access_token", "perishable_token", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_name", "Test Admin"], ["role_id", 1], ["crypted_password", "400$8$1f$ccaa4565c6431cbf$55c2dd6b8b7ebbb93651ee1bb78a387c7812af6150b0f0d4be3e717a00312a90"], ["password_salt", "VUsCOy4M9ysrVFPyFP"], ["email", "admin@test.com"], ["persistence_token", "154c93a269f9ee71724d3741df00195327b86738ccfbf883c00f3fcf4b888364f8441c56918842079859c9e1f55b87897d88822072f4d78ede54234b90d892da"], ["single_access_token", "Ehs0nbqk5PpOc8HIj99"], ["perishable_token", "h3kXKflsbt0H3c8rAP"], ["created_at", 2017-04-07 01:35:20 UTC], ["updated_at", 2017-04-07 01:35:20 UTC]]
+  [1m[35m (12.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+  [1m[36mForum Load (0.2ms)[0m  [1m[34mSELECT "forums".* FROM "forums"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "forums" ("forum_name", "forum_description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["forum_name", "ART"], ["forum_description", "art is fine."], ["created_at", 2017-04-07 01:35:20 UTC], ["updated_at", 2017-04-07 01:35:20 UTC]]
+  [1m[35m (12.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "forums" ("forum_name", "forum_description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["forum_name", "BIO"], ["forum_description", "bio is fine."], ["created_at", 2017-04-07 01:35:20 UTC], ["updated_at", 2017-04-07 01:35:20 UTC]]
+  [1m[35m (11.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "forums" ("forum_name", "forum_description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["forum_name", "CHE"], ["forum_description", "che is fine."], ["created_at", 2017-04-07 01:35:20 UTC], ["updated_at", 2017-04-07 01:35:20 UTC]]
+  [1m[35m (10.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "forums" ("forum_name", "forum_description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["forum_name", "CSC"], ["forum_description", "csc is fine."], ["created_at", 2017-04-07 01:35:20 UTC], ["updated_at", 2017-04-07 01:35:20 UTC]]
+  [1m[35m (10.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "forums" ("forum_name", "forum_description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["forum_name", "ENG"], ["forum_description", "eng is fine."], ["created_at", 2017-04-07 01:35:20 UTC], ["updated_at", 2017-04-07 01:35:20 UTC]]
+  [1m[35m (10.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "forums" ("forum_name", "forum_description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["forum_name", "MAT"], ["forum_description", "mat is fine."], ["created_at", 2017-04-07 01:35:20 UTC], ["updated_at", 2017-04-07 01:35:20 UTC]]
+  [1m[35m (10.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "forums"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "forums"."id" FROM "forums"[0m
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "questions" ("title", "text", "active", "user_id", "forum_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "How many cups of sugar does it take to get to the moon?"], ["text", "First: Space. Second: Sugar. Third: Moon."], ["active", true], ["user_id", 7], ["forum_id", 1], ["created_at", 2017-04-07 01:35:20 UTC], ["updated_at", 2017-04-07 01:35:20 UTC]]
+  [1m[35m (12.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "questions" ("title", "text", "active", "user_id", "forum_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "How do I recognize a coral snake?"], ["text", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nulla nibh, pulvinar euismod molestie id, maximus non felis. Pellentesque faucibus egestas magna, non molestie mauris. Aliquam maximus lectus tortor, sit amet gravida nibh rhoncus nec. Aenean imperdiet non orci sed condimentum. Suspendisse ligula nulla, dapibus fringilla ipsum eget, tempus imperdiet libero. Vestibulum non lectus at lorem fermentum lacinia vestibulum et nisl. Praesent cursus orci lorem, vestibulum hendrerit metus posuere id. Integer congue tellus euismod, maximus nisl eget, porta velit. Etiam nec bibendum lectus. Praesent elementum sapien id velit iaculis scelerisque ut a dui."], ["active", true], ["user_id", 4], ["forum_id", 3], ["created_at", 2017-04-07 01:35:20 UTC], ["updated_at", 2017-04-07 01:35:20 UTC]]
+  [1m[35m (10.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "questions" ("title", "text", "active", "user_id", "forum_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "What is the difference between C and C++?"], ["text", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nulla nibh, pulvinar euismod molestie id, maximus non felis. Pellentesque faucibus egestas magna, non molestie mauris. Aliquam maximus lectus tortor, sit amet gravida nibh rhoncus nec. Aenean imperdiet non orci sed condimentum. Suspendisse ligula nulla, dapibus fringilla ipsum eget, tempus imperdiet libero. Vestibulum non lectus at lorem fermentum lacinia vestibulum et nisl. Praesent cursus orci lorem, vestibulum hendrerit metus posuere id. Integer congue tellus euismod, maximus nisl eget, porta velit. Etiam nec bibendum lectus. Praesent elementum sapien id velit iaculis scelerisque ut a dui."], ["active", true], ["user_id", 1], ["forum_id", 1], ["created_at", 2017-04-07 01:35:20 UTC], ["updated_at", 2017-04-07 01:35:20 UTC]]
+  [1m[35m (14.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "questions" ("title", "text", "active", "user_id", "forum_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Corem ipsum dolor sit amet."], ["text", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nulla nibh, pulvinar euismod molestie id, maximus non felis. Pellentesque faucibus egestas magna, non molestie mauris. Aliquam maximus lectus tortor, sit amet gravida nibh rhoncus nec. Aenean imperdiet non orci sed condimentum. Suspendisse ligula nulla, dapibus fringilla ipsum eget, tempus imperdiet libero. Vestibulum non lectus at lorem fermentum lacinia vestibulum et nisl. Praesent cursus orci lorem, vestibulum hendrerit metus posuere id. Integer congue tellus euismod, maximus nisl eget, porta velit. Etiam nec bibendum lectus. Praesent elementum sapien id velit iaculis scelerisque ut a dui."], ["active", true], ["user_id", 2], ["forum_id", 2], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (11.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "questions" ("title", "text", "active", "user_id", "forum_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Who is stealing my water?"], ["text", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nulla nibh, pulvinar euismod molestie id, maximus non felis. Pellentesque faucibus egestas magna, non molestie mauris. Aliquam maximus lectus tortor, sit amet gravida nibh rhoncus nec. Aenean imperdiet non orci sed condimentum. Suspendisse ligula nulla, dapibus fringilla ipsum eget, tempus imperdiet libero. Vestibulum non lectus at lorem fermentum lacinia vestibulum et nisl. Praesent cursus orci lorem, vestibulum hendrerit metus posuere id. Integer congue tellus euismod, maximus nisl eget, porta velit. Etiam nec bibendum lectus. Praesent elementum sapien id velit iaculis scelerisque ut a dui."], ["active", true], ["user_id", 3], ["forum_id", 1], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (12.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "questions" ("title", "text", "active", "user_id", "forum_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "This is a really really long question title to test how overflow works when question stitles get really long. That wasn't long enough. I mean seriosuly long. What does it look like?"], ["text", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nulla nibh, pulvinar euismod molestie id, maximus non felis. Pellentesque faucibus egestas magna, non molestie mauris. Aliquam maximus lectus tortor, sit amet gravida nibh rhoncus nec. Aenean imperdiet non orci sed condimentum. Suspendisse ligula nulla, dapibus fringilla ipsum eget, tempus imperdiet libero. Vestibulum non lectus at lorem fermentum lacinia vestibulum et nisl. Praesent cursus orci lorem, vestibulum hendrerit metus posuere id. Integer congue tellus euismod, maximus nisl eget, porta velit. Etiam nec bibendum lectus. Praesent elementum sapien id velit iaculis scelerisque ut a dui."], ["active", true], ["user_id", 4], ["forum_id", 2], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (18.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "questions"."id" FROM "questions"[0m
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "answers" ("text", "active", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["text", "Corem ipsum dolor sit amet."], ["active", true], ["user_id", 3], ["question_id", 1], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (12.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "answers" ("text", "active", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["text", "Corem ipsum dolor sit amet."], ["active", true], ["user_id", 6], ["question_id", 1], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (11.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "answers" ("text", "active", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["text", "Corem ipsum dolor sit amet."], ["active", true], ["user_id", 7], ["question_id", 2], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (10.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "answers" ("text", "active", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["text", "Corem ipsum dolor sit amet."], ["active", true], ["user_id", 3], ["question_id", 3], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (10.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "answers" ("text", "active", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["text", "Corem ipsum dolor sit amet."], ["active", true], ["user_id", 5], ["question_id", 4], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (12.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "answers" ("text", "active", "user_id", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["text", "Corem ipsum dolor sit amet."], ["active", true], ["user_id", 2], ["question_id", 5], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (17.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "answers"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "answers"."id" FROM "answers"[0m
+  [1m[36mVote Load (0.3ms)[0m  [1m[34mSELECT "votes".* FROM "votes"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "votes" ("direction", "answers_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["direction", -1], ["answers_id", 4], ["user_id", 9], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (12.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "votes" ("direction", "answers_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["direction", -1], ["answers_id", 4], ["user_id", 1], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (12.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "votes" ("direction", "answers_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["direction", -1], ["answers_id", 4], ["user_id", 2], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (11.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "votes" ("direction", "answers_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["direction", -1], ["answers_id", 4], ["user_id", 3], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (11.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "votes" ("direction", "answers_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["direction", -1], ["answers_id", 4], ["user_id", 4], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (13.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "votes" ("direction", "answers_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["direction", -1], ["answers_id", 4], ["user_id", 5], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (12.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "votes" ("direction", "answers_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["direction", -1], ["answers_id", 4], ["user_id", 6], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (11.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "votes" ("direction", "answers_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["direction", -1], ["answers_id", 4], ["user_id", 7], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (13.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "votes" ("direction", "answers_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["direction", -1], ["answers_id", 4], ["user_id", 8], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (11.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "votes" ("direction", "answers_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["direction", 1], ["answers_id", 1], ["user_id", 9], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (11.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "votes" ("direction", "answers_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["direction", 1], ["answers_id", 1], ["user_id", 1], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (12.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "votes" ("direction", "answers_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["direction", 1], ["answers_id", 1], ["user_id", 2], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (20.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "votes" ("direction", "answers_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["direction", 1], ["answers_id", 1], ["user_id", 3], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (12.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "votes" ("direction", "answers_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["direction", 1], ["answers_id", 1], ["user_id", 4], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (11.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "votes" ("direction", "answers_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["direction", 1], ["answers_id", 1], ["user_id", 5], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (10.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "votes" ("direction", "answers_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["direction", 1], ["answers_id", 1], ["user_id", 6], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (13.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "votes" ("direction", "answers_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["direction", 1], ["answers_id", 1], ["user_id", 7], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (15.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "votes" ("direction", "answers_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["direction", 1], ["answers_id", 1], ["user_id", 8], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (12.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "votes" ("direction", "answers_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["direction", -1], ["answers_id", 2], ["user_id", 9], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (12.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "votes" ("direction", "answers_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["direction", -1], ["answers_id", 2], ["user_id", 1], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (13.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "votes" ("direction", "answers_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["direction", 1], ["answers_id", 2], ["user_id", 2], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (25.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "votes" ("direction", "answers_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["direction", 1], ["answers_id", 2], ["user_id", 3], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (14.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "votes" ("direction", "answers_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["direction", 1], ["answers_id", 2], ["user_id", 4], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (14.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "votes" ("direction", "answers_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["direction", 1], ["answers_id", 2], ["user_id", 5], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (12.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "votes" ("direction", "answers_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["direction", 1], ["answers_id", 2], ["user_id", 6], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (13.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "votes" ("direction", "answers_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["direction", -1], ["answers_id", 2], ["user_id", 7], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (12.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "votes" ("direction", "answers_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["direction", -1], ["answers_id", 2], ["user_id", 8], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (13.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "votes" ("direction", "answers_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["direction", -1], ["answers_id", 3], ["user_id", 9], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (11.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "votes" ("direction", "answers_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["direction", -1], ["answers_id", 3], ["user_id", 1], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (12.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "votes" ("direction", "answers_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["direction", 1], ["answers_id", 3], ["user_id", 2], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (8.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "votes" ("direction", "answers_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["direction", 1], ["answers_id", 3], ["user_id", 3], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (9.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "votes" ("direction", "answers_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["direction", 1], ["answers_id", 3], ["user_id", 4], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (11.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "votes" ("direction", "answers_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["direction", 1], ["answers_id", 3], ["user_id", 5], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (12.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "votes" ("direction", "answers_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["direction", -1], ["answers_id", 3], ["user_id", 6], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (11.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "votes" ("direction", "answers_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["direction", -1], ["answers_id", 3], ["user_id", 7], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (12.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "votes"."id" FROM "votes"[0m
+  [1m[36mKeyword Load (0.2ms)[0m  [1m[34mSELECT "keywords".* FROM "keywords"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "keywords" ("keyword", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["keyword", "american literature"], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (13.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "keywords" ("keyword", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["keyword", "ancient history"], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (11.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "keywords" ("keyword", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["keyword", "oil painting"], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (12.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "keywords" ("keyword", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["keyword", "water painting"], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (12.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "keywords" ("keyword", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["keyword", "clay sculpting"], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (14.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "keywords" ("keyword", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["keyword", "genetics"], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (15.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "keywords" ("keyword", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["keyword", "INF120"], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (11.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "keywords" ("keyword", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["keyword", "CSC440"], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (13.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "keywords" ("keyword", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["keyword", "CSC485"], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (10.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "keywords" ("keyword", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["keyword", "HIS323"], ["created_at", 2017-04-07 01:35:21 UTC], ["updated_at", 2017-04-07 01:35:21 UTC]]
+  [1m[35m (10.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "keywords" ("keyword", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["keyword", "ART202"], ["created_at", 2017-04-07 01:35:22 UTC], ["updated_at", 2017-04-07 01:35:22 UTC]]
+  [1m[35m (11.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "keywords" ("keyword", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["keyword", "ART409"], ["created_at", 2017-04-07 01:35:22 UTC], ["updated_at", 2017-04-07 01:35:22 UTC]]
+  [1m[35m (18.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "keywords" ("keyword", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["keyword", "data structures"], ["created_at", 2017-04-07 01:35:22 UTC], ["updated_at", 2017-04-07 01:35:22 UTC]]
+  [1m[35m (15.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "keywords" ("keyword", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["keyword", "algorithms"], ["created_at", 2017-04-07 01:35:22 UTC], ["updated_at", 2017-04-07 01:35:22 UTC]]
+  [1m[35m (11.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "keywords" ("keyword", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["keyword", "astronomy"], ["created_at", 2017-04-07 01:35:22 UTC], ["updated_at", 2017-04-07 01:35:22 UTC]]
+  [1m[35m (11.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "keywords" ("keyword", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["keyword", "neweton"], ["created_at", 2017-04-07 01:35:22 UTC], ["updated_at", 2017-04-07 01:35:22 UTC]]
+  [1m[35m (13.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "keywords" ("keyword", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["keyword", "pascal"], ["created_at", 2017-04-07 01:35:22 UTC], ["updated_at", 2017-04-07 01:35:22 UTC]]
+  [1m[35m (12.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "keywords" ("keyword", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["keyword", "philosophy"], ["created_at", 2017-04-07 01:35:22 UTC], ["updated_at", 2017-04-07 01:35:22 UTC]]
+  [1m[35m (14.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "keywords" ("keyword", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["keyword", "zen"], ["created_at", 2017-04-07 01:35:22 UTC], ["updated_at", 2017-04-07 01:35:22 UTC]]
+  [1m[35m (13.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "keywords" ("keyword", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["keyword", "software maintenance"], ["created_at", 2017-04-07 01:35:22 UTC], ["updated_at", 2017-04-07 01:35:22 UTC]]
+  [1m[35m (17.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "keywords" ("keyword", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["keyword", "visual design"], ["created_at", 2017-04-07 01:35:22 UTC], ["updated_at", 2017-04-07 01:35:22 UTC]]
+  [1m[35m (11.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "keywords" ("keyword", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["keyword", "psychology"], ["created_at", 2017-04-07 01:35:22 UTC], ["updated_at", 2017-04-07 01:35:22 UTC]]
+  [1m[35m (11.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "keywords" ("keyword", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["keyword", "newton's second law"], ["created_at", 2017-04-07 01:35:22 UTC], ["updated_at", 2017-04-07 01:35:22 UTC]]
+  [1m[35m (12.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "keywords" ("keyword", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["keyword", "calculus"], ["created_at", 2017-04-07 01:35:22 UTC], ["updated_at", 2017-04-07 01:35:22 UTC]]
+  [1m[35m (13.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "keywords" ("keyword", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["keyword", "geometry"], ["created_at", 2017-04-07 01:35:22 UTC], ["updated_at", 2017-04-07 01:35:22 UTC]]
+  [1m[35m (14.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "keywords" ("keyword", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["keyword", "algebra"], ["created_at", 2017-04-07 01:35:22 UTC], ["updated_at", 2017-04-07 01:35:22 UTC]]
+  [1m[35m (10.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "keywords"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "keywords"."id" FROM "keywords"[0m
+Started GET "/" for 192.122.237.252 at 2017-04-07 01:36:43 +0000
+Cannot render console from 192.122.237.252! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ForumController#index as HTML
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" ORDER BY "questions"."created_at" ASC LIMIT ?[0m  [["LIMIT", 5]]
+  Rendering forum/index.html.erb within layouts/main
+  [1m[36mForum Load (0.2ms)[0m  [1m[34mSELECT  "forums".* FROM "forums" WHERE "forums"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "answers" WHERE "answers"."question_id" = ? AND "answers"."question_id" = ? AND "answers"."active" = ?[0m  [["question_id", 1], ["question_id", 1], ["active", true]]
+  [1m[36mForum Load (0.2ms)[0m  [1m[34mSELECT  "forums".* FROM "forums" WHERE "forums"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "answers" WHERE "answers"."question_id" = ? AND "answers"."question_id" = ? AND "answers"."active" = ?[0m  [["question_id", 2], ["question_id", 2], ["active", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "forums".* FROM "forums" WHERE "forums"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "answers" WHERE "answers"."question_id" = ? AND "answers"."question_id" = ? AND "answers"."active" = ?[0m  [["question_id", 3], ["question_id", 3], ["active", true]]
+  [1m[36mForum Load (0.2ms)[0m  [1m[34mSELECT  "forums".* FROM "forums" WHERE "forums"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "answers" WHERE "answers"."question_id" = ? AND "answers"."question_id" = ? AND "answers"."active" = ?[0m  [["question_id", 4], ["question_id", 4], ["active", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "forums".* FROM "forums" WHERE "forums"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "answers" WHERE "answers"."question_id" = ? AND "answers"."question_id" = ? AND "answers"."active" = ?[0m  [["question_id", 5], ["question_id", 5], ["active", true]]
+  [1m[36mForum Load (0.2ms)[0m  [1m[34mSELECT "forums".* FROM "forums"[0m
+  Rendered forum/_list_forums.html.erb (513.9ms)
+  Rendered forum/index.html.erb within layouts/main (601.2ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "forums".* FROM "forums"[0m
+Completed 200 OK in 751ms (Views: 710.5ms | ActiveRecord: 7.3ms)
+
+
+Started GET "/images/icons/ENG_icon.svg" for 192.122.237.252 at 2017-04-07 01:36:44 +0000
+Cannot render console from 192.122.237.252! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/images/icons/ENG_icon.svg"):
+  
+actionpack (5.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.4.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.4.0) lib/web_console/middleware.rb:20:in `block in call'
+web-console (3.4.0) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.4.0) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+request_store (1.3.2) lib/request_store/middleware.rb:9:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.2) lib/rails/engine.rb:522:in `call'
+puma (3.8.1) lib/puma/configuration.rb:224:in `call'
+puma (3.8.1) lib/puma/server.rb:590:in `handle_request'
+puma (3.8.1) lib/puma/server.rb:425:in `process_client'
+puma (3.8.1) lib/puma/server.rb:289:in `block in run'
+puma (3.8.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendered collection of /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb [49 times] (18.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (14.7ms)
+  Rendering /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.3ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (85.6ms)
+  
+ActionController::RoutingError (No route matches [GET] "/assets/Avenir-Book.woff"):
+  
+actionpack (5.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.4.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.4.0) lib/web_console/middleware.rb:20:in `block in call'
+web-console (3.4.0) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.4.0) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:11:in `block in call'
+activesupport (5.0.2) lib/active_support/logger_silence.rb:20:in `silence'
+activesupport (5.0.2) lib/active_support/logger.rb:63:in `block (3 levels) in broadcast'
+activesupport (5.0.2) lib/active_support/logger_silence.rb:20:in `silence'
+activesupport (5.0.2) lib/active_support/logger.rb:61:in `block (2 levels) in broadcast'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:11:in `call'
+request_store (1.3.2) lib/request_store/middleware.rb:9:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.2) lib/rails/engine.rb:522:in `call'
+puma (3.8.1) lib/puma/configuration.rb:224:in `call'
+puma (3.8.1) lib/puma/server.rb:590:in `handle_request'
+puma (3.8.1) lib/puma/server.rb:425:in `process_client'
+puma (3.8.1) lib/puma/server.rb:289:in `block in run'
+puma (3.8.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/images/icons/MAT_icon.svg" for 192.122.237.252 at 2017-04-07 01:36:44 +0000
+Cannot render console from 192.122.237.252! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/images/icons/MAT_icon.svg"):
+  
+actionpack (5.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.4.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.4.0) lib/web_console/middleware.rb:20:in `block in call'
+web-console (3.4.0) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.4.0) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+request_store (1.3.2) lib/request_store/middleware.rb:9:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.2) lib/rails/engine.rb:522:in `call'
+puma (3.8.1) lib/puma/configuration.rb:224:in `call'
+puma (3.8.1) lib/puma/server.rb:590:in `handle_request'
+puma (3.8.1) lib/puma/server.rb:425:in `process_client'
+puma (3.8.1) lib/puma/server.rb:289:in `block in run'
+puma (3.8.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered collection of /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb [49 times] (16.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.4ms)
+  Rendering /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (97.3ms)
+Started GET "/Question/1" for 192.122.237.252 at 2017-04-07 01:36:50 +0000
+Cannot render console from 192.122.237.252! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by QaController#view_question as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mQuestion Load (0.7ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering qa/view_question.html.erb within layouts/main
+  [1m[36mForum Load (0.2ms)[0m  [1m[34mSELECT  "forums".* FROM "forums" WHERE "forums"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = ?[0m  [["question_id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT SUM("votes"."direction") FROM "votes" WHERE "votes"."answer_id" = ?[0m  [["answer_id", 1]]
+  Rendered qa/view_question.html.erb within layouts/main (20.9ms)
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 3.0ms)
+
+
+  
+ActionView::Template::Error (SQLite3::SQLException: no such column: votes.answer_id: SELECT SUM("votes"."direction") FROM "votes" WHERE "votes"."answer_id" = ?):
+    56:      <div class="answer-votes">
+    57:            <a><i class="fa fa-check"></i> </a>
+    58:            <div class="a-score">
+    59:                <%= answer.try(:score) %>
+    60:            </div>
+    61:           <a><i class="fa fa-times"></i></a>
+    62:      </div>
+  
+app/models/answer.rb:25:in `score'
+app/views/qa/view_question.html.erb:59:in `block in _app_views_qa_view_question_html_erb___3660967579382902533_70056798416560'
+app/views/qa/view_question.html.erb:53:in `_app_views_qa_view_question_html_erb___3660967579382902533_70056798416560'
+  Rendering /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (7.2ms)
+  Rendering /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendering /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (41.5ms)
+Started GET "/images/icons/ENG_icon.svg" for 192.122.237.252 at 2017-04-07 01:36:50 +0000
+Cannot render console from 192.122.237.252! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/images/icons/ENG_icon.svg"):
+  
+actionpack (5.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.4.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.4.0) lib/web_console/middleware.rb:20:in `block in call'
+web-console (3.4.0) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.4.0) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+request_store (1.3.2) lib/request_store/middleware.rb:9:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.2) lib/rails/engine.rb:522:in `call'
+puma (3.8.1) lib/puma/configuration.rb:224:in `call'
+puma (3.8.1) lib/puma/server.rb:590:in `handle_request'
+puma (3.8.1) lib/puma/server.rb:425:in `process_client'
+puma (3.8.1) lib/puma/server.rb:289:in `block in run'
+puma (3.8.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered collection of /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb [49 times] (19.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.0ms)
+  Rendering /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (61.3ms)
+Started GET "/images/icons/MAT_icon.svg" for 192.122.237.252 at 2017-04-07 01:36:51 +0000
+Cannot render console from 192.122.237.252! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/images/icons/MAT_icon.svg"):
+  
+actionpack (5.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.4.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.4.0) lib/web_console/middleware.rb:20:in `block in call'
+web-console (3.4.0) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.4.0) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+request_store (1.3.2) lib/request_store/middleware.rb:9:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.2) lib/rails/engine.rb:522:in `call'
+puma (3.8.1) lib/puma/configuration.rb:224:in `call'
+puma (3.8.1) lib/puma/server.rb:590:in `handle_request'
+puma (3.8.1) lib/puma/server.rb:425:in `process_client'
+puma (3.8.1) lib/puma/server.rb:289:in `block in run'
+puma (3.8.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered collection of /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb [49 times] (14.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.4ms)
+  Rendering /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (60.7ms)
+Started GET "/Question/1" for 192.122.237.252 at 2017-04-07 01:38:57 +0000
+Cannot render console from 192.122.237.252! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by QaController#view_question as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering qa/view_question.html.erb within layouts/main
+  [1m[36mForum Load (0.3ms)[0m  [1m[34mSELECT  "forums".* FROM "forums" WHERE "forums"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = ?[0m  [["question_id", 1]]
+  [1m[35m (2.7ms)[0m  [1m[34mSELECT SUM("votes"."direction") FROM "votes" WHERE "votes"."answers_id" = ?[0m  [["answers_id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("votes"."direction") FROM "votes" WHERE "votes"."answers_id" = ?[0m  [["answers_id", 2]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendered qa/view_question.html.erb within layouts/main (100.2ms)
+  [1m[36mForum Load (0.3ms)[0m  [1m[34mSELECT "forums".* FROM "forums"[0m
+Completed 200 OK in 206ms (Views: 169.5ms | ActiveRecord: 10.9ms)
+
+
+  
+ActionController::RoutingError (No route matches [GET] "/assets/Avenir-Book.woff"):
+  
+actionpack (5.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.4.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.4.0) lib/web_console/middleware.rb:20:in `block in call'
+web-console (3.4.0) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.4.0) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:11:in `block in call'
+activesupport (5.0.2) lib/active_support/logger_silence.rb:20:in `silence'
+activesupport (5.0.2) lib/active_support/logger.rb:63:in `block (3 levels) in broadcast'
+activesupport (5.0.2) lib/active_support/logger_silence.rb:20:in `silence'
+activesupport (5.0.2) lib/active_support/logger.rb:61:in `block (2 levels) in broadcast'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:11:in `call'
+request_store (1.3.2) lib/request_store/middleware.rb:9:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.2) lib/rails/engine.rb:522:in `call'
+puma (3.8.1) lib/puma/configuration.rb:224:in `call'
+puma (3.8.1) lib/puma/server.rb:590:in `handle_request'
+puma (3.8.1) lib/puma/server.rb:425:in `process_client'
+puma (3.8.1) lib/puma/server.rb:289:in `block in run'
+puma (3.8.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'

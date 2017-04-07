@@ -22,9 +22,9 @@ class Answer < ApplicationRecord
 
 # TODO : 
 def score
-  return Vote.where(answer_id: self.id).sum(:direction)
+  return Vote.where(answers_id: self.id).sum(:direction)
   #@answer_score = 
-  return 0
+  #return 0
 end
 
 def author
