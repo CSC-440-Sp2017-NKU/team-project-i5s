@@ -1,5 +1,28 @@
 
 <% ## TODO :  %>
-<div class="question">
-    
+<div class="question-forum">
+    <h3>User Page</h3>
 </div>
+
+<h3>User Name</h3>
+<%= @user.user_name%>
+<br>
+
+<h3>User Reputation</h3>
+<p>Questions: <strong><%= @user.reputation[:num_questions] %></strong></p>
+<p>Answers: <strong><%= @user.reputation[:num_answers] %></strong></p>
+<p>Upvotes Recieved:  <strong><%= @user.reputation[:up_votes] %></strong></p>
+<p>Downvotes Recieved:  <strong><%= @user.reputation[:down_votes] %></strong></p>
+
+<h3>Recent Questions</h3>
+<%@user.recent_questions&.each do |question| %>
+<p><%= question.title %></p>
+<% end %>
+<h3>Recent Answers</h3>
+<% @user.recent_answers&.each do |answer| %>
+<p><%= answer.title %></p>
+<% end %>
+<h3>Recent Classes</h3>
+<%@user.classes&.each do |classObj| %>
+<p><%= classObj %></p>
+<% end %>

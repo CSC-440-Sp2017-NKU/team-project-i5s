@@ -5,13 +5,20 @@ layout "main"
     
     helper_method :forum_list
     helper_method :format_datetime
-    
+    helper_method :author_link
     def forum_list
         return Forum.all
     end
     
     def format_datetime(datetime)
         return datetime.strftime("%-m/%-d/%Y")
+    end
+    
+    def author_link(obj)
+      if(obj.respond_to?(:author) && obj.respond_to?(:user_id))
+        html = "<a href="+url_for(action:"view", controller:"users", id:obj.user_id)+">"+obj.author+"</a>"
+        return html.html_safe
+      end
     end
     
     #authlogic 

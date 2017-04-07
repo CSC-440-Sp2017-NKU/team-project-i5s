@@ -18,7 +18,7 @@
         </div>
         <div class="qs-author">
             <a href="">
-            - <%= question.try(:author) %>
+            - <%= author_link question %>
             </a>
         </div>
         <a href="<%= url_for(action:"view_question",controller:"qa",id: question.id) %>">
