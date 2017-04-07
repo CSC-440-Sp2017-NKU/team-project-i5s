@@ -71,7 +71,7 @@ Rails.application.routes.draw do
   get 'forum/list_forums'
   
   get 'Question/Edit/:id', to: 'qa#edit_question'
-  post 'Question/Edit', to: 'qa#edit_question'
+  post 'Question/Edit/:id', to: 'qa#edit_question'
   post 'Question/Delete', to: 'qa#delete_question'
   
   get 'Answer/Edit/:id', to: 'qa#edit_answer'
