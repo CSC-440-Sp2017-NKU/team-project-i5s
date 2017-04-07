@@ -80,10 +80,12 @@ class QaController < ApplicationController
   # GET : input: answer_id, returns the answer form
   # POST : input: Answer object fed in from the view, output: redirect to view the question
   def edit_answer
+    if request.post?
     @answer = Answer.find(edit_answer_params.id) #inbound data object with 2 params(possibly 3 if we need to include question id)
     @answer.text = edit_answer_params.text
     @answer.save() #save to the db
     #@answer.questionId = edit_question_params.questionId
+    end
   end
   
   
@@ -93,10 +95,10 @@ class QaController < ApplicationController
   def delete_question
     if request.post?
       # set the question visible flag to false
-      @question.isVisible = false
+      @question.active = false
       #@questions = Question.where column: "isVisible"
+    
     end
-
   end
   
   
@@ -106,7 +108,7 @@ class QaController < ApplicationController
   def delete_answer
     if request.post?
       # set the question visible flag to false
-      @answer.isVisible = false
+      @answer.active = false
       #@answers = Answer.where column: "isVisible"
     end
     
