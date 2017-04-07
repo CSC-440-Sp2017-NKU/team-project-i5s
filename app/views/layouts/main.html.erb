@@ -9,7 +9,7 @@
 </head>
 <body class="nkuBackground">
 <div >
-  <nav class="navbar navbar-inverse">
+  <nav class="navbar navbar-inverse <% if current_user&.admin? %> navbar-admin<% end %>">
   <div class="container">
     <div class="navbar-header">
       
@@ -33,10 +33,10 @@
           
           <ul class="dropdown-menu">
               <% if !current_user %>
-              <a href=<%= url_for(action:"new", controller:"user_sessions") %>><li>Login</li></a>
+             <li> <a href=<%= url_for(action:"new", controller:"user_sessions") %>>Login</a></li>
               <% else %>
-              <li>Hello <%= current_user.user_name %></li>
-              <a href=<%= url_for(action:"destroy", controller:"user_sessions") %>><li>Logout</li></a>
+              <li><a href="<%= url_for(action:"show", controller:"users") %>">Hello <%= current_user.user_name %></a></li>
+             <li><a href=<%= url_for(action:"destroy", controller:"user_sessions") %>><li>Logout</li></a></li>
               <% end %>
               
           </ul>

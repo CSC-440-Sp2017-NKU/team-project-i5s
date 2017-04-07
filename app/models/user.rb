@@ -37,7 +37,7 @@ class User < ApplicationRecord
   
   # returns whether or not hte user is an admin!?
   def admin?()
-    return User.role == 0 #Role.find()
+    return self.role_id == Role.find_by(role: "Administrator").id #Role.find()
   end
 
   
