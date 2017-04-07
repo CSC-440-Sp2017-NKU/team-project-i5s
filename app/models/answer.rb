@@ -22,10 +22,7 @@ class Answer < ApplicationRecord
 
 # TODO : 
 def score
-  #Post.select("posts.*, COUNT(comments.id) as comment_count").joins("LEFT OUTER JOIN comments ON (comments.post_id = posts.id)").group("posts.id")
-Answer.select("answer.*, COUNT(user_id.id) as comment_count").joins("LEFT OUTER JOIN comments ON (answers.user_id = user_id.id)").group("user.id.id")  #Robert
-#Answer.count('user_id')  #https://apidock.com/rails/ActiveRecord/Calculations/ClassMethods/count
-  #if 
+  return Vote.where(answer_id: self.id).sum(:direction)
   #@answer_score = 
   return 0
 end
