@@ -6,6 +6,7 @@
 class Answer < ApplicationRecord
   belongs_to :user
   belongs_to :question
+  has_many :vote
   validates :text, presence: true
   validates :question_id, presence: true        
 #class Answer < ApplicationRecord
