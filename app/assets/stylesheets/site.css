@@ -61,6 +61,13 @@ a:hover{
     border-color: transparent;
 }
 
+.navbar-inverse.navbar-admin
+{
+    border-top: 10px solid #ffcc33;
+    border-bottom: 10px solid #ffcc33;
+    color: black;
+}
+
 .logo
 {
     
