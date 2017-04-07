@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170404212650) do
+ActiveRecord::Schema.define(version: 20170404213044) do
 
   create_table "answers", force: :cascade do |t|
     t.string   "text"
@@ -23,12 +23,41 @@ ActiveRecord::Schema.define(version: 20170404212650) do
     t.index ["user_id"], name: "index_answers_on_user_id"
   end
 
+  create_table "courses", force: :cascade do |t|
+    t.string   "course_name"
+    t.integer  "program_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["program_id"], name: "index_courses_on_program_id"
+  end
+
   create_table "forums", force: :cascade do |t|
     t.string   "forum_name"
     t.string   "forum_description"
     t.string   "resource_url"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+  end
+
+  create_table "keywords", force: :cascade do |t|
+    t.string   "keyword"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "programs", force: :cascade do |t|
+    t.string   "program_name"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "question_keywords", force: :cascade do |t|
+    t.integer  "question_id"
+    t.integer  "keyword_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["keyword_id"], name: "index_question_keywords_on_keyword_id"
+    t.index ["question_id"], name: "index_question_keywords_on_question_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -47,6 +76,35 @@ ActiveRecord::Schema.define(version: 20170404212650) do
     t.string   "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "sections", force: :cascade do |t|
+    t.integer  "semester_id"
+    t.integer  "course_id"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["course_id"], name: "index_sections_on_course_id"
+    t.index ["semester_id"], name: "index_sections_on_semester_id"
+    t.index ["user_id"], name: "index_sections_on_user_id"
+  end
+
+  create_table "semesters", force: :cascade do |t|
+    t.integer  "academic_year"
+    t.string   "session"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "student_sections", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "section_id"
+    t.integer  "course_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_student_sections_on_course_id"
+    t.index ["section_id"], name: "index_student_sections_on_section_id"
+    t.index ["user_id"], name: "index_student_sections_on_user_id"
   end
 
   create_table "user_files", force: :cascade do |t|
@@ -70,7 +128,7 @@ ActiveRecord::Schema.define(version: 20170404212650) do
 
   create_table "users", force: :cascade do |t|
     t.string   "user_name",           default: "",         null: false
-    t.integer  "role_id"
+    t.integer  "role_id",             default: 2
     t.string   "login",               default: "",         null: false
     t.string   "crypted_password",    default: "12345678", null: false
     t.string   "password_salt",       default: "",         null: false

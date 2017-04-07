@@ -2,9 +2,9 @@ class CreateUsers < ActiveRecord::Migration[5.0]
   def change
     create_table :users do |t|
       t.string :user_name,   :null => false, :default => ''
-      t.references :role, foreign_key: true
+      t.references :role, foreign_key: true, :default => 2
       #Authlogic fields
-       t.string    :login,             :null => false, :default => ''
+      t.string    :login,             :null => false, :default => ''
       t.string    :crypted_password,    :null => false, :default => '12345678'
       t.string    :password_salt,       :null => false, :default => ''
       t.string    :email,               :null => false, :default => ''
