@@ -10,8 +10,11 @@ class User < ApplicationRecord
   def reputation
     # return the street cred...
     #lookup the DB data.
-    street_cred = {:num_questions => 1, :num_answers => 1, :up_votes => 1, :down_votes => 1}
-    street_cred
+    questions = Question.where(user_id: self.id).count
+    answers = Answer.where(user_id: self.id).count
+    upvotes = Answer.joins(:votes).where('answer.user_id = self.id', 'vote.direction = +1').count
+    downvotes = Answer.joins(:votes).where('answer.user_id = self.id', 'vote.direction = -1').count
+    return {:num_questions => questions, :num_answers => answers, :up_votes => upvotes, :down_votes => downvotes}
   end
   
   # TODO : 

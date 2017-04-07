@@ -24,7 +24,7 @@ class Question < ApplicationRecord
   end
   
   def num_answers
-    return self.answers.where(question_id: self.id, active: true).count
+    return Answer.where(question_id: self.id, active: true).count
   end
 
 end
