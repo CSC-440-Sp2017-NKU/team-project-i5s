@@ -54,11 +54,17 @@
       <div class="answer">
       <div class="answer-pad">
      <div class="answer-votes">
-           <a><i class="fa fa-check"></i> </a>
+           <a class="vote-link" data-id="<%= answer.id %>" data-dir="1">
+               <i class="fa <%if answer.user_vote(current_user)&.direction == 1 %>fa-check-circle<% else %>fa-check<% end %>">
+                   
+               </i></a>
            <div class="a-score">
                <%= answer.try(:score) %>
            </div>
-          <a><i class="fa fa-times"></i></a>
+          <a class="vote-link" data-id="<%= answer.id %>" data-dir="-1">
+              <i class="fa <%if answer.user_vote(current_user)&.direction == -1 %>fa-times-circle<% else %>fa-times<% end %>">
+                  
+              </i></a>
      </div>
      <div class="answer-info">
          <% if current_user.admin? %>
@@ -78,6 +84,42 @@
     <% end %>
     
 </div>
+
+<script>
+    $(".vote-link").click(function(){
+        var dir = $(this).data("dir");
+        var child = $(this).children(".fa");
+        var sibling = $(this).siblings("a").children(".fa");
+        $(this).siblings(".a-score").html("<i class='fa fa-spinner fa-spin'></i>")
+        if (dir=="1")
+        {
+            child.attr("class", "fa fa-check-circle");
+            sibling.attr("class", "fa fa-times");
+        }
+        else{
+             child.attr("class", "fa fa-times-circle");
+            sibling.attr("class", "fa fa-check");
+        }
+        
+        $.ajax("<%= vote_url %>",
+            {
+                method: "POST",
+                dataType:"json",
+                context: this,
+                data: {
+                    answer_id:$(this).data("id"),
+                    direction: dir
+                },
+                success: function(data)
+                {
+                    $(this).siblings(".a-score").text(data.score);
+                }
+            }
+            );
+        
+    });
+    
+</script>
 
 <script>
 

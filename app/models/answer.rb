@@ -32,4 +32,8 @@ def author
   return User.find(self.user_id).user_name
 end
 
+def user_vote (user)
+  return Vote.find_by(answers_id: self.id, user_id: user.id)
+end
+
 end

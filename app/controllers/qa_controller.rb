@@ -122,6 +122,27 @@ class QaController < ApplicationController
   #hunter using AJAX
   def vote
   
+      answer_id = Integer(params["answer_id"])
+      dir= Integer(params["direction"])
+      answer = Answer.find(answer_id)
+      user_vote = answer.user_vote current_user
+      
+      #if curent_user has voted, update vote
+      if user_vote
+        user_vote.direction = dir
+        user_vote.save
+      else #otherwise, create a new vote
+        user_vote = Vote.new
+        user_vote.user_id = current_user.id
+        user_vote.answers_id = answer_id
+        user_vote.direction = dir
+        user_vote.save
+      end
+      score = {"score" => answer.score}
+      respond_to do |format|
+        format.html
+        format.json {render json: score}
+      end
   end
   
   

@@ -80,7 +80,8 @@ Rails.application.routes.draw do
   
   get 'users/view/:id', to: 'users#view'
   
-  post 'vote/:answer_id/:direction', to: 'qa#vote'
+  #/:answer_id/:direction
+  post 'vote', to: 'qa#vote', as: :vote
   
   #authlogic
   resources :user_sessions
