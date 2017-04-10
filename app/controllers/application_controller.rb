@@ -36,20 +36,20 @@ layout "main"
     end
 
     def require_user
-      require_boolean current_user
+      require_boolean(current_user, "You must be logged in to access this page")
     end
     
     def require_admin
-     require_boolean current_user.admin?
+     require_boolean(current_user.admin?, "You must be an admin in to access this page")
     end
 
 
-  def require_boolean(bool)
+  def require_boolean(bool, message)
       logger.debug "ApplicationController::require_user"
       unless bool
         store_location
-        flash[:notice] = "You must be logged in to access this page"
-        redirect_to new_user_session_url
+        flash[:notice] = message
+        redirect_to splash_url #new_user_session_url
         return false
       end
   end

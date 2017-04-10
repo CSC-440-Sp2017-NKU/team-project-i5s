@@ -3,6 +3,7 @@ class QaController < ApplicationController
   # TODO : impelement visibility check -- if not visible, don't render.
   #GET -- return question/answers objects
   def view_question
+    require_user
     if (!params[:id].nil?)
       id = Integer(params[:id])
       @question = Question.find(id) # return the question object
@@ -18,6 +19,7 @@ class QaController < ApplicationController
   #POST -- write the data written in the form to the db
   #GET --  return the form to write a question
   def post_question
+    require_user
     if request.post?
       @question = Question.new(question_params)
  
@@ -33,6 +35,7 @@ class QaController < ApplicationController
   
   # TODO : impelement visibility check -- if not visible, don't render.
   def answer_question
+    require_user
     if request.post?
       @answer = Answer.new(answer_params)
       if @answer.save
@@ -55,7 +58,7 @@ class QaController < ApplicationController
   # GET : input: question_id, returns the question form
   # POST : input: Question object fed in from the view, output: redirect to view the question
   def edit_question
-    #require_admin
+    require_admin
     if request.post? # pass in the entire object you want to edit
       #over-write the data of the existing question
       #title, text, etc.
@@ -81,6 +84,7 @@ class QaController < ApplicationController
   # GET : input: answer_id, returns the answer form
   # POST : input: Answer object fed in from the view, output: redirect to view the question
   def edit_answer
+    require_admin
     if request.post?
     @answer = Answer.find(edit_answer_params.id) #inbound data object with 2 params(possibly 3 if we need to include question id)
     @answer.text = edit_answer_params.text
@@ -94,6 +98,7 @@ class QaController < ApplicationController
   # add to routes
   # implement
   def delete_question
+    require_admin
     if request.post?
       # set the question visible flag to false
       @question.active = false
@@ -107,6 +112,7 @@ class QaController < ApplicationController
   # add to routes
   # impelement
   def delete_answer
+    require_admin
     if request.post?
       # set the question visible flag to false
       @answer.active = false
