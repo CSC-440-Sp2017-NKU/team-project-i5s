@@ -5,6 +5,13 @@ class UserSessionsController < ApplicationController
     @user_session = UserSession.new
   end
 
+  def splash
+    @user_session = UserSession.new
+    respond_to do |format|
+      format.html {render :layout => 'splash'}
+    end
+  end
+
   def create
     @user_session = UserSession.new(user_session_params)
     if @user_session.save
@@ -18,7 +25,7 @@ class UserSessionsController < ApplicationController
   def destroy
     current_user_session.destroy
     flash[:notice] = "Logout successful!"
-    redirect_to action:"new"
+    redirect_to action:"splash"
   end
 
 private
