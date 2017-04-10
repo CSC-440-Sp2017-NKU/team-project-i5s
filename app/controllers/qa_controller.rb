@@ -99,6 +99,7 @@ class QaController < ApplicationController
   # implement
   def delete_question
     require_admin
+    byebug
     if request.post?
       # set the question visible flag to false
       @question.active = false
@@ -113,6 +114,7 @@ class QaController < ApplicationController
   # impelement
   def delete_answer
     require_admin
+   
     if request.post?
       # set the question visible flag to false
       @answer.active = false
