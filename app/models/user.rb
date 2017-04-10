@@ -11,21 +11,21 @@ class User < ApplicationRecord
   def reputation
     # return the street cred...
     #lookup the DB data.
-    questions = Question.where(user_id: self.id).count
-    answers = Answer.where(user_id: self.id).count
-    upvotes = Answer.where(user_id: self.id).joins(:votes).where(:votes => {:direction => 1}).count
-    downvotes = Answer.where(user_id: self.id).joins(:votes).where(:votes => {:direction => -1}).count
+    questions = Question.where(user_id: self.id, active: true).count
+    answers = Answer.where(user_id: self.id, active: true).count
+    upvotes = Answer.where(user_id: self.id, active: true).joins(:votes).where(:votes => {:direction => 1}).count
+    downvotes = Answer.where(user_id: self.id, active: true).joins(:votes).where(:votes => {:direction => -1}).count
     return {:num_questions => questions, :num_answers => answers, :up_votes => upvotes, :down_votes => downvotes}
   end
   
   #return the top 5 recent, visible answers back
   def recent_answers
-    return Answer.where(user_id: self.id).order("created_at DESC").limit(5)
+    return Answer.where(user_id: self.id, active: true).order("created_at DESC").limit(5)
   end
   
   #return the top 5 recent, visible questions back
   def recent_questions
-    return Question.where(user_id: self.id).order("created_at DESC").limit(5)
+    return Question.where(user_id: self.id, active: true).order("created_at DESC").limit(5)
   end
   
   #return the classes the user is currently enrolled in.
