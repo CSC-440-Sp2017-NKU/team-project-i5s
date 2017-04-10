@@ -1,0 +1,12 @@
+<%= form_for @answer, :as => :answer, :url => { :action => "edit_answer" }, :method => :POST do |f| %>
+
+<%= f.hidden_field :user_id %>
+<%= f.hidden_field :id %>
+
+  <%= f.label :text %>
+  <br />
+  <%= f.text_field :text %>
+  <br />
+  <%= f.submit "Edit" %>
+  
+<% end %>
