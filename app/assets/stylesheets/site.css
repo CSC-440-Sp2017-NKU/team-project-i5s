@@ -637,12 +637,12 @@ vertical-align: top;
     text-align: center;
     font-weight: 900;
 }
-.fa-check
+.fa-check, .fa-check-circle
 {
     color: #138e24;
 }
 
-.fa-times
+.fa-times, .fa-times-circle
 {
     color: 	#8e1313;
 }
