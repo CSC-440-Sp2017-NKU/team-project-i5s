@@ -15,7 +15,7 @@
         
          <% if current_user.admin? %>
          <a href="<%= url_for(controller:"qa", action:"edit_question", id: @question.id) %>"><i class="fa fa-pencil edit-btn"></i></a>
-          <a href="<%= url_for(controller:"qa", action:"delete_question", id: @question.id) %>"><i class="fa fa-trash delete-btn"></i></a>
+          <a href="<%= url_for(controller:"qa", action:"delete_question", id: @question.id) %>"  data-method="delete" ><i class="fa fa-trash delete-btn"></i></a>
          <% end %>
          
     </div>
@@ -69,7 +69,8 @@
      <div class="answer-info">
          <% if current_user.admin? %>
          <a href="<%= url_for(controller:"qa", action:"edit_answer", id:answer.id) %>"><i class="fa fa-pencil edit-btn"></i></a>
-          <a href="<%= url_for(controller:"qa", action:"delete_answer", id:answer.id) %>"><i class="fa fa-trash delete-btn"></i></a>
+         
+         <a href="<%= url_for(controller:"qa", action:"delete_answer", id: answer.id) %>" data-method="delete"><i class="fa fa-trash delete-btn"></i></a>
          <% end %>
      <div class="a-text">
         <%= answer.text %>

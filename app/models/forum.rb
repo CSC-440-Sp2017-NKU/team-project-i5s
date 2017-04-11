@@ -6,8 +6,8 @@ class Forum < ApplicationRecord
   has_many :question
   
   def questions
-    return Question.where(forum_id: self.id) 
-    #return Question.where(forum_id: self.id, active: true) 
+    #return Question.where(forum_id: self.id) 
+    return Question.where(forum_id: self.id, active: true) 
   end
 
 #def initialize(attributes = {})

@@ -72,11 +72,11 @@ Rails.application.routes.draw do
   
   get 'Question/Edit/:id', to: 'qa#edit_question'
   post 'Question/Edit/:id', to: 'qa#edit_question'
-  post 'Question/Delete', to: 'qa#delete_question'
+  delete 'Question/Delete', to: 'qa#delete_question'
   
   get 'Answer/Edit/:id', to: 'qa#edit_answer'
-  post 'Answer/Edit', to: 'qa#edit_answer'
-  post 'Answer/Delete', to: 'qa#delete_answer'
+  post 'Answer/Edit/:id', to: 'qa#edit_answer'
+  delete 'Answer/Delete', to: 'qa#delete_answer'
   
   get 'users/view/:id', to: 'users#view'
   
