@@ -19,7 +19,7 @@
       <%= text_area_tag("answer[text]", "",{class:"form-control", rows:4}) %>
       </div>
       
-      <%= hidden_field_tag "answer[user_id]", 1 %>
+      <%= hidden_field_tag "answer[user_id]", current_user.id %>
       <%= hidden_field_tag "answer[question_id]", @question.id %>
       
       <%= submit_tag("Post",{class:"btn btn-default btn-dark"}) %>
