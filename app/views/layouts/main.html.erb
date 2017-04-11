@@ -9,7 +9,10 @@
 </head>
 <body class="nkuBackground">
 <div >
-  <nav class="navbar navbar-inverse <% if current_user&.admin? %> navbar-admin<% end %>">
+  <nav class="navbar navbar-inverse <% if current_user&.admin? %> navbar-admin<% end %>  
+  <% if current_user&.faculty? %> navbar-faculty<% end %>
+  <% if current_user&.faculty? %> navbar-registrar<% end %>
+  ">
   <div class="container">
     <div class="navbar-header">
       
