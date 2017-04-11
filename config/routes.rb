@@ -75,7 +75,7 @@ Rails.application.routes.draw do
   delete 'Question/Delete', to: 'qa#delete_question'
   
   get 'Answer/Edit/:id', to: 'qa#edit_answer'
-  post 'Answer/Edit', to: 'qa#edit_answer'
+  post 'Answer/Edit/:id', to: 'qa#edit_answer'
   delete 'Answer/Delete', to: 'qa#delete_answer'
   
   get 'users/view/:id', to: 'users#view'

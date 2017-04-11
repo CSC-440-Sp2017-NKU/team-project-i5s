@@ -86,10 +86,14 @@ class QaController < ApplicationController
   def edit_answer
     require_admin
     if request.post?
-    @answer = Answer.find(edit_answer_params.id) #inbound data object with 2 params(possibly 3 if we need to include question id)
-    @answer.text = edit_answer_params.text
+    @answer = Answer.find(edit_answer_params[:id]) #inbound data object with 2 params(possibly 3 if we need to include question id)
+    @answer.text = edit_answer_params[:text]
     @answer.save() #save to the db
     #@answer.questionId = edit_question_params.questionId
+    redirect_to controller:"qa", action:"view_question", id:@answer.question_id
+    
+  else
+    @answer = Answer.find(Integer(params["id"]))
     end
   end
   
@@ -99,13 +103,14 @@ class QaController < ApplicationController
   # implement
   def delete_question
     require_admin
-    byebug
-    if request.post?
-      # set the question visible flag to false
-      @question.active = false
-      #@questions = Question.where column: "isVisible"
     
-    end
+      # set the question visible flag to false
+      @question = Question.find Integer(params["id"])
+      @question.active = false
+      @question.save
+      redirect_to action: "view_forum", controller: "forum", id: @question.forum_id
+      #@questions = Question.where column: "isVisible"
+
   end
   
   
@@ -114,12 +119,14 @@ class QaController < ApplicationController
   # impelement
   def delete_answer
     require_admin
-   
-    if request.post?
+  
       # set the question visible flag to false
+    
+      @answer= Answer.find Integer(params["id"])
       @answer.active = false
+      @answer.save
+      redirect_to action:"view_question", controller: "qa", id: @answer.question_id
       #@answers = Answer.where column: "isVisible"
-    end
     
   end
   
@@ -172,5 +179,9 @@ private
     
     def answer_params
       params.require(:answer).permit(:text, :user_id, :question_id)
+    end
+    
+    def edit_answer_params
+      params.require(:answer).permit(:text, :id)
     end
 end
