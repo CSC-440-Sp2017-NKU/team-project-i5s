@@ -68,6 +68,19 @@ a:hover{
     color: black;
 }
 
+.navbar-inverse.navbar-faculty
+{
+    border-top: 10px solid #384491;
+    border-bottom: 10px solid #384491;
+}
+
+.navbar-inverse.navbar-registrar
+{
+    border-top: 10px solid #349135;
+    border-bottom: 10px solid #349135;
+
+}
+
 .logo
 {
     
