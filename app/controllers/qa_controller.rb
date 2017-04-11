@@ -108,6 +108,10 @@ class QaController < ApplicationController
       @question = Question.find Integer(params["id"])
       @question.active = false
       @question.save
+      
+      #cascade deactivate to answers for this question
+      Answer.where(question_id: @question.id).update_all(active: false)
+      
       redirect_to action: "view_forum", controller: "forum", id: @question.forum_id
       #@questions = Question.where column: "isVisible"
 

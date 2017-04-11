@@ -45,6 +45,7 @@ class UsersController < ApplicationController
   #/users/view.html.erb
   #update routes
   def view
+    require_user
     #@question = User.find(Integer(params["id"]))
     if (!params[:id].nil?)
       id = Integer(params[:id])
