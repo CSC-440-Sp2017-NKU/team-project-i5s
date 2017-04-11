@@ -7,7 +7,8 @@ Role.destroy_all
 Role.create!([
 {role: "Administrator"}, 
 {role: "Student"}, 
-{role: "Faculty"}
+{role: "Faculty"},
+{role: "Registrar"}
 ])
 p "Created #{Role.count} roles"
 p "Roles: #{Role.pluck :id}" 
@@ -38,7 +39,8 @@ User.create!([
 {user_name: "Fac6", email:"fac6@test.com", password: "12345678", password_confirmation: "12345678", role_id:3},
 {user_name: "Fac7", email:"fac7@test.com", password: "12345678", password_confirmation: "12345678", role_id:3},
 {user_name: "Fac8", email:"fac8@test.com", password: "12345678", password_confirmation: "12345678", role_id:3},
-{user_name: "Test Admin", email:"admin@test.com", password: "12345678", password_confirmation: "12345678", role_id:1}
+{user_name: "Test Admin", email:"admin@test.com", password: "12345678", password_confirmation: "12345678", role_id:1},
+{user_name: "Reg1", email:"reg1@test.com", password: "12345678", password_confirmation: "12345678", role_id:4}
 ])
 p "Created #{User.count} users"
 p "Users: #{User.pluck :id}" 
