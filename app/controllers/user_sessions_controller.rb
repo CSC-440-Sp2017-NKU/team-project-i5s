@@ -22,7 +22,13 @@ class UserSessionsController < ApplicationController
       render :action => :new
     end
   end
-
+  
+  #hacky fix for logout link, fix properly for iter3
+  before_action :destroy, only: [:show]
+  def show
+    
+  end
+  
   def destroy
     current_user_session.destroy
     flash[:notice] = "Logout successful!"
