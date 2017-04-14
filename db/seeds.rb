@@ -91,7 +91,12 @@ Forum.create!([
 {forum_name:"CHE", forum_description:"che is fine."},
 {forum_name:"CSC", forum_description:"csc is fine."},
 {forum_name:"ENG", forum_description:"eng is fine."},
-{forum_name:"MAT", forum_description:"mat is fine."}
+{forum_name:"HIS", forum_description:"his is fine."},
+{forum_name:"MAT", forum_description:"mat is fine."},
+{forum_name:"MUS", forum_description:"mus is fine."}
+
+
+
 ])
 p "Created #{Forum.count} forums"
 p "Forums: #{Forum.pluck :id}" 
