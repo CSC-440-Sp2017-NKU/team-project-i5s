@@ -37,15 +37,15 @@ class User < ApplicationRecord
   
   # returns whether or not the user is an admin!?
   def admin?()
-    return self.role_id == Role.find_by(role: "Administrator").id 
+    return self.role_id == Role.find_by(role: "Administrator")&.id 
   end
   
   def faculty?()
-    return self.role_id == Role.find_by(role: "Faculty").id
+    return self.role_id == Role.find_by(role: "Faculty")&.id
   end
   
   def registrar?()
-    return self.role_id == Role.find_by(role: "Registrar").id
+    return self.role_id == Role.find_by(role: "Registrar")&.id
   end
 
 end
