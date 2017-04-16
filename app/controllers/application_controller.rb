@@ -44,7 +44,7 @@ class ApplicationController < ActionController::Base
     end
     
     def require_admin
-     require_boolean(current_user.admin?, "You must be an admin in to access this page")
+     require_boolean(current_user&.admin?, "You must be an admin in to access this page")
     end
 
 
