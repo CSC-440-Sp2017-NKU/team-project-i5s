@@ -1,0 +1,41 @@
+
+
+<div class="question-forum">
+    <h3><span>USER PAGE</span><span class="arial">//</span>  <%= @user.user_name%></h3>
+</div>
+
+<div class="row">
+  <div class="col-sm-6">
+      
+<%if @user.recent_questions.length > 0 %>
+<h3>Recent Questions</h3>
+<%@user.recent_questions&.each do |question| %>
+<p><a href="<%= url_for action:"view_question", controller:'qa', id: question.id %>"><%= question.title %></a></p>
+<% end %> 
+<% end %>
+<%if @user.recent_answers.length > 0 %>
+<h3>Recent Answers</h3>
+<% @user.recent_answers&.each do |answer| %>
+<p><a href="<%= url_for action:"view_question", controller:'qa', id: answer.question_id, anchor: answer.id %>"><%= answer.text %></a></p>
+<% end %>
+<% end %>
+<%if @user.classes.length > 0 %>
+<h3>Classes</h3>
+<ul>
+<%@user.classes&.each do |course| %>
+<li><%= course.course_name %></li>
+<% end %>
+<% end %>
+</ul>
+  </div>
+  <div class="col-sm-6">
+      <div class="rep-box">
+<h3>User Reputation</h3>
+<p>Questions: <strong><%= @user.reputation[:num_questions] %></strong></p>
+<p>Answers: <strong><%= @user.reputation[:num_answers] %></strong></p>
+<p>Upvotes Received:  <strong><%= @user.reputation[:up_votes] %></strong></p>
+<p>Downvotes Received:  <strong><%= @user.reputation[:down_votes] %></strong></p>
+</div>
+  </div> 
+</div>
+

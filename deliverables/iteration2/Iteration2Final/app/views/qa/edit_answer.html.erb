@@ -1,0 +1,28 @@
+<div class="question-forum">
+    <h3><span>QUESTION<span class="arial">//</span></span> 
+    <a href="<%= url_for(action:"view_question",
+    controller:"qa", 
+    id:@answer.question) %>"><%= @answer.try(:question_title) %></a></h3>
+</div>
+
+<h1>Edit Answer</h1>
+ <div class="answer-author">
+        Answer by <%= author_link @answer %>
+        </div>
+        <br>
+<%= form_for @answer, :as => :answer, :url => { :action => "edit_answer" }, :method => :POST do |f| %>
+
+<%= f.hidden_field :user_id %>
+<%= f.hidden_field :id %>
+<div class="form-element">
+  <%= f.label :text %>
+
+  <%= f.text_area :text, {class:"form-control", cols:4} %>
+</div>
+<div class="form-element">
+  <%= f.submit "Edit", class:"btn btn-default btn-dark" %>
+   <a href="<%= url_for(action:"view_question",controller:"qa", id: @answer.question_id )%>" class="btn btn-default">Cancel</a>
+   
+  </div>
+  
+<% end %>
