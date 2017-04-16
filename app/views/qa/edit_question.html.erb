@@ -1,20 +1,41 @@
+<div class="question-forum">
+    <h3><span>FORUM<span class="arial">//</span></span> 
+    <a href="<%= url_for(action:"view_forum",
+    controller:"forum", 
+    id:@question.forum_id) %>"><%= @question.try(:forum_name) %></a></h3>
+</div>
+
+<h1>Edit Question</h1>
+
+<div class="question">
+    <h3>
+        <%= @question.title %>
+    </h3>
+</div>
+
 <%= form_for @question, :as => :question, :url => { :action => "edit_question" }, :method => :POST do |f| %>
 
 <%= f.hidden_field :user_id %>
 <%= f.hidden_field :id %>
+  
+  <div class="form-element">
   <%= f.label :forum %>
-  <br />
-  <% #f.dropdown :forum %>
-  <br />
-  <br />
+   <%= select_tag("question[forum_id]", options_from_collection_for_select(forum_list(), "id", "forum_name", @forum_id), class:"form-control") %>
+      </div>
+ 
+ <div class="form-element">
   <%= f.label :title %>
-  <br />
-  <%= f.text_field :title %>
-  <br />
+
+  <%= f.text_field :title, class:"form-control" %>
+  </div>
+  
+  <div class="form-element">
   <%= f.label :text %>
-  <br />
-  <%= f.text_field :text %>
-  <br />
-  <%= f.submit "Edit" %>
+  <%= f.text_area :text, {class:"form-control", rows:4} %>
+ </div>
+ <div class="form-element">
+  <%= f.submit "Edit", class:"btn btn-default btn-dark" %>
+   <a href="<%= url_for(action:"view_question",controller:"qa", id: @question.id )%>" class="btn btn-default">Cancel</a>
+  </div>
   
 <% end %>

@@ -51,7 +51,7 @@
 </div>
 <div class="answers">
     <% @answers.each do |answer| %>
-      <div class="answer">
+      <div class="answer" id="<%= answer.id %>">
       <div class="answer-pad">
      <div class="answer-votes">
            <a class="vote-link" data-id="<%= answer.id %>" data-dir="1">

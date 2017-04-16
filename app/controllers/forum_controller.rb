@@ -3,7 +3,7 @@ class ForumController < ApplicationController
     # index function doesn't need to gather any data, but it's returning the 
     # view. 
     def index #needs to return the popular forums
-    require_user
+    require_user true
      #   @forums = Forum.all
       @popular_questions = most_popular_questions # return the most recent
     end

@@ -36,4 +36,8 @@ def user_vote (user)
   return Vote.find_by(answers_id: self.id, user_id: user.id)
 end
 
+def question_title
+  return Question.find(self.question_id).title
+end
+
 end

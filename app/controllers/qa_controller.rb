@@ -67,6 +67,7 @@ class QaController < ApplicationController
       @question = Question.find(edit_question_params[:id]) #inbound data object with the 3 params
       @question.title = edit_question_params[:title]
       @question.text = edit_question_params[:text]
+      @question.forum_id = edit_question_params[:forum_id]
       @question.save() # save the db!
       
       #send the user back to the view_question with hte question id we just saved
@@ -178,7 +179,7 @@ private
     
     # Never trust parameters from the scary internet, only allow the white list through.
     def edit_question_params
-      params.require(:question).permit(:text, :title, :id)
+      params.require(:question).permit(:text, :title, :id, :forum_id)
     end
     
     def answer_params

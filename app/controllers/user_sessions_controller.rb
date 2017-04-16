@@ -7,6 +7,7 @@ class UserSessionsController < ApplicationController
 
   def splash
     @user_session = UserSession.new
+    @message = flash[:notice]
     respond_to do |format|
       format.html {render :layout => 'splash'}
     end

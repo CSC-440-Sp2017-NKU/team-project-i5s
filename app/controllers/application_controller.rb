@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 
     protect_from_forgery
-layout "main"
+    layout "main"
     
     helper_method :forum_list
     helper_method :format_datetime
@@ -35,8 +35,12 @@ layout "main"
       @current_user = current_user_session && current_user_session.user
     end
 
-    def require_user
-      require_boolean(current_user, "You must be logged in to access this page")
+    def require_user(no_message = false)
+      if(no_message)
+        require_boolean(current_user)
+      else
+        require_boolean(current_user, "You must be logged in to access this page")
+      end 
     end
     
     def require_admin
@@ -44,7 +48,7 @@ layout "main"
     end
 
 
-  def require_boolean(bool, message)
+  def require_boolean(bool, message=nil)
       logger.debug "ApplicationController::require_user"
       unless bool
         store_location
