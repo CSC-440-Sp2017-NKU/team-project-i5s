@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  resource_text: MyString
+  resource_url: MyString
+  attached_file: 
+  user: one
+
+two:
+  resource_text: MyString
+  resource_url: MyString
+  attached_file: 
+  user: two
