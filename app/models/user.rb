@@ -47,5 +47,9 @@ class User < ApplicationRecord
   def registrar?()
     return self.role_id == Role.find_by(role: "Registrar")&.id
   end
+  
+  #TODO: return resources uploaded by this user
+  def user_files
+  end
 
 end

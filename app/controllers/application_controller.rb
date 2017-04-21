@@ -68,7 +68,7 @@ class ApplicationController < ActionController::Base
       end
     end
     
-    # TODO :
+    # TODO : implement error page
     def error_handler
       flash[:notice] = "Something went wrong here..."
     end

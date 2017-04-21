@@ -37,7 +37,7 @@ class UsersController < ApplicationController
     end
   end
   
-  # TODO : 
+
   #the user page!
   #GET -- accepts user_id only !! 
   #todo: add to routes, implement function
@@ -58,8 +58,26 @@ class UsersController < ApplicationController
     end
   end
   
+  #TODO: handle an upload resource post request
+  def upload_user_file
+    #on complete, redirect back to current user's page
+  end
+  
+  #TODO: delete selected resource
+  def delete_user_file
+    
+    id = Integer(params["id"])
+    require_boolean current_user.id == UserFile.find(id).user_id
+  
+  end
+  
   private
   def user_params
     params.require(:user).permit(:user_name, :email, :password, :password_confirmation, :role_id)
   end
+  
+  #TODO: pull file data from params
+  def upload_params
+  end
+  
 end

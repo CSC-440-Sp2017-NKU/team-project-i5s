@@ -21,11 +21,9 @@ class Answer < ApplicationRecord
 #@answer_datetime = attributes[:answer_datetime]
 #end
 
-# TODO : 
+
 def score
   return Vote.where(answers_id: self.id).sum(:direction)
-  #@answer_score = 
-  #return 0
 end
 
 def author

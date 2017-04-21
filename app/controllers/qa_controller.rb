@@ -78,7 +78,7 @@ class QaController < ApplicationController
     end
   end
   
-  # TODO : 
+ 
   # allows a user to edit the answer
   # change text, change title :: user has to be admin!
   # check for POST/GET request sent in
@@ -98,10 +98,6 @@ class QaController < ApplicationController
     end
   end
   
-  
-  # TODO : 
-  # add to routes
-  # implement
   def delete_question
     require_admin
     
@@ -119,14 +115,10 @@ class QaController < ApplicationController
   end
   
   
-  # TODO : 
-  # add to routes
-  # impelement
+
   def delete_answer
     require_admin
-  
       # set the question visible flag to false
-    
       @answer= Answer.find Integer(params["id"])
       @answer.active = false
       @answer.save
@@ -136,10 +128,6 @@ class QaController < ApplicationController
   end
   
   
-  # TODO :
-  #add to routes,
-  #implemenet
-  #hunter using AJAX
   def vote
   
       answer_id = Integer(params["answer_id"])

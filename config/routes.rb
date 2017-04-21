@@ -83,6 +83,15 @@ Rails.application.routes.draw do
   #/:answer_id/:direction
   post 'vote', to: 'qa#vote', as: :vote
   
+  #class controller
+  get 'Courses', to: 'course#list_course'
+  get 'Course/:id', to: 'course#view_course'
+  get 'Section/:id', to: 'course#view_section'
+  
+  #user files
+  post 'UploadUserFile', to: 'user#upload_user_file'
+  delete 'DeleteUserFile', to: 'user#delete_user_file'
+  
   #authlogic
   resources :user_sessions
 
