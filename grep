@@ -1,0 +1,74 @@
+app/controllers/application_controller.rb:
+  * [ 30] [TODO] : <CLINT> : search_form : implement search form -- returns the form
+  * [ 34] [TODO] : <CLINT> : search_result : implement the actual search!
+  * [ 96] [TODO] : implement error page
+
+app/controllers/course_controller.rb:
+  * [  4] [TODO] : <ROBERT> : return all sections for the passed course
+  * [ 10] [TODO] : <ROBERT> : return all courses
+  * [ 15] [TODO] : <ROBERT> : return a section based on id
+
+app/controllers/qa_controller.rb:
+  * [  2] [TODO] <CLINT> : properly add user control implement visibility check -- if not visible, don't render.
+
+app/controllers/users_controller.rb:
+  * [  2] [TODO] <CLINT> : properly add user control  
+  * [ 63] [TODO] <DOUG> : handle an upload resource post request
+  * [ 68] [TODO] <DOUG> : delete selected resource
+  * [ 80] [TODO] : <DOUG> : implement hte upload feature. post data contains the ENTIRE FILE! https://www.tutorialspoint.com/ruby-on-rails/rails-file-uploading.htm
+  * [101] [TODO] <DOUG> : pull file data from params
+  * [105] [TODO] <DOUG> : pull file data from params
+
+app/models/course.rb:
+  * [  7] [TODO] return all sections of this course
+
+app/models/section.rb:
+  * [  8] [TODO] return students enrolled in this section
+  * [ 12] [TODO] return instructor for this section
+  * [ 16] [TODO] return semseter for this section
+
+app/models/user.rb:
+  * [ 51] [TODO] return resources uploaded by this user
+
+app/views/application/search_form.html.erb:
+  * [  1] [TODO] : HUNTER : search form
+
+app/views/application/search_result.html.erb:
+  * [  1] [TODO] : HUNTER : search result form
+
+app/views/course/list_course.html.erb:
+  * [  1] [TODO] : <HUNTER> : implement list_course
+
+app/views/course/view_course.html.erb:
+  * [  1] [TODO] : <HUNTER> : implement view_course
+
+app/views/course/view_section.html.erb:
+  * [  1] [TODO] : <HUNTER> : implement view_section
+
+app/views/layouts/main.html.erb:
+  * [  2] [TODO] : <HUNTER> : ADD links to add System User and update the page to update the role.
+
+app/views/qa/edit_question.html.erb:
+  * [  1] [TODO] : <HUNTER> : implement keywords in view
+
+app/views/qa/post_question.html.erb:
+  * [  1] [TODO] : <HUNTER> : add keywords to posting question
+
+app/views/qa/view_question.html.erb:
+  * [  1] [TODO] : <HUNTER> : view keywords with questions
+
+app/views/users/_form.html.erb:
+  * [  1] [TODO] : <HUNTER> : chnage to allow for adding roles.
+
+app/views/users/list.html.erb:
+  * [  1] [TODO] : <Hunter> : implement the list users view.
+
+app/views/users/new.html.erb:
+  * [  1] [TODO] : <HUNTER> : ADD role information to feedback?
+
+app/views/users/registrar_form.html.erb:
+  * [  1] [TODO] : <Hunter> : implement the registrar upload form. one button to upload them all... and in the darkness bind them to the database.
+
+app/views/users/view.html.erb:
+  * [ 41] [TODO] add resource display, add resource upload form if logged in
+

@@ -1,6 +1,7 @@
 class QaController < ApplicationController
+  #TODO: <CLINT> : properly add user control implement visibility check -- if not visible, don't render.
   
-  # TODO : impelement visibility check -- if not visible, don't render.
+  
   #GET -- return question/answers objects
   def view_question
     require_user
@@ -15,7 +16,6 @@ class QaController < ApplicationController
     #comment
   end
 
-  # TODO : impelement visibility check -- if not visible, don't render.
   #POST -- write the data written in the form to the db
   #GET --  return the form to write a question
   def post_question
@@ -33,7 +33,6 @@ class QaController < ApplicationController
     end
   end
   
-  # TODO : impelement visibility check -- if not visible, don't render.
   def answer_question
     require_user
     if request.post?
@@ -50,8 +49,6 @@ class QaController < ApplicationController
     
   end
   
-  
-  # TODO : impelement visibility check -- if not visible, don't render.
   # allows a user to edit the question
   # change text, change title :: user has to be admin!
   # check for POST/GET request sent in
@@ -78,7 +75,6 @@ class QaController < ApplicationController
     end
   end
   
- 
   # allows a user to edit the answer
   # change text, change title :: user has to be admin!
   # check for POST/GET request sent in
@@ -100,7 +96,6 @@ class QaController < ApplicationController
   
   def delete_question
     require_admin
-    
       # set the question visible flag to false
       @question = Question.find Integer(params["id"])
       @question.active = false
@@ -111,46 +106,43 @@ class QaController < ApplicationController
       
       redirect_to action: "view_forum", controller: "forum", id: @question.forum_id
       #@questions = Question.where column: "isVisible"
-
   end
-  
   
 
   def delete_answer
     require_admin
-      # set the question visible flag to false
-      @answer= Answer.find Integer(params["id"])
-      @answer.active = false
-      @answer.save
-      redirect_to action:"view_question", controller: "qa", id: @answer.question_id
-      #@answers = Answer.where column: "isVisible"
-    
+    # set the question visible flag to false
+    @answer= Answer.find Integer(params["id"])
+    @answer.active = false
+    @answer.save
+    redirect_to action:"view_question", controller: "qa", id: @answer.question_id
+    #@answers = Answer.where column: "isVisible"
   end
   
   
   def vote
-  
-      answer_id = Integer(params["answer_id"])
-      dir= Integer(params["direction"])
-      answer = Answer.find(answer_id)
-      user_vote = answer.user_vote current_user
-      
-      #if curent_user has voted, update vote
-      if user_vote
-        user_vote.direction = dir
-        user_vote.save
-      else #otherwise, create a new vote
-        user_vote = Vote.new
-        user_vote.user_id = current_user.id
-        user_vote.answers_id = answer_id
-        user_vote.direction = dir
-        user_vote.save
-      end
-      score = {"score" => answer.score}
-      respond_to do |format|
-        format.html
-        format.json {render json: score}
-      end
+    answer_id = Integer(params["answer_id"])
+    dir= Integer(params["direction"])
+    answer = Answer.find(answer_id)
+    user_vote = answer.user_vote current_user
+    
+    #if curent_user has voted, update vote
+    if user_vote
+      user_vote.direction = dir
+      user_vote.save
+    else #otherwise, create a new vote
+      user_vote = Vote.new
+      user_vote.user_id = current_user.id
+      user_vote.answers_id = answer_id
+      user_vote.direction = dir
+      user_vote.save
+    end
+    
+    score = {"score" => answer.score}
+    respond_to do |format|
+      format.html
+      format.json {render json: score}
+    end
   end
   
   

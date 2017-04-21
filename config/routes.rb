@@ -63,13 +63,6 @@ Rails.application.routes.draw do
   get '/Question/Answer/:question_id', to: 'qa#answer_question'
   post '/Question/Answer', to: 'qa#answer_question'
   
-  get 'forum/index'
-  get 'forum/view_forum'
-  get 'qa/answer_question'
-  get 'qa/post_question'
-  get 'qa/view_question'
-  get 'forum/list_forums'
-  
   get 'Question/Edit/:id', to: 'qa#edit_question'
   post 'Question/Edit/:id', to: 'qa#edit_question'
   delete 'Question/Delete', to: 'qa#delete_question'
@@ -78,7 +71,13 @@ Rails.application.routes.draw do
   post 'Answer/Edit/:id', to: 'qa#edit_answer'
   delete 'Answer/Delete', to: 'qa#delete_answer'
   
+  
   get 'users/view/:id', to: 'users#view'
+  get 'Registrar', to: 'users#registrar_form'
+  post 'Registrar', to: 'users#handle_upload'
+  
+  #
+  get 'Users', to: 'users#list'
   
   #/:answer_id/:direction
   post 'vote', to: 'qa#vote', as: :vote
@@ -87,6 +86,11 @@ Rails.application.routes.draw do
   get 'Courses', to: 'course#list_course'
   get 'Course/:id', to: 'course#view_course'
   get 'Section/:id', to: 'course#view_section'
+  
+  
+  #application controller!
+  get 'Search', to: 'application#search_form'
+  post 'Search', to: 'application#search_result'
   
   #user files
   post 'UploadUserFile', to: 'user#upload_user_file'
