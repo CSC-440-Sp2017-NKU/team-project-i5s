@@ -6,5 +6,6 @@ class Course < ApplicationRecord
   
   #TODO: return all sections of this course
   def sections
+    return Section.where(course_id: self.id)
   end
 end

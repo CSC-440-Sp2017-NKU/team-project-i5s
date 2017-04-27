@@ -14,7 +14,7 @@ class CourseController < ApplicationController
     
     #TODO : <ROBERT> : return a section based on id
     def view_section
-    #Integer(params["id"])
-    #@section
+        id = Integer(params[:id])
+        @section = Section.find(id)
     end
 end
