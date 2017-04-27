@@ -601,7 +601,7 @@ footer
 .question-forum h3, .question-forum h4
 {
     font-weight: 900;
-vertical-align: top;
+    vertical-align: top;
     margin-top: 0px;
     margin-bottom: 0px;
    /* font-size: 74px;*/
@@ -610,7 +610,7 @@ vertical-align: top;
     
 }
 
-.question-forum span
+.question-forum span, .grey-text
 {
     color: #5b5b5b;
 }

@@ -82,8 +82,10 @@ ActiveRecord::Schema.define(version: 20170404213044) do
     t.integer  "semester_id"
     t.integer  "course_id"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                                                            null: false
+    t.datetime "updated_at",                                                            null: false
+    t.string   "section_name"
+    t.string   "#<ActiveRecord::ConnectionAdapters::TableDefinition:0x000000021a8720>"
     t.index ["course_id"], name: "index_sections_on_course_id"
     t.index ["semester_id"], name: "index_sections_on_semester_id"
     t.index ["user_id"], name: "index_sections_on_user_id"
