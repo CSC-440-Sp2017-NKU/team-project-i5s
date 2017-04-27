@@ -23,7 +23,7 @@
 <h3>Classes</h3>
 <ul>
 <%@user.classes&.each do |course| %>
-<li><%= course.course_name %></li>
+<li><a href="<%= url_for action:"view_course", controller:"course", id:course.id %>"><%= course.course_name %></a></li>
 <% end %>
 <% end %>
 </ul>
