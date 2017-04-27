@@ -4,6 +4,7 @@ class Section < ApplicationRecord
   belongs_to :user
   has_many :student_sections
   has_many :users, :through => :student_sections
+  has_many :courses, :through => :student_sections
   
   #TODO: return students enrolled in this section
   def students

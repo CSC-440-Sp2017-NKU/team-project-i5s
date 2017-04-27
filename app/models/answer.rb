@@ -7,6 +7,7 @@ class Answer < ApplicationRecord
   belongs_to :user
   belongs_to :question
   has_many :votes, foreign_key: 'answers_id'
+  has_many :users, :through => :votes
   validates :text, presence: true
   validates :question_id, presence: true        
 #class Answer < ApplicationRecord

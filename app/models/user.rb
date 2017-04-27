@@ -2,6 +2,17 @@ class User < ApplicationRecord
   belongs_to :role
   has_many :student_sections
   has_many :sections
+  has_many :user_files
+  has_many :questions
+  has_many :answers
+  has_many :votes
+  has_many :questions, :through => :answers
+  has_many :forums, :through => :questions
+  has_many :answers, :through => :votes
+  has_many :courses, :through => :student_sections
+  has_many :sections, :through => :student_sections
+  has_many :courses, :through =>:sections
+  has_many :semesters, :through => :sections
   acts_as_authentic do |c|
   c.login_field = 'email'
   end
