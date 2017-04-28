@@ -3,19 +3,20 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @message = flash[:notice]
   end
 
   def create
+    
     @user = User.new(user_params)
-
     # Saving without session maintenance to skip
     # auto-login which can't happen here because
     # the User has not yet been activated
     if @user.save
-      flash[:notice] = "Your account has been created."
+      flash[:notice] = "User account "+@user.user_name+" has been created."
       redirect_to signup_url
     else
-      flash[:notice] = "There was a problem creating you."
+      flash[:notice] = "There was a problem creating this user."
       render :action => :new
     end
 

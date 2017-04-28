@@ -2,6 +2,9 @@
 <!--#app/views/users/new.html.erb-->
 <h1>Register</h1>
 
+<% if @message %>
+<p><%= @message %></p>
+<% end %>
 <%= form_for @user do |f| %>
 <%= render :partial => "form", :object => f, :locals => { :user => @user } %>
 <%= f.submit "Register" %>
