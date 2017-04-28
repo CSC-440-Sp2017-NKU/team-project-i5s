@@ -73,6 +73,12 @@ class UsersController < ApplicationController
   
   end
   
+  def download_file
+    item = UserFile.find(Integer(params["id"]))
+    send_data item.attached_file, filename: item.resource_text, disposition: 'attachment' #can use 'type' parameter
+  end
+  
+  
   #handled by route
   def registrar_form
     require_manager
