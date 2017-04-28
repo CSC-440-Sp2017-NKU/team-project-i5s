@@ -5,6 +5,9 @@ class ForumController < ApplicationController
     # index function doesn't need to gather any data, but it's returning the 
     # view. 
     def index #needs to return the popular forums
+    if current_user.registrar?
+      redirect_to action:"registrar_form", controller:"users"
+    end
      #   @forums = Forum.all
       @popular_questions = most_popular_questions # return the most recent
     end

@@ -1,1 +1,10 @@
 <% #TODO : <Hunter> : implement the registrar upload form. one button to upload them all... and in the darkness bind them to the database. %>
+
+<h2>Registrar Portal</h2>
+
+<h3>Upload Student Data</h3>
+
+<%= form_tag(url_for action:"handle_upload", method: "post") do %>
+    <p><input type="file" name="file" accept=".csv"></p>
+    <input type="submit">
+<% end %>
