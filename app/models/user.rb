@@ -63,8 +63,10 @@ class User < ApplicationRecord
     return self.admin? || self.registrar?
   end
   
-  #TODO: return resources uploaded by this user
+  #TODO: <DOUG> :return resources uploaded by this user
   def user_files
   end
+
+  
 
 end
