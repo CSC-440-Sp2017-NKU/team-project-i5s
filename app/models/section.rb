@@ -16,7 +16,7 @@ class Section < ApplicationRecord
   #TODO: return instructor for this section
   def instructor #want to return the instructor id and name from the users table
    # return Users.Section.where(:users.id => :section.id)
-    return User.joins(:sections).where(:sections => {:id => self.id}).all
+    return User.find(self.user_id)
   end
   
   #TODO: return semseter for this section
