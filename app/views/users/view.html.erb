@@ -36,6 +36,33 @@
 <p>Upvotes Received:  <strong><%= @user.reputation[:up_votes] %></strong></p>
 <p>Downvotes Received:  <strong><%= @user.reputation[:down_votes] %></strong></p>
 </div>
+
+<div class="resource-box rep-box">
+  <% @can_edit = current_user.admin? || current_user.id == @user.id %>
+  
+  <% @user.user_files&.each do |file|%>
+    <div class="user-file">
+     <a href="<%= item_download_path(file.id) %>"><%= file.resource_text %></a>
+    
+    <% if @can_edit %>
+    <a href="<%= url_for(controller:"users", action:"delete_user_file", id: file.id) %>" data-method="delete"><i class="fa fa-trash delete-btn"></i></a>
+     <% end %>
+     </div>
+  <% end %>
+  
+  
+  <% if @can_edit %>
+  <h3>Upload a Resource</h3>
+   <%= form_tag(upload_user_file_url , method: "post") do %>
+    <p><input type="file" name="file[attached_file]" accept=""></p>
+    <label form="file[resource_text]">File Name:</label>
+    <p><input type="text" name="resource_text"></input> </p>
+    <input type="submit" class="btn btn-default">
+  <% end %>
+  
+  <% end %>
+</div>
+
   </div> 
   
   <% #TODO: add resource display, add resource upload form if logged in %>
