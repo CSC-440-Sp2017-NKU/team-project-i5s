@@ -73,11 +73,11 @@ class UsersController < ApplicationController
   #https://matt.berther.io/2007/10/19/uploading-files-to-a-database-using-rails/
   def upload_user_file
     
-    return if params[:attached_file].blank?
+    #return if params[:attached_file].blank?
 
     @user_file = UserFile.new
-    @user_file.uploaded_file = params[:attached_file]
-
+    @user_file.uploaded_file = upload_user_file_params[:attached_file]
+    @user_file.user_id = current_user.id
     if @user_file.save
         flash[:notice] = "Thank you for your submission..."
         redirect_to :action => "show"
@@ -131,6 +131,7 @@ class UsersController < ApplicationController
   
   #TODO: <DOUG> : pull file data from params
   def upload_user_file_params
+    params.require(:file).permit(:attached_file, :resource_text)
   end
   
   #TODO: <DOUG> : pull file data from params

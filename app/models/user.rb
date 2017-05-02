@@ -65,6 +65,7 @@ class User < ApplicationRecord
   
   #TODO: <DOUG> :return resources uploaded by this user
   def user_files
+    UserFile.where(:user_id => self.id)
   end
   
   

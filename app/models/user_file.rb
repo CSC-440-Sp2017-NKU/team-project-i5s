@@ -3,10 +3,11 @@ class UserFile < ApplicationRecord
   
   #TODO help!
   def uploaded_file=(incoming_file)
+      #byebug
     self.resource_text = incoming_file.original_filename
     #self.content_type = incoming_file.content_type
     self.attached_file = incoming_file.read
-    self.user_id = user_id
+    #self.user_id = 
     #self.created_at = 
   end
 
