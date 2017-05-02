@@ -66,6 +66,10 @@ class User < ApplicationRecord
   #TODO: <DOUG> :return resources uploaded by this user
   def user_files
   end
+  
+  
+  
+
 
   
 
