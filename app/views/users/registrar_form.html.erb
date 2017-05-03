@@ -3,7 +3,7 @@
 
 <h3>Upload Student Data</h3>
 
-<%= form_tag(url_for action:"handle_upload", method: "post") do %>
+<%= form_tag(url_for {action:"handle_upload", method: "post"}, {multipart: true}) do %>
     <p><input type="file" name="file" accept=".csv"></p>
     <input type="submit">
 <% end %>
