@@ -4,9 +4,9 @@
 <div>
   
   <div class="form-element">
-      <%= label_tag("question[forum_id]", "Search For") %>
-     <select >
-       <option value="question">Question</option>
+      <%= label_tag("search_for", "Search For") %>
+     <select id="search-for">
+       <option value="question" selected="selected">Question</option>
        <option value="course">Course</option>
        </select>
       </div>
@@ -15,17 +15,39 @@
         <%= form_tag(search_result_url ,method: "post") do %>
       
       
-    <div id="question-fields">
+    <div id="question-fields" class="fields">
       
         <div class="form-element">
-      <%= label_tag("search[title]", "Question") %>
-      <%= text_field_tag("search[title]", "",{class:"form-control"}) %>
+      <%= label_tag("search[question_title]", "Question Title") %>
+      <%= text_field_tag("search[question_title]", "",{class:"form-control"}) %>
       </div>
-     
+      <div class="form-element">
+      <%= label_tag("search[question_text]", "Question Text") %>
+      <%= text_field_tag("search[question_text]", "",{class:"form-control"}) %>
+      </div>
+      <div class="form-element">
+      <%= label_tag("search[question_user_name]", "Author") %>
+      <%= text_field_tag("search[question_user_name]", "",{class:"form-control"}) %>
+      </div>
+      <div class="form-element">
+      <%= label_tag("search[keyword]", "Keyword") %>
+      <%= text_field_tag("search[keyword]", "",{class:"form-control"}) %>
+      </div>
       
     </div>
-         
-    <div id="course-fields"></div>
+    
+    <div id="course-fields" class="fields" style="display:none;">
+           <div class="form-element">
+      <%= label_tag("search[course_name]", "Course Name") %>
+      <%= text_field_tag("search[course_name]", "",{class:"form-control"}) %>
+      </div>
+      
+           <div class="form-element">
+      <%= label_tag("search[instructor_name]", "Instructor") %>
+      <%= text_field_tag("search[instructor_name]", "",{class:"form-control"}) %>
+      </div>
+      
+    </div>
       
       
       
@@ -38,3 +60,14 @@
     
     
 </div>
+
+<script>
+  
+  
+  $("#search-for").on("change", function(){
+    $(".fields").hide();
+    var selector = "#"+this.value+"-fields";
+    $(selector).show();
+    
+  });
+</script>
