@@ -82,14 +82,17 @@ class UsersController < ApplicationController
   #handled by route
   def registrar_form
     require_manager
+    #@message = flash[:notice]
   end
   
-  #TODO : <DOUG> : implement hte upload feature. post data contains the ENTIRE FILE! https://www.tutorialspoint.com/ruby-on-rails/rails-file-uploading.htm
-  #http://stackoverflow.com/questions/14174044/uploading-a-file-in-rails
+  #implement the upload feature
   def handle_upload
     require_manager
-    #redirect  back to hte registrar form.
-    #redirect_to registrar_form
+  
+    Course.upload( params[:file] )
+
+    flash[:notice] = "Upload success."
+    redirect_to action:"registrar_form"
 
   end
   
@@ -109,8 +112,7 @@ class UsersController < ApplicationController
   def upload_user_file_params
   end
   
-  #TODO: <DOUG> : pull file data from params
   def upload_registrar_params
+    params.require(:file).original_filename
   end
-  
 end

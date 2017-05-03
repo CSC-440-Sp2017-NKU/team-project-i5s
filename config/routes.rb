@@ -74,6 +74,7 @@ Rails.application.routes.draw do
   
   get 'users/view/:id', to: 'users#view'
   get 'Registrar', to: 'users#registrar_form'
+
   post 'Registrar', to: 'users#handle_upload'
   
   #
