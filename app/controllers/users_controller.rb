@@ -89,7 +89,7 @@ class UsersController < ApplicationController
   def handle_upload
     require_manager
   
-    Course.upload( params[:file] )
+    Upload.upload( params[:file] )
 
     flash[:notice] = "Upload success."
     redirect_to action:"registrar_form"
