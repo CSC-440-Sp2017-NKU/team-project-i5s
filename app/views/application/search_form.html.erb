@@ -1,8 +1,7 @@
-<% #TODO : HUNTER : search form   %>
+
 <h2>Search</h2>
 
 <div>
-  
   <div class="form-element">
       <%= label_tag("search_for", "Search For") %>
      <select id="search-for">
@@ -48,26 +47,16 @@
       </div>
       
     </div>
-      
-      
-      
       <%= submit_tag("Search",{class:"btn btn-default btn-dark"}) %>
       <a href="<%= url_for(action:"index",controller:"forum" )%>" class="btn btn-default">Cancel</a>
-    
     <% end %>
-    
 </div>
-    
-    
 </div>
 
 <script>
-  
-  
   $("#search-for").on("change", function(){
     $(".fields").hide();
     var selector = "#"+this.value+"-fields";
     $(selector).show();
-    
   });
 </script>
