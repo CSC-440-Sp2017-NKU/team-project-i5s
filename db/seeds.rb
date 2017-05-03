@@ -203,7 +203,7 @@ Keyword.create!([
 	{keyword: "data structures"},
 	{keyword: "algorithms"},
 	{keyword: "astronomy"},
-	{keyword: "neweton"},
+	{keyword: "newton"},
 	{keyword: "pascal"},
 	{keyword: "philosophy"},
 	{keyword: "zen"},

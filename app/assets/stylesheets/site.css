@@ -150,6 +150,15 @@ a:hover{
     padding-bottom: 3px;
 }
 
+.adv-search-link
+{
+    padding: 0px !important;
+    position: absolute !important;
+    right: 0px !important;
+    text-decoration: underline;
+    font-size: 14px !important;
+}
+
 .navbar-inverse .navbar-nav>li>a
 {
     color: white;

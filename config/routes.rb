@@ -90,7 +90,7 @@ Rails.application.routes.draw do
   
   #application controller!
   get 'Search', to: 'application#search_form'
-  post 'Search', to: 'application#search_result'
+  post 'Search', to: 'application#search_result', as: :search_result
   
   #user files
   post 'UploadUserFile', to: 'user#upload_user_file', as: :upload_user_file
