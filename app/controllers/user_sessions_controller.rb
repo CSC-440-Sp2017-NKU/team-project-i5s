@@ -1,6 +1,10 @@
 class UserSessionsController < ApplicationController 
   before_filter :require_user, :only => :destroy
 
+  def index
+    redirect_to :action => :splash
+  end
+
   def new
     @user_session = UserSession.new
   end
@@ -20,7 +24,7 @@ class UserSessionsController < ApplicationController
      # redirect_back_or_default account_url(@current_user)
         redirect_to(action:"index", controller:"forum")
     else
-      render :action => :new
+      render :action => :splash
     end
   end
   

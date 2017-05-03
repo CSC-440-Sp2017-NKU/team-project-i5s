@@ -10,7 +10,9 @@
 <div class="sections-list">
     <% sections = @course.sections %>
     <% sections&.each do |section| %>
-    <a href="<%= url_for action:"view_section", id:section.id %>"> <%= section.section_name %></a>
+    <div>
+    <a href="<%= url_for action:"view_section", id:section.id %>"> <%= section.full_name %></a>
+    </div>
     <% end %>
     <% if sections.length == 0 %>
     <p class="grey-text">There are no sections for this course.</p>

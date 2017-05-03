@@ -13,7 +13,7 @@ class Section < ApplicationRecord
     return User.joins(:sections).where(:sections => {:id => self.id}).all
   end
   
-  #TODO: return instructor for this section
+  #return instructor for this section
   def instructor #want to return the instructor id and name from the users table
    # return Users.Section.where(:users.id => :section.id)
     return User.find(self.user_id)
@@ -22,6 +22,15 @@ class Section < ApplicationRecord
   #TODO: return semseter for this section
   def semester
     return Section.where(semester_id: self.id)
+  end
+  
+  def full_name
+    semester = Semester.find(self.semester_id)
+    return self.section_name + " " + semester.session.to_s + " " + semester.academic_year.to_s
+  end
+  
+  def course
+    return Course.find(self.course_id)
   end
   
 end
