@@ -43,7 +43,7 @@ class User < ApplicationRecord
   def classes
     #Course.includes(:sections => [:users]).where(:users => {:id => self.id}).all
     #Course.joins(:sections => :users).where(:users => {:id => self.id}).all
-    Course.joins(:users).where(:users => {:id => self.id}).all.uniq
+    Course.joins(:users).where(:users => {:id => self.id}).all.distinct
   end
   
   # returns whether or not the user is an admin!?
