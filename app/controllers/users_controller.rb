@@ -99,7 +99,7 @@ class UsersController < ApplicationController
   #list all of the users in the system for hte admin...
   def list
     require_admin
-    @Users = Users.all
+    @Users = User.all
   end
   
   
