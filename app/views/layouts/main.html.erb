@@ -44,8 +44,9 @@
       <% end %>
       
       <li><div class="search">
-       <%= form_tag(search_result_url ,method: "post") do %>
+       <%= form_tag(search_result_url, method: "post") do %>
        <input type="search" name="search[question_title]"><span class="fa fa-search"></span>
+       <input type="hidden" name="search_for" value="question">
       <input type='submit' value='Search' style="visibility:hidden; position:absolute;"/>
       <% end %></div>
        <a class="adv-search-link" href="<%= url_for(action:"search_form", controller:"application") %>">Advanced Search</a>

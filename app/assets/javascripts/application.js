@@ -16,4 +16,5 @@
 
 //= require bootstrap.min
 //= require isotope.pkgd.min
+//= require tag-it.min
 //= require_tree .

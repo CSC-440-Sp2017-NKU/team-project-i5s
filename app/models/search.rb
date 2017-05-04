@@ -12,6 +12,7 @@ class Search < ApplicationRecord
     
     def self.search_questions(query_criteria)
       #make sure we passing in values to the model
+
       if !query_criteria.empty? and (query_criteria.has_key?(:question_user_name) or query_criteria.has_key?(:question_title) or query_criteria.has_key?(:question_subject) or query_criteria.has_key?(:question_keyword))
         return question_results(query_criteria)
       else
