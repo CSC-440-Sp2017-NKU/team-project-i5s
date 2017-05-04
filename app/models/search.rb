@@ -15,7 +15,7 @@ class Search < ApplicationRecord
     def self.search_questions(query_criteria)
 #make sure we passing in values to the model
      # query_criteria = {:question_user_name => "Harry"}
-      byebug
+      #byebug
       if !query_criteria.empty? and (query_criteria.has_key?(:question_user_name) or query_criteria.has_key?(:question_title) or query_criteria.has_key?(:question_subject) or query_criteria.has_key?(:question_keyword))
         return question_results(query_criteria) #.to_h
       else
@@ -90,7 +90,7 @@ private
     #http://stackoverflow.com/questions/28367495/avoid-sql-injection-with-connection-execute
       query = sanitize_sql([sSQL + sWhere, query_criteria])
       results = ActiveRecord::Base.connection.execute(query)
-byebug
+#byebug
       return results
     end
 end
