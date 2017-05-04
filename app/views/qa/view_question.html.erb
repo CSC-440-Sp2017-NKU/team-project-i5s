@@ -22,9 +22,11 @@
     </div>
     <div class="question-description">
          <%= @question.text %>
+         <% if  @question.keywords %>
          <div class="question-keywords">
         <strong>Keywords:</strong> <%= @question.keywords %>
     </div>
+    <% end %>
     </div>
     
 </div>

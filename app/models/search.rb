@@ -66,6 +66,7 @@ private
 
 
     def self.question_results(query_criteria)
+      
     #query the DB for all questions/keywords/users
     #and whittle down the results based on teh passed-in parameters
         sSQL = %{SELECT   
@@ -77,11 +78,12 @@ private
         }
         #build our where clause dynamically
         #questions :: subject, title, user, keyword
+        
         sWhere = %{WHERE QUESTIONS.ACTIVE='t'}
-        sWhere = sWhere + " AND INSTR(USERS.USER_NAME, :question_user_name) > 0" if !query_criteria[:question_user_name].empty?
-        sWhere = sWhere + " AND INSTR(QUESTIONS.TITLE, :question_title) > 0" if !query_criteria[:question_title].empty?
-        sWhere = sWhere + " AND INSTR(QUESTIONS.TEXT, :question_text) > 0" if !query_criteria[:question_text].empty?   
-        sWhere = sWhere + " AND INSTR(QUESTIONS.KEYWORDS, :question_keyword) > 0" if !query_criteria[:question_keyword].empty?        
+        sWhere = sWhere + " AND INSTR(USERS.USER_NAME, :question_user_name) > 0" if check_criteria(query_criteria,:question_user_name)
+        sWhere = sWhere + " AND INSTR(QUESTIONS.TITLE, :question_title) > 0" if check_criteria(query_criteria,:question_title)
+        sWhere = sWhere + " AND INSTR(QUESTIONS.TEXT, :question_text) > 0" if check_criteria(query_criteria,:question_text)
+        sWhere = sWhere + " AND INSTR(QUESTIONS.KEYWORDS, :question_keyword) > 0" if check_criteria(query_criteria,:question_keyword)       
         sWhere = sWhere + " LIMIT 50" 
         
         #return our results
@@ -90,6 +92,11 @@ private
       query = sanitize_sql([sSQL + sWhere, query_criteria])
       results = ActiveRecord::Base.connection.execute(query)
       return results
+    end
+    
+    def self.check_criteria(query_criteria,field)
+      #byebug
+      return !query_criteria[field].nil? && !query_criteria[field].empty?
     end
     
     #pass in an iterble object and returns whether or not there is data in the collection

@@ -9,7 +9,7 @@
        <% if(!r['QUESTION_ID'].nil?) %>
         <%= render partial:"question_search", object: r %>
        <% elsif (!r['COURSE_ID'].nil?) %>
-        <% render partial:"course_search", object: r %>
+        <%= render partial:"course_search", object: r %>
        <% end %>
     </div>
     <% end %>

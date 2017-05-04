@@ -41,7 +41,7 @@ class ApplicationController < ActionController::Base
   def search_result
     # user specified that they want to search questions?
     # user specified that they want to search courses ?
-
+    
     if params[:search_for] == "question"
       if !search_params["question_keyword"].nil? and search_params["question_keyword"].include?(',')
         search_params["question_keyword"] = search_params["question_keyword"].tr(',', '').strip #scrub any commas in our search
