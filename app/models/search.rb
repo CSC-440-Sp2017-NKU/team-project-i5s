@@ -36,7 +36,7 @@ private
                    (SECTIONS 
                     INNER JOIN
                     USERS ON SECTIONS.USER_ID = USERS.ID 
-                   ) ON COURSES.ID = SECTIONS.COURSE_ID
+                   ) K ON COURSES.ID = K.COURSE_ID
                 }
                 
         #build our where clause dynamically
