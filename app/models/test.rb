@@ -1,2 +1,2 @@
 
-p "Created #{Section.students} sections"
+#p "Created #{Section.students} sections"

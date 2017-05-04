@@ -4,7 +4,7 @@ class Section < ApplicationRecord
   belongs_to :users
   has_many :student_sections
 #<<<<<<< HEAD
- # has_many :users, :through => :student_sections
+  has_many :users, :through => :student_sections
   has_many :courses, :through => :student_sections
 #=======
   has_many :users, :through => :student_sections
@@ -15,7 +15,8 @@ class Section < ApplicationRecord
   
   #return students enrolled in this section
   def students # Want: student id and student names on Users Table
-    return User.joins(:sections).where(:sections => {:id => self.id}).all
+    #return User.joins(:sections).where(:sections => {:id => self.id}).all
+    return Users.all
   end
   
   #return instructor for this section
