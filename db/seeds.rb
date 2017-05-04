@@ -186,65 +186,6 @@ Vote.create!([
 p "Created #{Vote.count} votes"
 p "Votes: #{Vote.pluck :id}" 
 
-#rails generate model Keyword keyword:string 
-Keyword.destroy_all
-Keyword.create!([
-	{keyword: "american literature"},
-	{keyword: "ancient history"},
-	{keyword: "oil painting"},
-	{keyword: "water painting"},
-	{keyword: "clay sculpting"},
-	{keyword: "genetics"},
-	{keyword: "INF120"},
-	{keyword: "CSC440"},
-	{keyword: "CSC485"},
-	{keyword: "HIS323"},
-	{keyword: "ART202"},
-	{keyword: "ART409"},
-	{keyword: "data structures"},
-	{keyword: "algorithms"},
-	{keyword: "astronomy"},
-	{keyword: "newton"},
-	{keyword: "pascal"},
-	{keyword: "philosophy"},
-	{keyword: "zen"},
-	{keyword: "software maintenance"},
-	{keyword: "visual design"},
-	{keyword: "psychology"},
-	{keyword: "newton's second law"},
-	{keyword: "calculus"},
-	{keyword: "geometry"},
-	{keyword: "algebra"}
-])
-p "Created #{Keyword.count} keywords"
-p "Keywords: #{Keyword.pluck :id}" 
-
-
-
-#rails generate model QuestionKeyword question:references keyword:references
-QuestionKeyword.destroy_all
-QuestionKeyword.create!([
-{question_id:1, keyword_id:1 },
-{question_id:1, keyword_id:2 },
-{question_id:1, keyword_id:24 },
-{question_id:1, keyword_id:4 },
-{question_id:1, keyword_id:25 },
-{question_id:1, keyword_id:23 },
-{question_id:1, keyword_id:17 },
-{question_id:1, keyword_id:8 },
-{question_id:2, keyword_id:3 },
-{question_id:2, keyword_id:2 },
-{question_id:2, keyword_id:16 },
-{question_id:3, keyword_id:20 },
-{question_id:3, keyword_id:3 },
-{question_id:3, keyword_id:8 },
-{question_id:3, keyword_id:9 },
-{question_id:3, keyword_id:10 },
-{question_id:4, keyword_id:11 },
-{question_id:4, keyword_id:12 }
-])
-p "Created #{QuestionKeyword.count} QuestionKeywords"
-p "Keywords: #{QuestionKeyword.pluck :id}" 
 
 
 
