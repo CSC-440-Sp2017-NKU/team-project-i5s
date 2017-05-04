@@ -726,6 +726,12 @@ a{
  margin-bottom: 10px;   
 }
 
+/*Tagit styles*/
+
+
+
+
+
 @font-face {
   font-family: 'Avenir';
   src: url('Avenir-Black.eot?#iefix') format('embedded-opentype'),  url('Avenir-Black.woff') format('woff'), url('Avenir-Black.ttf')  format('truetype'), url('Avenir-Black.svg#Avenir-Black') format('svg');

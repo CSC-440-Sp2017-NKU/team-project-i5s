@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 
+//= require jquery-ui
+
 //= require bootstrap.min
 //= require isotope.pkgd.min
 //= require tag-it.min

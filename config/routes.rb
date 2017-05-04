@@ -59,7 +59,7 @@ Rails.application.routes.draw do
   get '/Forums/:id', to: 'forum#view_forum'
   get '/Question/:id', to: 'qa#view_question'
   get '/Question/Post/:forum_id', to: 'qa#post_question'
-  post '/Question/Post', to: 'qa#post_question'
+  post '/Question/Post', to: 'qa#post_question', as: :post_question
   get '/Question/Answer/:question_id', to: 'qa#answer_question'
   post '/Question/Answer', to: 'qa#answer_question'
   
