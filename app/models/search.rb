@@ -59,7 +59,7 @@ private
         #http://stackoverflow.com/questions/28367495/avoid-sql-injection-with-connection-execute
       query = sanitize_sql([sSQL + sWhere, query_criteria])
       results = ActiveRecord::Base.connection.execute(query)
-     # byebug
+      byebug
       return results
       
     end
@@ -91,6 +91,7 @@ private
     #http://stackoverflow.com/questions/28367495/avoid-sql-injection-with-connection-execute
       query = sanitize_sql([sSQL + sWhere, query_criteria])
       results = ActiveRecord::Base.connection.execute(query)
+      byebug
       return results
     end
     

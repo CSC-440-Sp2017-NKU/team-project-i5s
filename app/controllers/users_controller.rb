@@ -109,10 +109,9 @@ end
   #TODO: <DOUG> : delete selected resource
   def delete_user_file
     id = Integer(params["id"])
-    require_boolean current_user.id == UserFile.find(id).user_id
+    require_boolean(current_user.id == UserFile.find(id).user_id || current_user.admin?)
     UserFile.delete(id)
     redirect_to :action => "view", :id =>current_user.id
-  
   end
   
   def download_file

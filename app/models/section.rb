@@ -15,8 +15,7 @@ class Section < ApplicationRecord
   
   #return students enrolled in this section
   def students # Want: student id and student names on Users Table
-    #return User.joins(:sections).where(:sections => {:id => self.id}).all
-    return Users.all
+    return User.joins(:sections).where(:sections => {:id => self.id}).all
   end
   
   #return instructor for this section
