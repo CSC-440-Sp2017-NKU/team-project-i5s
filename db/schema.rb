@@ -106,11 +106,7 @@ ActiveRecord::Schema.define(version: 20170503235352) do
     t.datetime "created_at",                                                            null: false
     t.datetime "updated_at",                                                            null: false
     t.string   "section_name"
-<<<<<<< HEAD
     t.string   "#<ActiveRecord::ConnectionAdapters::TableDefinition:0x000000053e9978>"
-=======
-    t.string   "#<ActiveRecord::ConnectionAdapters::TableDefinition:0x00000003b4b808>"
->>>>>>> master
     t.index ["course_id"], name: "index_sections_on_course_id"
     t.index ["semester_id"], name: "index_sections_on_semester_id"
     t.index ["user_id"], name: "index_sections_on_user_id"

@@ -55,6 +55,7 @@ class UsersController < ApplicationController
   #update routes
   def view
     require_user
+    @meesage = flash[:notice]
     #@question = User.find(Integer(params["id"]))
     if (!params[:id].nil?)
       id = Integer(params[:id])
@@ -74,16 +75,26 @@ class UsersController < ApplicationController
   def upload_user_file
     
     #return if params[:attached_file].blank?
-
+    
     @user_file = UserFile.new
+    
+    #if  upload_user_file_params[:resource_text].nil
+     # @user_file.resource_text = upload_user_file_params[:resource_text]
+    #else
+    @user_file.resource_text = upload_user_file_params[:attached_file].original_filename
+      
+    #end
     @user_file.uploaded_file = upload_user_file_params[:attached_file]
     @user_file.user_id = current_user.id
+    #if  !upload_user_file_params[:resource_text].nil?
+     # @user_file.resource_text = upload_user_file_params[:resource_text]
+    #end
     if @user_file.save
         flash[:notice] = "Thank you for your submission..."
-        redirect_to :action => "show"
+        redirect_to :action => "view", :id =>current_user.id
     else
         flash[:error] = "There was a problem submitting your attachment."
-        redirect_to :action => "show"
+        redirect_to :action => "view", :id =>current_user.id
         #render :action => "new"
     end
 
@@ -94,6 +105,8 @@ class UsersController < ApplicationController
   def delete_user_file
     id = Integer(params["id"])
     require_boolean current_user.id == UserFile.find(id).user_id
+    UserFile.delete(id)
+    redirect_to :action => "view", :id =>current_user.id
   
   end
   
@@ -134,7 +147,7 @@ class UsersController < ApplicationController
   
   #TODO: <DOUG> : pull file data from params
   def upload_user_file_params
-    params.require(:file).permit(:attached_file, :resource_text)
+    params.require(:file).permit(:attached_file)
   end
   
   def upload_registrar_params
