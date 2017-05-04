@@ -38,6 +38,7 @@ class ApplicationController < ActionController::Base
   #post -> bundles the data into a Search object the user specified
   #make sense of it and return some results.
   def search_result
+      
     #1 user specified that they want to search questions
     #2 user specified that they want to search courses
     #byebug
