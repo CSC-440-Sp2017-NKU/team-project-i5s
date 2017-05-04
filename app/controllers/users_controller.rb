@@ -55,7 +55,8 @@ class UsersController < ApplicationController
   #update routes
   def view
     require_user
-    @meesage = flash[:notice]
+    @message = flash[:notice]
+    @error = flash[:error]
     #@question = User.find(Integer(params["id"]))
     if (!params[:id].nil?)
       id = Integer(params[:id])
@@ -75,7 +76,7 @@ class UsersController < ApplicationController
   def upload_user_file
     
     #return if params[:attached_file].blank?
-    
+    if  !upload_user_file_params[:attached_file].nil?
     @user_file = UserFile.new
     
     #if  upload_user_file_params[:resource_text].nil
@@ -90,7 +91,7 @@ class UsersController < ApplicationController
      # @user_file.resource_text = upload_user_file_params[:resource_text]
     #end
     if @user_file.save
-        flash[:notice] = "Thank you for your submission..."
+        flash[:notice] = "Thank you for your submission."
         redirect_to :action => "view", :id =>current_user.id
     else
         flash[:error] = "There was a problem submitting your attachment."
@@ -98,6 +99,10 @@ class UsersController < ApplicationController
         #render :action => "new"
     end
 
+else
+  flash[:error] = "Please choose a file."
+  redirect_to :action => "view", :id =>current_user.id
+end
     #on complete, redirect back to current user's page
   end
   
@@ -119,18 +124,22 @@ class UsersController < ApplicationController
   #handled by route
   def registrar_form
     require_manager
-    #@message = flash[:notice]
+    @message = flash[:notice]
   end
   
   #implement the upload feature
   def handle_upload
     require_manager
   
+    if !params[:file].nil?
     Upload.upload( params[:file] )
 
     flash[:notice] = "Upload success."
     redirect_to action:"registrar_form"
-
+    else
+    flash[:notice] = "No file chosen."
+    redirect_to action:"registrar_form"
+    end
   end
   
   #list all of the users in the system for hte admin...
@@ -147,7 +156,7 @@ class UsersController < ApplicationController
   
   #TODO: <DOUG> : pull file data from params
   def upload_user_file_params
-    params.require(:file).permit(:attached_file)
+    params.permit(:attached_file)
   end
   
   def upload_registrar_params

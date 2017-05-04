@@ -114,7 +114,7 @@ Question.destroy_all
  {title:"What is the difference between C and C++?", text:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nulla nibh, pulvinar euismod molestie id, maximus non felis. Pellentesque faucibus egestas magna, non molestie mauris. Aliquam maximus lectus tortor, sit amet gravida nibh rhoncus nec. Aenean imperdiet non orci sed condimentum. Suspendisse ligula nulla, dapibus fringilla ipsum eget, tempus imperdiet libero. Vestibulum non lectus at lorem fermentum lacinia vestibulum et nisl. Praesent cursus orci lorem, vestibulum hendrerit metus posuere id. Integer congue tellus euismod, maximus nisl eget, porta velit. Etiam nec bibendum lectus. Praesent elementum sapien id velit iaculis scelerisque ut a dui.", active:true, user_id:1, forum_id:1, keywords:"c,c++,language,programming"},
  {title:"Corem ipsum dolor sit amet.", text:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nulla nibh, pulvinar euismod molestie id, maximus non felis. Pellentesque faucibus egestas magna, non molestie mauris. Aliquam maximus lectus tortor, sit amet gravida nibh rhoncus nec. Aenean imperdiet non orci sed condimentum. Suspendisse ligula nulla, dapibus fringilla ipsum eget, tempus imperdiet libero. Vestibulum non lectus at lorem fermentum lacinia vestibulum et nisl. Praesent cursus orci lorem, vestibulum hendrerit metus posuere id. Integer congue tellus euismod, maximus nisl eget, porta velit. Etiam nec bibendum lectus. Praesent elementum sapien id velit iaculis scelerisque ut a dui.", active:true, user_id:2, forum_id:2, keywords:"latin,language"},
  {title:"Who is stealing my water?", text:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nulla nibh, pulvinar euismod molestie id, maximus non felis. Pellentesque faucibus egestas magna, non molestie mauris. Aliquam maximus lectus tortor, sit amet gravida nibh rhoncus nec. Aenean imperdiet non orci sed condimentum. Suspendisse ligula nulla, dapibus fringilla ipsum eget, tempus imperdiet libero. Vestibulum non lectus at lorem fermentum lacinia vestibulum et nisl. Praesent cursus orci lorem, vestibulum hendrerit metus posuere id. Integer congue tellus euismod, maximus nisl eget, porta velit. Etiam nec bibendum lectus. Praesent elementum sapien id velit iaculis scelerisque ut a dui.", active:true, user_id:3, forum_id:1, keywords:"water,thief,stealing,jerk"},
- {title:"This is a really really long question title to test how overflow works when question stitles get really long. That wasn't long enough. I mean seriosuly long. What does it look like?", text:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nulla nibh, pulvinar euismod molestie id, maximus non felis. Pellentesque faucibus egestas magna, non molestie mauris. Aliquam maximus lectus tortor, sit amet gravida nibh rhoncus nec. Aenean imperdiet non orci sed condimentum. Suspendisse ligula nulla, dapibus fringilla ipsum eget, tempus imperdiet libero. Vestibulum non lectus at lorem fermentum lacinia vestibulum et nisl. Praesent cursus orci lorem, vestibulum hendrerit metus posuere id. Integer congue tellus euismod, maximus nisl eget, porta velit. Etiam nec bibendum lectus. Praesent elementum sapien id velit iaculis scelerisque ut a dui.", active:true, user_id:4, forum_id:2, keywords:"long,really,boring,compensating"}])
+ {title:"This is a really really long question title to test how overflow works when question titles get really long. That wasn't long enough. I mean seriosuly long. What does it look like?", text:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nulla nibh, pulvinar euismod molestie id, maximus non felis. Pellentesque faucibus egestas magna, non molestie mauris. Aliquam maximus lectus tortor, sit amet gravida nibh rhoncus nec. Aenean imperdiet non orci sed condimentum. Suspendisse ligula nulla, dapibus fringilla ipsum eget, tempus imperdiet libero. Vestibulum non lectus at lorem fermentum lacinia vestibulum et nisl. Praesent cursus orci lorem, vestibulum hendrerit metus posuere id. Integer congue tellus euismod, maximus nisl eget, porta velit. Etiam nec bibendum lectus. Praesent elementum sapien id velit iaculis scelerisque ut a dui.", active:true, user_id:4, forum_id:2, keywords:"long,really,boring,compensating"}])
 p "Created #{Question.count} questions"
 p "Questions: #{Question.pluck :id}" 
 
@@ -186,65 +186,6 @@ Vote.create!([
 p "Created #{Vote.count} votes"
 p "Votes: #{Vote.pluck :id}" 
 
-#rails generate model Keyword keyword:string 
-Keyword.destroy_all
-Keyword.create!([
-	{keyword: "american literature"},
-	{keyword: "ancient history"},
-	{keyword: "oil painting"},
-	{keyword: "water painting"},
-	{keyword: "clay sculpting"},
-	{keyword: "genetics"},
-	{keyword: "INF120"},
-	{keyword: "CSC440"},
-	{keyword: "CSC485"},
-	{keyword: "HIS323"},
-	{keyword: "ART202"},
-	{keyword: "ART409"},
-	{keyword: "data structures"},
-	{keyword: "algorithms"},
-	{keyword: "astronomy"},
-	{keyword: "newton"},
-	{keyword: "pascal"},
-	{keyword: "philosophy"},
-	{keyword: "zen"},
-	{keyword: "software maintenance"},
-	{keyword: "visual design"},
-	{keyword: "psychology"},
-	{keyword: "newton's second law"},
-	{keyword: "calculus"},
-	{keyword: "geometry"},
-	{keyword: "algebra"}
-])
-p "Created #{Keyword.count} keywords"
-p "Keywords: #{Keyword.pluck :id}" 
-
-
-
-#rails generate model QuestionKeyword question:references keyword:references
-QuestionKeyword.destroy_all
-QuestionKeyword.create!([
-{question_id:1, keyword_id:1 },
-{question_id:1, keyword_id:2 },
-{question_id:1, keyword_id:24 },
-{question_id:1, keyword_id:4 },
-{question_id:1, keyword_id:25 },
-{question_id:1, keyword_id:23 },
-{question_id:1, keyword_id:17 },
-{question_id:1, keyword_id:8 },
-{question_id:2, keyword_id:3 },
-{question_id:2, keyword_id:2 },
-{question_id:2, keyword_id:16 },
-{question_id:3, keyword_id:20 },
-{question_id:3, keyword_id:3 },
-{question_id:3, keyword_id:8 },
-{question_id:3, keyword_id:9 },
-{question_id:3, keyword_id:10 },
-{question_id:4, keyword_id:11 },
-{question_id:4, keyword_id:12 }
-])
-p "Created #{QuestionKeyword.count} QuestionKeywords"
-p "Keywords: #{QuestionKeyword.pluck :id}" 
 
 
 

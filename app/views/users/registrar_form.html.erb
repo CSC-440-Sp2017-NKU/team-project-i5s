@@ -1,6 +1,8 @@
 
 <h2>Registrar Portal</h2>
-
+<% if @message %>
+<div class="alert alert-danger"><%= @message %></div>
+<% end %>
 <h3>Upload Student Data</h3>
 
 <%= form_tag(url_for {action:"handle_upload", method: "post"}, {multipart: true}) do %>
