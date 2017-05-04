@@ -3,6 +3,7 @@ class Search < ApplicationRecord
     def self.search_courses(query_criteria)
       #make sure we passing in values to the model
       #course :: name, instructor
+     # query_criteria[:limit] = 50
       if (query_criteria.has_key?(:course_instructor_name) or query_criteria.has_key?(:course_name)) and has_payload?(query_criteria)
         return course_results(query_criteria)
       else
@@ -12,7 +13,7 @@ class Search < ApplicationRecord
     
     def self.search_questions(query_criteria)
       #make sure we passing in values to the model
-
+      #query_criteria[:limit] = 50
       if (query_criteria.has_key?(:question_user_name) or query_criteria.has_key?(:question_title) or query_criteria.has_key?(:question_text) or query_criteria.has_key?(:question_keyword)) and has_payload?(query_criteria)
         return question_results(query_criteria)
       else
@@ -43,18 +44,24 @@ private
         #build our where clause dynamically
         #course :: name, instructor
         if !query_criteria[:course_instructor_name].empty? and !query_criteria[:course_name].empty?
-          sWhere = "INSTR(USERS.USER_NAME, :course_instructor_name) > 0 AND INSTR(COURSES.COURSE_NAME, :course_name) > 0" if !query_criteria[:course_instructor_name].empty?
+          sWhere = "WHERE INSTR(USERS.USER_NAME, :course_instructor_name) > 0 AND INSTR(COURSES.COURSE_NAME, :course_name) > 0"
            
         else
-          sWhere = "INSTR(USERS.USER_NAME, :course_instructor_name) > 0" if !query_criteria[:course_instructor_name].empty?
-          sWhere = "INSTR(COURSES.COURSE_NAME, :course_name) > 0" if !query_criteria[:course_name].empty? 
+          sWhere = "WHERE "
+          sWhere = sWhere + " INSTR(USERS.USER_NAME, :course_instructor_name) > 0" if !query_criteria[:course_instructor_name].empty?
+          sWhere = sWhere + " INSTR(COURSES.COURSE_NAME, :course_name) > 0" if !query_criteria[:course_name].empty? 
         end
         
+        sWhere = sWhere + " LIMIT 50"
+        
         #return our results
-    #this workeD!!!!
-    #http://stackoverflow.com/questions/28367495/avoid-sql-injection-with-connection-execute
+        #this workeD!!!!
+        #http://stackoverflow.com/questions/28367495/avoid-sql-injection-with-connection-execute
       query = sanitize_sql([sSQL + sWhere, query_criteria])
-      return ActiveRecord::Base.connection.execute(query)
+      results = ActiveRecord::Base.connection.execute(query)
+     # byebug
+      return results
+      
     end
 
 
@@ -75,13 +82,13 @@ private
         sWhere = sWhere + " AND INSTR(QUESTIONS.TITLE, :question_title) > 0" if !query_criteria[:question_title].empty?
         sWhere = sWhere + " AND INSTR(QUESTIONS.TEXT, :question_text) > 0" if !query_criteria[:question_text].empty?   
         sWhere = sWhere + " AND INSTR(QUESTIONS.KEYWORDS, :question_keyword) > 0" if !query_criteria[:question_keyword].empty?        
-       
+        sWhere = sWhere + " LIMIT 50" 
+        
         #return our results
     #this workeD!!!!
     #http://stackoverflow.com/questions/28367495/avoid-sql-injection-with-connection-execute
       query = sanitize_sql([sSQL + sWhere, query_criteria])
       results = ActiveRecord::Base.connection.execute(query)
- # byebug
       return results
     end
     

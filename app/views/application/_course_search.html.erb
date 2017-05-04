@@ -1,10 +1,11 @@
+Print this
 <h3>
     <a href=<%=url_for action:"view_course", controller:"course", id:course_search['COURSE_ID'] %>>
         <%= course_search['COURSE_NAME']  %>
     </a>
 </h3>
 <div class="search-text">
-    <p>Instructor: <a href="<%= url_for action:"view", controller:"users", id:course_search['INSTRUCTOR_ID'] %>">
-    <%= course_search['INSTRCUTOR_NAME'] %>
+    <p>Instructor: <a href="<%= url_for action:"view", controller:"users", id:course_search['COURSE_INSTRUCTOR_ID'] %>">
+    <%= course_search['COURSE_INSTRCUTOR_NAME'] %>
 </a></p>
 </div>
