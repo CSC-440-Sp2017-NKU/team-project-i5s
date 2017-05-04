@@ -43,24 +43,35 @@ class User < ApplicationRecord
   def classes
     #Course.includes(:sections => [:users]).where(:users => {:id => self.id}).all
     #Course.joins(:sections => :users).where(:users => {:id => self.id}).all
-    Course.joins(:users).where(:users => {:id => self.id}).all.uniq
+    Course.joins(:users).where(:users => {:id => self.id}).all.distinct
   end
   
   # returns whether or not the user is an admin!?
-  def admin?()
+  def admin?
     return self.role_id == Role.find_by(role: "Administrator")&.id 
   end
   
-  def faculty?()
+  def faculty?
     return self.role_id == Role.find_by(role: "Faculty")&.id
   end
   
-  def registrar?()
+  def registrar?
     return self.role_id == Role.find_by(role: "Registrar")&.id
   end
   
-  #TODO: return resources uploaded by this user
-  def user_files
+  def manager?
+    return self.admin? || self.registrar?
   end
+  
+  #TODO: <DOUG> :return resources uploaded by this user
+  def user_files
+    UserFile.where(:user_id => self.id)
+  end
+  
+  
+  
+
+
+  
 
 end
