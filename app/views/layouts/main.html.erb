@@ -55,10 +55,10 @@
           <a class="dropdown-toggle" data-toggle="dropdown"><%= image_tag("userIcon.png", {:class=>"user-icon", :alt=>"user"}) %></a>
           
           <ul class="dropdown-menu">
-              <% if !current_user %>
+              <% if !current_user  %>
              <li> <a href=<%= url_for(action:"new", controller:"user_sessions") %>>Login</a></li>
               <% else %>
-              <li><a href="<%= url_for(action:"view", controller:"users", id:current_user.id) %>">Hello <%= current_user.user_name %></a></li>
+              <% if !current_user.registrar? %><li><a href="<%= url_for(action:"view", controller:"users", id:current_user.id) %>">Hello <%= current_user.user_name %></a></li><% end %>
              <li><a href=<%= url_for(action:"destroy", controller:"user_sessions") %>><li>Logout</li></a></li>
               <% end %>
           </ul>
