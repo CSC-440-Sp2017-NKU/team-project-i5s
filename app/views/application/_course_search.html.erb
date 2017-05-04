@@ -1,11 +1,13 @@
 <% #course_search.inspect %>
 <h3>
-    <a href=<%= url_for action:"view_course", controller:"course", id:course_search['COURSE_ID'] %>>
+    <a href=<%= url_for action:"view_course", controller:"course", id: (course_search['COURSE_ID'] ? course_search['COURSE_ID'] : course_search['course_id'])  %>>
+        <%= course_search['COURSE_NAME']  %>
         <%= course_search['course_name']  %>
     </a>
 </h3>
 <div class="search-text">
-    <p>Instructor: <a href="<%= url_for action:"view", controller:"users", id:course_search['COURSE_INSTRUCTOR_ID'] %>">
+    <p>Instructor: <a href="<%= url_for action:"view", controller:"users", id: (course_search['COURSE_INSTRUCTOR_ID']? course_search['COURSE_INSTRUCTOR_ID']:course_search['course_instructor_id'] ) %>">
     <%= course_search['COURSE_INSTRUCTOR_NAME'] %>
+    <%= course_search['course_instructor_name'] %>
 </a></p>
 </div>
