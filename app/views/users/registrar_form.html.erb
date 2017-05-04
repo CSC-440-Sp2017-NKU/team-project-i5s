@@ -5,5 +5,5 @@
 
 <%= form_tag(url_for {action:"handle_upload", method: "post"}, {multipart: true}) do %>
     <p><input type="file" name="file" accept=".csv"></p>
-    <input type="submit" value ="Upload file">
+    <%= submit_tag("Upload File",{class:"btn btn-default btn-dark"}) %>
 <% end %>
