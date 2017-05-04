@@ -55,10 +55,13 @@
   <h3>Upload a Resource</h3>
 
 <% if @message %>
-<div class="message"><h4><%= @message %></h4></div>
+<div class="message alert alert-success"><h4><%= @message %></h4></div>
+<% end %>
+<% if @error %>
+<div class="message alert alert-danger"><h4><%= @error %></h4></div>
 <% end %>
    <%= form_tag(upload_user_file_url {action:"upload_user_file", method: "post"}, {multipart: true}) do %>
-    <p><input type="file" name="file[attached_file]" accept=".txt"></p>
+    <p><input type="file" name="attached_file" accept=".txt"></p>
 
     <!--<label form="file[resource_text]">File Name:</label>
     <p><input type="text" name="resource_text"></input> </p>-->

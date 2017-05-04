@@ -24,7 +24,7 @@ class UserSessionsController < ApplicationController
      # redirect_back_or_default account_url(@current_user)
         redirect_to(action:"index", controller:"forum")
     else
-      render :action => :splash
+      render :action => :splash, :layout => 'splash'
     end
   end
   
