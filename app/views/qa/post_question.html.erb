@@ -19,8 +19,22 @@
       <%= label_tag("question[text]", "Description") %>
       <%= text_area_tag("question[text]", "",{class:"form-control", rows:4}) %>
       </div>
+      
+      <div class="form-element">
+      <ul id="keywords">
+
+      </ul>
+      </div>
+
+      
       <%= submit_tag("Post",{class:"btn btn-default btn-dark"}) %>
       <a href="<%= url_for(action:"view_forum",controller:"forum", id: @forum_id )%>" class="btn btn-default">Cancel</a>
     <% end %>
     
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#keywords").tagit();
+    });
+</script>
