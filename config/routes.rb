@@ -94,9 +94,9 @@ Rails.application.routes.draw do
   post 'Search', to: 'application#search_result', as: :search_result
   
   #user files
-  post 'UploadUserFile', to: 'user#upload_user_file', as: :upload_user_file
-  delete 'DeleteUserFile', to: 'user#delete_user_file'
-  get 'Download/:id', to:'user#download_file', as: :item_download
+  post 'UploadUserFile', to: 'users#upload_user_file', as: :upload_user_file
+  delete 'DeleteUserFile', to: 'users#delete_user_file'
+  get 'Download/:id', to:'users#download_file', as: :item_download
   
   #authlogic
   resources :user_sessions

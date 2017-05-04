@@ -23,6 +23,12 @@ ActiveRecord::Schema.define(version: 20170504014401) do
     t.index ["user_id"], name: "index_answers_on_user_id"
   end
 
+  create_table "attachments", force: :cascade do |t|
+    t.string "filename"
+    t.string "content_type"
+    t.binary "data"
+  end
+
   create_table "courses", force: :cascade do |t|
     t.string   "course_name"
     t.integer  "program_id"
