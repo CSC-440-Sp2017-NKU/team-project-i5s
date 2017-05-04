@@ -1,0 +1,29 @@
+<h2>Answer Question</h2>
+<div class="question-forum bottom-margin">
+    <h4><span>FORUM<span class="arial">//</span></span> 
+    <a href="<%= url_for(action:"view_forum",
+    controller:"forum", 
+    id:@question.forum_id) %>"><%= @question.try(:forum_name) %></a></h4>
+</div>
+<div class="question-forum bottom-margin">
+    <h4><span>QUESTION<span class="arial">//</span></span> 
+    <a href="<%= url_for(action:"view_question",
+    controller:"qa", 
+    id:@question.id) %>"><%= @question.title %></a></h4>
+</div>
+<div class="form">
+        <%= form_tag("/Question/Answer" ,method: "post") do %>
+      
+      <div class="form-element">
+      <%= label_tag("answer[text]", "Answer") %>
+      <%= text_area_tag("answer[text]", "",{class:"form-control", rows:4}) %>
+      </div>
+      
+      <%= hidden_field_tag "answer[user_id]", current_user.id %>
+      <%= hidden_field_tag "answer[question_id]", @question.id %>
+      
+      <%= submit_tag("Post",{class:"btn btn-default btn-dark"}) %>
+      <a href="<%= url_for(action:"view_question",controller:"qa", id: @question.id )%>" class="btn btn-default">Cancel</a>
+    <% end %>
+    
+</div>

@@ -1,0 +1,43 @@
+<h2>
+    Popular Questions
+</h2>
+<div class="popular-questions">
+    <%@popular_questions.each do |question|%>
+    <div class="question-summary">
+        
+             <a href="<%= url_for(action:"view_forum",controller:"forum",id: question.forum_id) %>">
+        <div class="qs-forum">
+            <%= question.forum_name %>
+           
+        </div>
+         </a>
+        <div class="qs-question">
+             <a href="<%= url_for(action:"view_question",controller:"qa",id: question.id) %>">
+            <%= question.title %>
+            </a>
+        </div>
+        <div class="qs-author">
+            <a href="">
+            - <%= author_link question %>
+            </a>
+        </div>
+        <a href="<%= url_for(action:"view_question",controller:"qa",id: question.id) %>">
+        <div class="qs-answers">
+        
+            <span class="qs-a-expand">View </span> <%= question.try(:num_answers) %> <span class="qs-a-expand">Answers <i class="fa fa-arrow-right"></i></span>
+       
+        </div>
+         </a>
+        <div class="qs-time">
+            <%= format_datetime question.created_at %>
+        </div>
+        
+    </div>
+    <%end %>
+    
+    <div class="more-link">
+      <!--<a>View More</a>-->
+    </div>
+</div>
+
+<%= render "list_forums" %>

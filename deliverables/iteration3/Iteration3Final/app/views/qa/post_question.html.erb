@@ -1,0 +1,43 @@
+
+
+<h2>Post a Question</h2>
+<% if @error %>
+<div class="alert alert-danger"> <%= @error %></div>
+<% end %>
+<div class="form">
+      <%= form_tag(post_question_url, method: "post") do %>
+      <div class="form-element">
+      <%= label_tag("question[forum_id]", "Forum") %>
+      <%= select_tag("question[forum_id]", options_from_collection_for_select(forum_list(), "id", "forum_name", @forum_id), class:"form-control") %>
+      </div>
+    
+      <%= hidden_field_tag "question[user_id]", current_user.id  %>
+      
+        <div class="form-element">
+      <%= label_tag("question[title]", "Question") %>
+      <%= text_field_tag("question[title]", "",{class:"form-control"}) %>
+      </div>
+      <div class="form-element">
+      <%= label_tag("question[text]", "Description") %>
+      <%= text_area_tag("question[text]", "",{class:"form-control", rows:4}) %>
+      </div>
+      
+      <div class="form-element">
+        <%= label_tag("question[keywords]", "Keywords") %>
+      <input id="keywords" type="text" class="form-control" name="question[keywords]" />
+      </div>
+
+      
+      <%= submit_tag("Post",{class:"btn btn-default btn-dark"}) %>
+      <a href="<%= url_for(action:"view_forum",controller:"forum", id: @forum_id )%>" class="btn btn-default">Cancel</a>
+    <% end %>
+    
+</div>
+
+<link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.css">
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#keywords").tagit();
+    });
+</script>

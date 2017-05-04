@@ -1,0 +1,9 @@
+<% # <HUNTER> : functional but ugly %>
+<h2>Course List</h2>
+<div class="row">
+<% @courses.each do |course| %>
+<div class="col-sm-12 course">
+    <a href="<%= url_for action:"view_course", id:course.id %>"><%= course.course_name %></a>
+</div>
+<% end %>
+</div>

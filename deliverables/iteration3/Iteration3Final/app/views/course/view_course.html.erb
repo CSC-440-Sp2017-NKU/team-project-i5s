@@ -1,0 +1,22 @@
+<% # <HUNTER> : functional but ugly %>
+
+
+<div class="question-forum">
+    <h3><a href="<%= url_for action:"list_course" %>"><span>COURSE PAGE</span></a><span class="arial">//</span>  <%= @course.course_name%></h3>
+</div>
+
+<div>
+<h4>Sections</h4>
+<div class="sections-list">
+    <% sections = @course.sections %>
+    <% sections&.each do |section| %>
+    <div>
+    <a href="<%= url_for action:"view_section", id:section.id %>"> <%= section.full_name %></a>
+    </div>
+    <% end %>
+    <% if sections.length == 0 %>
+    <p class="grey-text">There are no sections for this course.</p>
+    <% end %>
+    
+</div>
+</div>

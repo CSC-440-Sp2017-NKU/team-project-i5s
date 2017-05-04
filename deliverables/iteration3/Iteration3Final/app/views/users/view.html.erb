@@ -1,0 +1,78 @@
+
+
+<div class="question-forum">
+    <h3><span>USER PAGE</span><span class="arial">//</span>  <%= @user.user_name%></h3>
+</div>
+
+<div class="row">
+  <div class="col-sm-6">
+      
+<%if @user.recent_questions.length > 0 %>
+<h3>Recent Questions</h3>
+<%@user.recent_questions&.each do |question| %>
+<p><a href="<%= url_for action:"view_question", controller:'qa', id: question.id %>"><%= question.title %></a></p>
+<% end %> 
+<% end %>
+<%if @user.recent_answers.length > 0 %>
+<h3>Recent Answers</h3>
+<% @user.recent_answers&.each do |answer| %>
+<p><a href="<%= url_for action:"view_question", controller:'qa', id: answer.question_id, anchor: answer.id %>"><%= answer.text %></a></p>
+<% end %>
+<% end %>
+<%if @user.classes.length > 0 %>
+<h3>Classes</h3>
+<ul>
+<%@user.classes&.each do |course| %>
+<li><a href="<%= url_for action:"view_course", controller:"course", id:course.id %>"><%= course.course_name %></a></li>
+<% end %>
+<% end %>
+</ul>
+  </div>
+  <div class="col-sm-6">
+      <div class="rep-box">
+<h3>User Reputation</h3>
+<p>Questions: <strong><%= @user.reputation[:num_questions] %></strong></p>
+<p>Answers: <strong><%= @user.reputation[:num_answers] %></strong></p>
+<p>Upvotes Received:  <strong><%= @user.reputation[:up_votes] %></strong></p>
+<p>Downvotes Received:  <strong><%= @user.reputation[:down_votes] %></strong></p>
+</div>
+
+<div class="resource-box rep-box">
+  <% @can_edit = current_user.admin? || current_user.id == @user.id %>
+  
+  <% @user.user_files&.each do |file|%>
+    <div class="user-file">
+     <a href="<%= item_download_path(file.id) %>"><%= file.resource_text %></a>
+    
+    <% if @can_edit %>
+    <a href="<%= url_for(controller:"users", action:"delete_user_file", id: file.id) %>" data-method="delete"><i class="fa fa-trash delete-btn"></i></a>
+     <% end %>
+     </div>
+  <% end %>
+  
+  
+  <% if @can_edit %>
+  <h3>Upload a Resource</h3>
+
+<% if @message %>
+<div class="message alert alert-success"><h4><%= @message %></h4></div>
+<% end %>
+<% if @error %>
+<div class="message alert alert-danger"><h4><%= @error %></h4></div>
+<% end %>
+   <%= form_tag(upload_user_file_url {action:"upload_user_file", method: "post"}, {multipart: true}) do %>
+    <p><input type="file" name="attached_file" accept=".txt"></p>
+
+    <!--<label form="file[resource_text]">File Name:</label>
+    <p><input type="text" name="resource_text"></input> </p>-->
+    <%= submit_tag("Upload File",{class:"btn btn-default btn-dark"}) %>
+  <% end %>
+  
+  <% end %>
+</div>
+
+  </div> 
+  
+
+</div>
+
