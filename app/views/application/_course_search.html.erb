@@ -6,7 +6,7 @@
     </a>
 </h3>
 <div class="search-text">
-    <p>Instructor: <a href="<%= url_for action:"view", controller:"users", id: (course_search['COURSE_INSTRUCTOR_ID']? course_search['COURSE_INSTRUCTOR_ID']:course_search['course_instructor_id'] ) %>">
+    <p>Instructor: <a href="<%= url_for action:"view", controller:"users", id: (course_search['COURSE_INSTRUCTOR_ID'] ? course_search['COURSE_INSTRUCTOR_ID'] : course_search['course_instructor_id'] ) %>">
     <%= course_search['COURSE_INSTRUCTOR_NAME'] %>
     <%= course_search['course_instructor_name'] %>
 </a></p>
