@@ -20,13 +20,20 @@ class QaController < ApplicationController
   #GET --  return the form to write a question
   def post_question
     require_user
+   
+     
     if request.post?
+     
       @question = Question.new(question_params)
- 
+      byebug
       if @question.save
         redirect_to controller:"forum", action:"view_forum", id:@question.forum_id
       else
-        render 'post_question'
+         @error = "Error. Question failed to post."
+        
+         @forum_id = Integer( question_params["forum_id"])
+         
+         render 'post_question'
       end
     else
       @forum_id =Integer(params["forum_id"])
@@ -65,6 +72,7 @@ class QaController < ApplicationController
       @question.title = edit_question_params[:title]
       @question.text = edit_question_params[:text]
       @question.forum_id = edit_question_params[:forum_id]
+      @question.keywords = edit_question_params[:keywords]
       @question.save() # save the db!
       
       #send the user back to the view_question with hte question id we just saved
@@ -154,12 +162,12 @@ class QaController < ApplicationController
 private
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(:text, :title, :user_id, :forum_id)
+      params.require(:question).permit(:text, :title, :user_id, :forum_id, :keywords)
     end
     
     # Never trust parameters from the scary internet, only allow the white list through.
     def edit_question_params
-      params.require(:question).permit(:text, :title, :id, :forum_id)
+      params.require(:question).permit(:text, :title, :id, :forum_id, :keywords)
     end
     
     def answer_params
