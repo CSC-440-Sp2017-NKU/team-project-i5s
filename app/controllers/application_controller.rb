@@ -34,20 +34,25 @@ class ApplicationController < ActionController::Base
     #this is finsihed!!
   end
   
-  #TODO : <CLINT> : search_result : implement the actual search!
+  #: <CLINT> : search_result : implement the actual search!
   #post -> bundles the data into a Search object the user specified
-  #make sense of it and return some results.
+  #sends the hash of the Search object back to the DB to build
+  #the query
   def search_result
-    #1 user specified that they want to search questions
-    #2 user specified that they want to search courses
-    #byebug
+    # user specified that they want to search questions?
+    # user specified that they want to search courses ?
+
     if params[:search_for] == "question"
+      if !search_params["keyword"].nil? and search_params["keyword"].include?(',')
+        search_params["keyword"] = search_params["keyword"].tr(',', '') #scrub any commas in our search
+      end
+
       @results = Search.search_questions(search_params.to_h)
        
     elsif params[:search_for] == "course"
       @results = Search.search_courses(search_params.to_h)
     end
-#byebug
+
   end
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~ END SEARCH ~~~~~~~~~~~~~~~~~~~~~~~ 
     
