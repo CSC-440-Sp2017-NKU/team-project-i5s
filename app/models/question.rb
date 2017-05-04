@@ -3,7 +3,7 @@ class Question < ApplicationRecord
   belongs_to :forum
   has_many :answer
   has_many :question_keywords
-  has_many :keywords, :through => :question_keywords
+  #has_many :keywords, :through => :question_keywords
   has_many :users, :through => :answer
   validates :title, presence: true
   validates :text, presence: true

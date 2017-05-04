@@ -35,9 +35,24 @@
   <%= f.label :text %>
   <%= f.text_area :text, {class:"form-control", rows:4} %>
  </div>
+ 
+ <div class="form-element">
+        <%= label_tag("question[keywords]", "Keywords") %>
+      <input id="keywords" type="text" class="form-control" name="question[keywords]" value="<%= @question.keywords %>" />
+</div>
+ 
  <div class="form-element">
   <%= f.submit "Edit", class:"btn btn-default btn-dark" %>
    <a href="<%= url_for(action:"view_question",controller:"qa", id: @question.id )%>" class="btn btn-default">Cancel</a>
   </div>
   
 <% end %>
+
+
+<link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.css">
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#keywords").tagit();
+    });
+</script>

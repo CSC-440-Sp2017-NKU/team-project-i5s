@@ -22,10 +22,11 @@
     </div>
     <div class="question-description">
          <%= @question.text %>
+         <div class="question-keywords">
+        <strong>Keywords:</strong> <%= @question.keywords %>
     </div>
-    <div class="question-keywords">
-        <%= @question.keywords %>
     </div>
+    
 </div>
 
 <a href="<%= url_for(action:"answer_question", controller:"qa", question_id:@question.id) %>" class="post-button post-answer">
