@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170502234408) do
+ActiveRecord::Schema.define(version: 20170503235352) do
 
   create_table "answers", force: :cascade do |t|
     t.string   "text"
@@ -87,10 +87,10 @@ ActiveRecord::Schema.define(version: 20170502234408) do
     t.string   "keyword"
     t.string   "course_name"
     t.integer  "course_id"
-    t.integer  "instructor_id"
-    t.string   "instructor_name"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.integer  "course_instructor_id"
+    t.string   "COURSE_INSTRUCTOR_NAME"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "sections", force: :cascade do |t|
@@ -100,7 +100,7 @@ ActiveRecord::Schema.define(version: 20170502234408) do
     t.datetime "created_at",                                                            null: false
     t.datetime "updated_at",                                                            null: false
     t.string   "section_name"
-    t.string   "#<ActiveRecord::ConnectionAdapters::TableDefinition:0x00000003922658>"
+    t.string   "#<ActiveRecord::ConnectionAdapters::TableDefinition:0x000000053f3298>"
     t.index ["course_id"], name: "index_sections_on_course_id"
     t.index ["semester_id"], name: "index_sections_on_semester_id"
     t.index ["user_id"], name: "index_sections_on_user_id"

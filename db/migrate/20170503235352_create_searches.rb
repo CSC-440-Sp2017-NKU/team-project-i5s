@@ -9,8 +9,8 @@ class CreateSearches < ActiveRecord::Migration[5.0]
       t.string :keyword
       t.string :course_name
       t.integer :course_id
-      t.integer :instructor_id
-      t.string :instructor_name
+      t.integer :course_instructor_id
+      t.string :COURSE_INSTRUCTOR_NAME
 
       t.timestamps
     end

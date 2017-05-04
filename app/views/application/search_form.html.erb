@@ -2,17 +2,18 @@
 <h2>Search</h2>
 
 <div>
-  <div class="form-element">
-      <%= label_tag("search_for", "Search For") %>
-     <select id="search-for">
-       <option value="question" selected="selected">Question</option>
-       <option value="course">Course</option>
-       </select>
-      </div>
+  
       
     <div class="form">
         <%= form_tag(search_result_url ,method: "post") do %>
       
+      <div class="form-element">
+      <%= label_tag("search_for", "Search For") %>
+     <select id="search-for" name="search_for">
+       <option value="question" selected="selected">Question</option>
+       <option value="course">Course</option>
+       </select>
+      </div>
       
     <div id="question-fields" class="fields">
       
