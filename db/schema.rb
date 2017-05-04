@@ -39,25 +39,10 @@ ActiveRecord::Schema.define(version: 20170504014401) do
     t.datetime "updated_at",        null: false
   end
 
-  create_table "keywords", force: :cascade do |t|
-    t.string   "keyword"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "programs", force: :cascade do |t|
     t.string   "program_name"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-  end
-
-  create_table "question_keywords", force: :cascade do |t|
-    t.integer  "question_id"
-    t.integer  "keyword_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["keyword_id"], name: "index_question_keywords_on_keyword_id"
-    t.index ["question_id"], name: "index_question_keywords_on_question_id"
   end
 
   create_table "questions", force: :cascade do |t|
