@@ -3,7 +3,7 @@ class Search < ApplicationRecord
     def self.search_courses(query_criteria)
       #make sure we passing in values to the model
       #course :: name, instructor
-      if !query_criteria.empty? and (query_criteria.has_key?(:course_instructor_name) or query_criteria.has_key?(:course_name))
+      if (query_criteria.has_key?(:course_instructor_name) or query_criteria.has_key?(:course_name)) and has_payload?(query_criteria)
         return course_results(query_criteria)
       else
         return []
@@ -13,7 +13,7 @@ class Search < ApplicationRecord
     def self.search_questions(query_criteria)
       #make sure we passing in values to the model
 
-      if !query_criteria.empty? and (query_criteria.has_key?(:question_user_name) or query_criteria.has_key?(:question_title) or query_criteria.has_key?(:question_subject) or query_criteria.has_key?(:question_keyword))
+      if (query_criteria.has_key?(:question_user_name) or query_criteria.has_key?(:question_title) or query_criteria.has_key?(:question_text) or query_criteria.has_key?(:question_keyword)) and has_payload?(query_criteria)
         return question_results(query_criteria)
       else
         return []
@@ -42,12 +42,12 @@ private
                 
         #build our where clause dynamically
         #course :: name, instructor
-        if query_criteria.has_key?(:course_instructor_name) and query_criteria.has_key?(:course_name) 
-          sWhere = "INSTR(USERS.USER_NAME, :course_instructor_name) > 0 AND INSTR(COURSES.COURSE_NAME, :course_name) > 0" if query_criteria.has_key?(:course_instructor_name)
+        if !query_criteria[:course_instructor_name].empty? and !query_criteria[:course_name].empty?
+          sWhere = "INSTR(USERS.USER_NAME, :course_instructor_name) > 0 AND INSTR(COURSES.COURSE_NAME, :course_name) > 0" if !query_criteria[:course_instructor_name].empty?
            
         else
-          sWhere = "INSTR(USERS.USER_NAME, :course_instructor_name) > 0" if query_criteria.has_key?(:course_instructor_name)
-          sWhere = "INSTR(COURSES.COURSE_NAME, :course_name) > 0" if query_criteria.has_key?(:course_name) 
+          sWhere = "INSTR(USERS.USER_NAME, :course_instructor_name) > 0" if !query_criteria[:course_instructor_name].empty?
+          sWhere = "INSTR(COURSES.COURSE_NAME, :course_name) > 0" if !query_criteria[:course_name].empty? 
         end
         
         #return our results
@@ -71,16 +71,30 @@ private
         #build our where clause dynamically
         #questions :: subject, title, user, keyword
         sWhere = %{WHERE QUESTIONS.ACTIVE='t'}
-        sWhere = sWhere + " AND INSTR(USERS.USER_NAME, :question_user_name) > 0" if query_criteria.has_key?(:question_user_name)     # , "%#{QUESTION_USER_NAME}%"
-        sWhere = sWhere + " AND INSTR(QUESTIONS.TITLE, :question_title) > 0" if query_criteria.has_key?(:question_title) #, "%#{QUESTION_TITLE}%"
-        sWhere = sWhere + " AND INSTR(QUESTIONS.TEXT, :question_subject) > 0" if query_criteria.has_key?(:question_subject)   #, "%#{QUESTION_SUBJECT}%"
-        sWhere = sWhere + " AND INSTR(QUESTIONS.KEYWORDS, :question_keyword) > 0" if query_criteria.has_key?(:question_keyword)    #, "%#{QUESITON_KEYWORD}%"    
+        sWhere = sWhere + " AND INSTR(USERS.USER_NAME, :question_user_name) > 0" if !query_criteria[:question_user_name].empty?
+        sWhere = sWhere + " AND INSTR(QUESTIONS.TITLE, :question_title) > 0" if !query_criteria[:question_title].empty?
+        sWhere = sWhere + " AND INSTR(QUESTIONS.TEXT, :question_text) > 0" if !query_criteria[:question_text].empty?   
+        sWhere = sWhere + " AND INSTR(QUESTIONS.KEYWORDS, :question_keyword) > 0" if !query_criteria[:question_keyword].empty?        
        
         #return our results
     #this workeD!!!!
     #http://stackoverflow.com/questions/28367495/avoid-sql-injection-with-connection-execute
       query = sanitize_sql([sSQL + sWhere, query_criteria])
       results = ActiveRecord::Base.connection.execute(query)
+ # byebug
       return results
+    end
+    
+    #pass in an iterble object and returns whether or not there is data in the collection
+    def self.has_payload?(data)
+      bln = false
+      data.each do |k,v|
+        if !v.empty?
+          bln = true
+          break
+        end
+      end
+      
+      return bln
     end
 end
