@@ -1,0 +1,21 @@
+
+<h2>Search Results</h2>
+
+<div class="search-results">
+    <% if(@results.respond_to?(:length) && @results.length > 0) %>
+    <% @results.inspect %>
+    <% @results&.each do |r| %>
+    <div class="search-result">
+       <% if(!r['QUESTION_ID'].nil?) %>
+        <%= render partial:"question_search", object: r %>
+       <% elsif (!r['COURSE_ID'].nil?) %>
+        <%= render partial:"course_search", object: r %>
+       <% end %>
+    </div>
+    <% end %>
+
+ <% else %>
+    <h4>Your search yielded no results. <a href="<% url_for action:"search_form" %> ">Search Again.</a></h4>
+
+    <% end %>
+</div>

@@ -3,8 +3,13 @@ class Section < ApplicationRecord
   belongs_to :course
   belongs_to :user
   has_many :student_sections
+#<<<<<<< HEAD
  # has_many :users, :through => :student_sections
   has_many :courses, :through => :student_sections
+#=======
+  has_many :users, :through => :student_sections
+  #has_many :courses, :through => :student_sections
+#>>>>>>> dac9b6b8411cf56c85d0acf961c1b27c4aaa33b2
   has_one :users
   #sections are taught by instructors
   

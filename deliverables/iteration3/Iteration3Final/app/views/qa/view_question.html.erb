@@ -1,0 +1,163 @@
+
+<%@answers = @question.answers %>
+<div class="question-forum">
+    <h3><span>FORUM<span class="arial">//</span></span> 
+    <a href="<%= url_for(action:"view_forum",
+    controller:"forum", 
+    id:@question.forum_id) %>"><%= @question.try(:forum_name) %></a></h3>
+</div>
+
+<div class="question">
+    <h1>
+        <%= @question.title %>
+    </h1>
+    <div class="question-info">
+        Asked by <%= author_link @question %> on <%=format_datetime @question.created_at %> 
+        
+         <% if current_user.admin? %>
+         <a href="<%= url_for(controller:"qa", action:"edit_question", id: @question.id) %>"><i class="fa fa-pencil edit-btn"></i></a>
+          <a href="<%= url_for(controller:"qa", action:"delete_question", id: @question.id) %>"  data-method="delete" ><i class="fa fa-trash delete-btn"></i></a>
+         <% end %>
+         
+    </div>
+    <div class="question-description">
+         <%= @question.text %>
+         <% if  @question.keywords %>
+         <div class="question-keywords">
+        <strong>Keywords:</strong> <%= @question.keywords %>
+    </div>
+    <% end %>
+    </div>
+    
+</div>
+
+<a href="<%= url_for(action:"answer_question", controller:"qa", question_id:@question.id) %>" class="post-button post-answer">
+        Post an Answer
+</a>
+
+<div class="answers-header">
+    <div class="collapsed pointer" data-toggle="collapse" data-target="#sort-collapse">
+    Answers<i class="fa fa-sort icon-padding small-icon"></i>
+    </div>
+    
+<div class="answers-sort collapse" id="sort-collapse">
+    
+    
+    <div class="answer-col-headers">
+       <div class="col-header a-score-header pointer" data-sort-by="score" data-ascending="false">
+           Score<i class="fa fa-caret-down caret-padding" ></i>
+       </div>
+       <div class="col-header a-answer-header pointer" data-sort-by="answers" data-ascending="false">
+           Answer <i class="fa fa-caret-down caret-padding"></i>
+       </div>
+       <div class="col-header a-posted-header pointer" data-sort-by="time" data-ascending="false">
+           Posted<i class="fa fa-caret-down caret-padding"></i>
+       </div>
+       </div>
+</div>
+</div>
+<div class="answers">
+    <% @answers.each do |answer| %>
+      <div class="answer" id="<%= answer.id %>">
+      <div class="answer-pad">
+     <div class="answer-votes">
+           <a class="vote-link" data-id="<%= answer.id %>" data-dir="1">
+               <i class="fa <%if answer.user_vote(current_user)&.direction == 1 %>fa-check-circle<% else %>fa-check<% end %>">
+                   
+               </i></a>
+           <div class="a-score">
+               <%= answer.try(:score) %>
+           </div>
+          <a class="vote-link" data-id="<%= answer.id %>" data-dir="-1">
+              <i class="fa <%if answer.user_vote(current_user)&.direction == -1 %>fa-times-circle<% else %>fa-times<% end %>">
+                  
+              </i></a>
+     </div>
+     <div class="answer-info">
+         <% if current_user.admin? %>
+         <a href="<%= url_for(controller:"qa", action:"edit_answer", id:answer.id) %>"><i class="fa fa-pencil edit-btn"></i></a>
+         
+         <a href="<%= url_for(controller:"qa", action:"delete_answer", id: answer.id) %>" data-method="delete"><i class="fa fa-trash delete-btn"></i></a>
+         <% end %>
+     <div class="a-text">
+        <%= answer.text %>
+      </div>
+    
+     <div class="answer-author">
+        -<span class="a-author"><%= author_link answer %></span> on <span class="a-time"><%=format_datetime answer.created_at %> </span>
+     </div>
+     </div>
+     </div>
+     </div>
+    <% end %>
+    
+</div>
+
+<script>
+    $(".vote-link").click(function(){
+        var dir = $(this).data("dir");
+        var child = $(this).children(".fa");
+        var sibling = $(this).siblings("a").children(".fa");
+        $(this).siblings(".a-score").html("<i class='fa fa-spinner fa-spin'></i>")
+        if (dir=="1")
+        {
+            child.attr("class", "fa fa-check-circle");
+            sibling.attr("class", "fa fa-times");
+        }
+        else{
+             child.attr("class", "fa fa-times-circle");
+            sibling.attr("class", "fa fa-check");
+        }
+        
+        $.ajax("<%= vote_url %>",
+            {
+                method: "POST",
+                dataType:"json",
+                context: this,
+                data: {
+                    answer_id:$(this).data("id"),
+                    direction: dir
+                },
+                success: function(data)
+                {
+                    $(this).siblings(".a-score").text(data.score);
+                }
+            }
+            );
+        
+    });
+    
+</script>
+
+<script>
+var questions = $('.answers').isotope({
+  // options
+  itemSelector: '.answer',
+  layoutMode: 'vertical',
+   getSortData:{
+        answer:".a-text",
+        time: ".a-time parseTime",
+        score: ".a-score parseInt"
+    }
+});
+  
+$('.answer-col-headers').on( 'click', '.col-header', function() {
+    var sortAscendingValue= false;
+    if($(this).data("ascending") == "false")
+    {
+        $(this).data("ascending", "true");
+        $(this).children("i").attr("class","fa fa-caret-up");
+    }
+    else
+    {
+         $(this).data("ascending", "false");
+          $(this).children("i").attr("class", "fa fa-caret-down");
+         sortAscendingValue = true;
+    }
+    
+  var sortByValue = $(this).attr('data-sort-by');
+  questions.isotope({ sortBy: sortByValue ,
+      sortAscending: sortAscendingValue
+  });
+});
+</script>

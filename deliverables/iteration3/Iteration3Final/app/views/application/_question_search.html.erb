@@ -1,0 +1,11 @@
+<h3>
+    <a href=<%= url_for action:"view_question", controller:"qa", id: question_search['QUESTION_ID'] %>>
+        <%= question_search['QUESTION_TITLE']  %>
+    </a>
+</h3>
+-<a href="<%= url_for action:"view", controller:"users", id: question_search['QUESTION_USER_ID'] %>">
+    <%= question_search['QUESTION_USER_NAME'] %>
+    </a>
+<div class="search-text">
+    <p><%= question_search['QUESTION_TEXT'] %></p>
+</div>

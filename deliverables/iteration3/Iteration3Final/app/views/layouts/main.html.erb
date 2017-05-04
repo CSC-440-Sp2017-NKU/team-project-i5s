@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+
+<html>
+<head>
+  <title>Nkunet</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <script src="https://use.fontawesome.com/fbe7d17ae4.js"></script>
+</head>
+<body class="nkuBackground">
+<div >
+  <nav class="navbar navbar-inverse <% if current_user&.admin? %> navbar-admin<% end %>  
+  <% if current_user&.faculty? %> navbar-faculty<% end %>
+  <% if current_user&.registrar? %> navbar-registrar<% end %>
+  ">
+  <div class="container">
+    <div class="navbar-header">
+      
+       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+      
+      <a class="navbar-brand" href="<%= url_for(action:"index", controller:"forum") %>"><%= image_tag("logo.png", {:class=>"logo", :alt=>"NKUNet"}) %></a>
+    </div>
+    
+    <div class="collapse navbar-collapse" id="nav-collapse">
+    <ul class="nav navbar-nav navbar-right vertical-center-content">
+      <% if !current_user&.registrar? %>
+      
+        <li><a class="pointer" href="<%= url_for(action:"list_course", controller:"course") %>" >COURSES</a></li>
+      <li><a class="pointer" data-toggle="collapse" data-target="#nav-forums-list" >FORUMS<span class="fa fa-caret-down caret-padding"></span></a></li>
+      <% end %>
+      <% if current_user&.manager? %>
+       <li><a href="<%= url_for action:"registrar_form", controller:"users" %>">REGISTRAR</a></li>
+      <% end %>
+      
+      <% if current_user&.admin? %>
+       <li><a href="<%= url_for action:"new", controller:"users" %>">ADD USER</a></li>
+      <% end %>
+      
+      <% if !current_user&.registrar? %>
+      <li><div class="search">
+       <%= form_tag(search_result_url, method: "post") do %>
+       <input type="search" name="search[question_title]"><span class="fa fa-search"></span>
+       <input type="hidden" name="search_for" value="question">
+      <input type='submit' value='Search' style="visibility:hidden; position:absolute;"/>
+      <% end %></div>
+       <a class="adv-search-link" href="<%= url_for(action:"search_form", controller:"application") %>">Advanced Search</a>
+      </li>
+      <% end %>
+      
+      <li>
+          <a class="dropdown-toggle" data-toggle="dropdown"><%= image_tag("userIcon.png", {:class=>"user-icon", :alt=>"user"}) %></a>
+          
+          <ul class="dropdown-menu">
+              <% if !current_user  %>
+             <li> <a href=<%= url_for(action:"new", controller:"user_sessions") %>>Login</a></li>
+              <% else %>
+              <% if !current_user&.registrar? %><li><a href="<%= url_for(action:"view", controller:"users", id:current_user.id) %>">Hello <%= current_user.user_name %></a></li><% end %>
+             <li><a href=<%= url_for(action:"destroy", controller:"user_sessions") %>><li>Logout</li></a></li>
+              <% end %>
+          </ul>
+          </li>
+    </ul>
+    </div>
+  </div>
+</nav>
+<div class="container nav-forums-list collapse" id="nav-forums-list">
+    <ul>
+    <% forum_list().each do |forum| %>
+    <li><a href="/Forums/<%= forum.id %>"><%= forum.forum_name %></a></li>
+    <% end %>
+    </ul>
+</div>
+ 
+ <div class="container main-content">
+  <%= yield %>
+</div>
+
+</div>
+   <footer>
+     <div class="container">
+     <div class="footer-info">
+       Created by I5S
+     </div>
+     </div>
+   </footer>
+</body>
+</html>
