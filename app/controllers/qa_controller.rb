@@ -25,7 +25,7 @@ class QaController < ApplicationController
     if request.post?
      
       @question = Question.new(question_params)
-      byebug
+      #byebug
       if @question.save
         redirect_to controller:"forum", action:"view_forum", id:@question.forum_id
       else
