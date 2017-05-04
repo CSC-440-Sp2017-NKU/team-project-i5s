@@ -1,1 +1,6 @@
-<% #TODO : <Hunter> : implement the list users view. %>
+
+<ul>
+<% @Users.each do |user| %>
+<li><a href="<%= url_for action:"view", id:user.id %>"><%= user.user_name %></a></li>
+<% end %>
+</ul>

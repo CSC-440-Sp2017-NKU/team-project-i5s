@@ -32,18 +32,24 @@
     <div class="collapse navbar-collapse" id="nav-collapse">
     <ul class="nav navbar-nav navbar-right vertical-center-content">
         
-        <% if !current_user.registrar? %>
+        <% if !current_user&.registrar? %>
       <li><a class="pointer" data-toggle="collapse" data-target="#nav-forums-list" >FORUMS<span class="fa fa-caret-down caret-padding"></span></a></li>
       <% end %>
-      <% if current_user.manager? %>
+      <% if current_user&.manager? %>
        <li><a href="<%= url_for action:"registrar_form", controller:"users" %>">REGISTRAR</a></li>
       <% end %>
       
-      <% if current_user.admin? %>
+      <% if current_user&.admin? %>
        <li><a href="<%= url_for action:"new", controller:"users" %>">ADD USER</a></li>
       <% end %>
       
-      <li><div class="search"><input type="text" ><span class="fa fa-search"></span></div></li>
+      <li><div class="search">
+       <%= form_tag(search_result_url ,method: "post") do %>
+       <input type="search" name="search[question_title]"><span class="fa fa-search"></span>
+      <input type='submit' value='Search' style="visibility:hidden; position:absolute;"/>
+      <% end %></div>
+       <a class="adv-search-link" href="<%= url_for(action:"search_form", controller:"application") %>">Advanced Search</a>
+      </li>
       <li>
           <a class="dropdown-toggle" data-toggle="dropdown"><%= image_tag("userIcon.png", {:class=>"user-icon", :alt=>"user"}) %></a>
           
@@ -51,10 +57,9 @@
               <% if !current_user %>
              <li> <a href=<%= url_for(action:"new", controller:"user_sessions") %>>Login</a></li>
               <% else %>
-              <li><a href="<%= url_for(action:"show", controller:"users") %>">Hello <%= current_user.user_name %></a></li>
+              <li><a href="<%= url_for(action:"view", controller:"users", id:current_user.id) %>">Hello <%= current_user.user_name %></a></li>
              <li><a href=<%= url_for(action:"destroy", controller:"user_sessions") %>><li>Logout</li></a></li>
               <% end %>
-              
           </ul>
           </li>
     </ul>

@@ -54,7 +54,7 @@
   <% if @can_edit %>
   <h3>Upload a Resource</h3>
    <%= form_tag(upload_user_file_url , method: "post") do %>
-    <p><input type="file" name="file[attached_file]" accept=""></p>
+    <p><input type="file" name="file[attached_file]" accept=".txt"></p>
     <label form="file[resource_text]">File Name:</label>
     <p><input type="text" name="resource_text"></input> </p>
     <input type="submit" class="btn btn-default">
