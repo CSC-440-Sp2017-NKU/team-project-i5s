@@ -25,15 +25,15 @@ class QaController < ApplicationController
     if request.post?
      
       @question = Question.new(question_params)
- 
+      byebug
       if @question.save
         redirect_to controller:"forum", action:"view_forum", id:@question.forum_id
       else
          @error = "Error. Question failed to post."
         
-           @forum_id = Integer( question_params["forum_id"])
+         @forum_id = Integer( question_params["forum_id"])
          
-        render 'post_question'
+         render 'post_question'
       end
     else
       @forum_id =Integer(params["forum_id"])
@@ -72,6 +72,7 @@ class QaController < ApplicationController
       @question.title = edit_question_params[:title]
       @question.text = edit_question_params[:text]
       @question.forum_id = edit_question_params[:forum_id]
+      @question.keywords = edit_question_params[:keywords]
       @question.save() # save the db!
       
       #send the user back to the view_question with hte question id we just saved

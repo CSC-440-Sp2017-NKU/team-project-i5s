@@ -31,7 +31,7 @@
     
     <div class="collapse navbar-collapse" id="nav-collapse">
     <ul class="nav navbar-nav navbar-right vertical-center-content">
-        
+        <li><a class="pointer" href="<%= url_for(action:"list_course", controller:"course") %>" >COURSES</a></li>
       <% if !current_user.registrar? %>
       <li><a class="pointer" data-toggle="collapse" data-target="#nav-forums-list" >FORUMS<span class="fa fa-caret-down caret-padding"></span></a></li>
       <% end %>

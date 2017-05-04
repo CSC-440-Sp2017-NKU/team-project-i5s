@@ -1,4 +1,4 @@
-<% #TODO : <HUNTER> : view keywords with questions %>
+
 <%@answers = @question.answers %>
 <div class="question-forum">
     <h3><span>FORUM<span class="arial">//</span></span> 
@@ -22,10 +22,13 @@
     </div>
     <div class="question-description">
          <%= @question.text %>
+         <% if  @question.keywords %>
+         <div class="question-keywords">
+        <strong>Keywords:</strong> <%= @question.keywords %>
     </div>
-    <div class="question-keywords">
-        <%= @question.keywords %>
+    <% end %>
     </div>
+    
 </div>
 
 <a href="<%= url_for(action:"answer_question", controller:"qa", question_id:@question.id) %>" class="post-button post-answer">

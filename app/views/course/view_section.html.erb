@@ -1,13 +1,13 @@
-<% #TODO : <HUNTER> : functional but ugly %>
+<% # <HUNTER> : functional but ugly %>
 
 <div class="question-forum">
     <h3><span>SECTION PAGE</span><span class="arial">//</span><%=@section.course.course_name+"-"+@section.full_name%></h3>
 </div>
 
-<h4>Instructor</h4>
+<h4><strong>Instructor</strong></h4>
 <p><a href="<%= url_for action:"view", controller:"users", id:@section.user_id %>"><%= @section.instructor&.user_name %></a></p>
 
-<h4>Enrolled Students</h4>
+<h4><strong>Enrolled Students</strong></h4>
 
 <% @section.students&.each do |student| %>
 <p><a href="<%= url_for action:"view", controller:"users", id: student.id %>"><%= student&.user_name %></a></p>

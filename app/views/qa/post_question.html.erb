@@ -1,4 +1,4 @@
-<% #TODO : <HUNTER> : add keywords to posting question  %>
+
 
 <h2>Post a Question</h2>
 <% if @error %>
@@ -24,7 +24,7 @@
       
       <div class="form-element">
         <%= label_tag("question[keywords]", "Keywords") %>
-      <input id="keywords" type="text" class="form-control"  />
+      <input id="keywords" type="text" class="form-control" name="question[keywords]" />
       </div>
 
       

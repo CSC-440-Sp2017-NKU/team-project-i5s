@@ -3,13 +3,13 @@
 
 <div class="search-results">
     <% if(@results.respond_to?(:length) && @results.length > 0) %>
-    <% #@results.inspect %>
+    <% @results.inspect %>
     <% @results&.each do |r| %>
     <div class="search-result">
        <% if(!r['QUESTION_ID'].nil?) %>
         <%= render partial:"question_search", object: r %>
-       <% elsif (r['COURSE_ID'].nil?) %>
-        <% render partial:"course_search", object: r %>
+       <% elsif (!r['COURSE_ID'].nil?) %>
+        <%= render partial:"course_search", object: r %>
        <% end %>
     </div>
     <% end %>
