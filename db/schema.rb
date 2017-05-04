@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170404213044) do
+ActiveRecord::Schema.define(version: 20170503235352) do
 
   create_table "answers", force: :cascade do |t|
     t.string   "text"
@@ -84,6 +84,21 @@ ActiveRecord::Schema.define(version: 20170404213044) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "searches", force: :cascade do |t|
+    t.integer  "question_id"
+    t.string   "question_title"
+    t.string   "question_text"
+    t.integer  "question_user_id"
+    t.string   "question_user_name"
+    t.string   "keyword"
+    t.string   "course_name"
+    t.integer  "course_id"
+    t.integer  "course_instructor_id"
+    t.string   "COURSE_INSTRUCTOR_NAME"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "sections", force: :cascade do |t|
     t.integer  "semester_id"
     t.integer  "course_id"
@@ -91,7 +106,11 @@ ActiveRecord::Schema.define(version: 20170404213044) do
     t.datetime "created_at",                                                            null: false
     t.datetime "updated_at",                                                            null: false
     t.string   "section_name"
+<<<<<<< HEAD
     t.string   "#<ActiveRecord::ConnectionAdapters::TableDefinition:0x000000053e9978>"
+=======
+    t.string   "#<ActiveRecord::ConnectionAdapters::TableDefinition:0x00000003b4b808>"
+>>>>>>> master
     t.index ["course_id"], name: "index_sections_on_course_id"
     t.index ["semester_id"], name: "index_sections_on_semester_id"
     t.index ["user_id"], name: "index_sections_on_user_id"

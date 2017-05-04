@@ -53,11 +53,16 @@
   
   <% if @can_edit %>
   <h3>Upload a Resource</h3>
+<<<<<<< HEAD
    <%= form_tag(upload_user_file_url {action:"upload_user_file", method: "post"}, {multipart: true}) do %>
     <p><input type="file" name="file[attached_file]" accept=""></p>
+=======
+   <%= form_tag(upload_user_file_url , method: "post") do %>
+    <p><input type="file" name="file[attached_file]" accept=".txt"></p>
+>>>>>>> master
     <label form="file[resource_text]">File Name:</label>
     <p><input type="text" name="resource_text"></input> </p>
-    <input type="submit" class="btn btn-default">
+    <input type="submit" value="Upload file" class="btn btn-default">
   <% end %>
   
   <% end %>

@@ -150,6 +150,15 @@ a:hover{
     padding-bottom: 3px;
 }
 
+.adv-search-link
+{
+    padding: 0px !important;
+    position: absolute !important;
+    right: 0px !important;
+    text-decoration: underline;
+    font-size: 14px !important;
+}
+
 .navbar-inverse .navbar-nav>li>a
 {
     color: white;
@@ -735,7 +744,7 @@ a{
 
 @font-face {
   font-family: 'Avenir';
-  src: url('Avenir-Book.eot?#iefix') format('embedded-opentype'),  url('Avenir-Book.woff') format('woff'), url('Avenir-Book.ttf')  format('truetype'), url('Avenir-Book.svg#Avenir-Book') format('svg');
+  src: url('Avenir-Book.eot?#iefix') format('embedded-opentype'),  url('Avenir-Book.ttf')  format('truetype'), url('Avenir-Book.svg#Avenir-Book') format('svg');
   font-weight: 400;
   font-style: normal;
 }
