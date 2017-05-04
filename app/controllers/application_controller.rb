@@ -27,16 +27,27 @@ class ApplicationController < ActionController::Base
   helper_method :current_user_session, :current_user
     
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~ SEARCH ~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
-  # TODO : <CLINT> : search_form : implement search form -- returns the form
+  #<CLINT> : search_form : implement search form -- returns the form
+  # GET -- retuns the form
+  # POST - queries the DB, etc.
   def search_form
+    #this is finsihed!!
   end
   
   #TODO : <CLINT> : search_result : implement the actual search!
   #post -> bundles the data into a Search object the user specified
   #make sense of it and return some results.
   def search_result
-    #there could be multiple criteria -- dynamically build the SQL 
-    #to handle the searches appropriately.
+    #1 user specified that they want to search questions
+    #2 user specified that they want to search courses
+    #byebug
+    if params[:search_for] == "question"
+      @results = Search.search_questions(search_params.to_h)
+       
+    elsif params[:search_for] == "course"
+      @results = Search.search_courses(search_params.to_h)
+    end
+#byebug
   end
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~ END SEARCH ~~~~~~~~~~~~~~~~~~~~~~~ 
     
@@ -44,7 +55,7 @@ class ApplicationController < ActionController::Base
     
 private
   def search_params
-    params.require(:search).permit(:subject, :title, :user, :keyword, :course_name, :course_instructor)
+    params.require(:search).permit(:question_text, :question_title, :question_user_name, :question_keyword, :course_name, :course_instructor_name)
   end
 
   def current_user_session
