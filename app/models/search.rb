@@ -29,6 +29,8 @@ private
         #COURSE  -> course_name
         #SECTION -> instructor_id
       #  USER id -> id, user_name
+      
+
 
         sSQL = %{SELECT DISTINCT  
                    COURSES.ID as COURSE_ID, COURSES.COURSE_NAME, SECTIONS.ID as SECTION_ID, SECTIONS.USER_ID as COURSE_INSTRUCTOR_ID, USERS.USER_NAME as COURSE_INSTRUCTOR_NAME
@@ -43,23 +45,48 @@ private
                 
         #build our where clause dynamically
         #course :: name, instructor
-        if !query_criteria[:course_instructor_name].empty? and !query_criteria[:course_name].empty?
-          sWhere = "WHERE INSTR(USERS.USER_NAME, :course_instructor_name) > 0 AND INSTR(COURSES.COURSE_NAME, :course_name) > 0"
+        # if !query_criteria[:course_instructor_name].empty? and !query_criteria[:course_name].empty?
+        #   sWhere = "WHERE INSTR(USERS.USER_NAME, :course_instructor_name) > 0 AND INSTR(COURSES.COURSE_NAME, :course_name) > 0"
            
-        else
-          sWhere = "WHERE "
-          sWhere = sWhere + " INSTR(USERS.USER_NAME, :course_instructor_name) > 0" if !query_criteria[:course_instructor_name].empty?
-          sWhere = sWhere + " INSTR(COURSES.COURSE_NAME, :course_name) > 0" if !query_criteria[:course_name].empty? 
-        end
+        # else
+        #     sWhere = "WHERE "
+        #     sWhere = sWhere + " INSTR(USERS.USER_NAME, :course_instructor_name) > 0" if !query_criteria[:course_instructor_name].empty?
+        #     sWhere = sWhere + " INSTR(COURSES.COURSE_NAME, :course_name) > 0" if !query_criteria[:course_name].empty? 
+        # end
         
-        sWhere = sWhere + " LIMIT 50"
+      case Rails.env
+      when "development" # DEVELOPMENT :: SQL LITE
+          #ActiveRecord::Base.connection.execute('CREATE UNIQUE INDEX uq_idx_one_vote_per_answer_user ON VOTES (answers_id, user_id);') 
+      	  if !query_criteria[:course_instructor_name].empty? and !query_criteria[:course_name].empty?
+            sWhere = "WHERE INSTR(USERS.USER_NAME, :course_instructor_name) > 0 AND INSTR(COURSES.COURSE_NAME, :course_name) > 0"
+             
+          else
+        	  sWhere = "WHERE "
+            sWhere = sWhere + " INSTR(USERS.USER_NAME, :course_instructor_name) > 0" if !query_criteria[:course_instructor_name].empty?
+            sWhere = sWhere + " INSTR(COURSES.COURSE_NAME, :course_name) > 0" if !query_criteria[:course_name].empty? 
+          end
+          
+      when "production" # PRODUCTION :: PostGRE
+       #thanks postGRE...
+          if !query_criteria[:course_instructor_name].empty? and !query_criteria[:course_name].empty?
+            sWhere = "WHERE position(:course_instructor_name in USERS.USER_NAME) > 0 AND position(:course_name in COURSES.COURSE_NAME) > 0"
+             
+          else
+            sWhere = "WHERE "
+            sWhere = sWhere + " position(:course_instructor_name in  USERS.USER_NAME ) > 0" if !query_criteria[:course_instructor_name].empty?
+            sWhere = sWhere + " position(:course_name in COURSES.COURSE_NAME) > 0" if !query_criteria[:course_name].empty? 
+          end
+      end
+        
+        
+      sWhere = sWhere + " LIMIT 50"
         
         #return our results
         #this workeD!!!!
         #http://stackoverflow.com/questions/28367495/avoid-sql-injection-with-connection-execute
       query = sanitize_sql([sSQL + sWhere, query_criteria])
       results = ActiveRecord::Base.connection.execute(query)
-     # byebug
+    #  byebug
       return results
       
     end
@@ -78,13 +105,33 @@ private
         }
         #build our where clause dynamically
         #questions :: subject, title, user, keyword
-        
-        sWhere = %{WHERE QUESTIONS.ACTIVE='t'}
-        sWhere = sWhere + " AND INSTR(USERS.USER_NAME, :question_user_name) > 0" if check_criteria(query_criteria,:question_user_name)
-        sWhere = sWhere + " AND INSTR(QUESTIONS.TITLE, :question_title) > 0" if check_criteria(query_criteria,:question_title)
-        sWhere = sWhere + " AND INSTR(QUESTIONS.TEXT, :question_text) > 0" if check_criteria(query_criteria,:question_text)
-        sWhere = sWhere + " AND INSTR(QUESTIONS.KEYWORDS, :question_keyword) > 0" if check_criteria(query_criteria,:question_keyword)       
-        sWhere = sWhere + " LIMIT 50" 
+      case Rails.env
+        when "development" # DEVELOPMENT :: SQL LITE
+          #ActiveRecord::Base.connection.execute('CREATE UNIQUE INDEX uq_idx_one_vote_per_answer_user ON VOTES (answers_id, user_id);') 
+      	  sWhere = %{WHERE QUESTIONS.ACTIVE='t'}
+          sWhere = sWhere + " AND INSTR(USERS.USER_NAME, :question_user_name) > 0" if check_criteria(query_criteria,:question_user_name)
+          sWhere = sWhere + " AND INSTR(QUESTIONS.TITLE, :question_title) > 0" if check_criteria(query_criteria,:question_title)
+          sWhere = sWhere + " AND INSTR(QUESTIONS.TEXT, :question_text) > 0" if check_criteria(query_criteria,:question_text)
+          sWhere = sWhere + " AND INSTR(QUESTIONS.KEYWORDS, :question_keyword) > 0" if check_criteria(query_criteria,:question_keyword)       
+          sWhere = sWhere + " LIMIT 50"  
+      	
+        when "production" # PRODUCTION :: PostGRE
+           #thanks postGRE...
+       
+          sWhere = %{WHERE QUESTIONS.ACTIVE='t'}
+          sWhere = sWhere + " AND position(:question_user_name in USERS.USER_NAME) > 0" if check_criteria(query_criteria,:question_user_name)
+          sWhere = sWhere + " AND position(:question_title in QUESTIONS.TITLE) > 0" if check_criteria(query_criteria,:question_title)
+          sWhere = sWhere + " AND position(:question_text in QUESTIONS.TEXT) > 0" if check_criteria(query_criteria,:question_text)
+          sWhere = sWhere + " AND position(:question_keyword in QUESTIONS.KEYWORDS) > 0" if check_criteria(query_criteria,:question_keyword)       
+          sWhere = sWhere + " LIMIT 50"
+      end
+      
+        # sWhere = %{WHERE QUESTIONS.ACTIVE='t'}
+        # sWhere = sWhere + " AND INSTR(USERS.USER_NAME, :question_user_name) > 0" if check_criteria(query_criteria,:question_user_name)
+        # sWhere = sWhere + " AND INSTR(QUESTIONS.TITLE, :question_title) > 0" if check_criteria(query_criteria,:question_title)
+        # sWhere = sWhere + " AND INSTR(QUESTIONS.TEXT, :question_text) > 0" if check_criteria(query_criteria,:question_text)
+        # sWhere = sWhere + " AND INSTR(QUESTIONS.KEYWORDS, :question_keyword) > 0" if check_criteria(query_criteria,:question_keyword)       
+        # sWhere = sWhere + " LIMIT 50" 
         
         #return our results
     #this workeD!!!!
@@ -95,9 +142,9 @@ private
     end
     
     def self.check_criteria(query_criteria,field)
-      #byebug
       return !query_criteria[field].nil? && !query_criteria[field].empty?
     end
+    
     
     #pass in an iterble object and returns whether or not there is data in the collection
     def self.has_payload?(data)
