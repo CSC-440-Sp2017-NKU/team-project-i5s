@@ -6,9 +6,9 @@
     <% @results.inspect %>
     <% @results&.each do |r| %>
     <div class="search-result">
-       <% if(!r['QUESTION_ID'].nil?) %>
+       <% if(!r['QUESTION_ID'].nil? || !r['question_id'].nil?) %>
         <%= render partial:"question_search", object: r %>
-       <% elsif (!r['COURSE_ID'].nil?) %>
+       <% elsif (!r['COURSE_ID'].nil? || !r['course_id'].nil?) %>
         <%= render partial:"course_search", object: r %>
        <% end %>
     </div>

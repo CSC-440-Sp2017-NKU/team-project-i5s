@@ -47,10 +47,11 @@ class ApplicationController < ActionController::Base
         search_params["question_keyword"] = search_params["question_keyword"].tr(',', '').strip #scrub any commas in our search
       end
 
-      @results = Search.search_questions(search_params.to_h)
-       
+      db = Search.search_questions(search_params.to_h)
+       @results = JSON.parse(db.to_json)
     elsif params[:search_for] == "course"
-      @results = Search.search_courses(search_params.to_h)
+      db = Search.search_courses(search_params.to_h)
+      @results = JSON.parse(db.to_json)
     end
 
   end
