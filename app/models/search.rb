@@ -100,7 +100,7 @@ private
           else
             sWhere = "WHERE "
             sWhere = sWhere + " position(:course_instructor_name in  K.USER_NAME ) > 0" if !query_criteria[:course_instructor_name].empty?
-            sWhere = sWhere + " position(:course_name in K.COURSE_NAME) > 0" if !query_criteria[:course_name].empty? 
+            sWhere = sWhere + " position(:course_name in COURSES.COURSE_NAME) > 0" if !query_criteria[:course_name].empty? 
           end
       end
         
