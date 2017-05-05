@@ -32,16 +32,16 @@ private
       
 
 
-        sSQL = %{SELECT DISTINCT  
-                   COURSES.ID as COURSE_ID, COURSES.COURSE_NAME, SECTIONS.ID as SECTION_ID, SECTIONS.USER_ID as COURSE_INSTRUCTOR_ID, USERS.USER_NAME as COURSE_INSTRUCTOR_NAME
-                 FROM
-                   COURSES
-                   LEFT JOIN 
-                   (SECTIONS 
-                    INNER JOIN
-                    USERS ON SECTIONS.USER_ID = USERS.ID 
-                   ) K ON COURSES.ID = K.COURSE_ID
-                }
+        # sSQL = %{SELECT DISTINCT  
+        #           COURSES.ID as COURSE_ID, COURSES.COURSE_NAME, SECTIONS.ID as SECTION_ID, SECTIONS.USER_ID as COURSE_INSTRUCTOR_ID, USERS.USER_NAME as COURSE_INSTRUCTOR_NAME
+        #         FROM
+        #           COURSES
+        #           LEFT JOIN 
+        #           (SECTIONS 
+        #             INNER JOIN
+        #             USERS ON SECTIONS.USER_ID = USERS.ID 
+        #           ) K ON COURSES.ID = K.COURSE_ID
+        #         }
                 
         #build our where clause dynamically
         #course :: name, instructor
@@ -56,6 +56,18 @@ private
         
       case Rails.env
       when "development" # DEVELOPMENT :: SQL LITE
+      sSQL = %{SELECT DISTINCT  
+                   COURSES.ID as COURSE_ID, COURSES.COURSE_NAME, SECTIONS.ID as SECTION_ID, SECTIONS.USER_ID as COURSE_INSTRUCTOR_ID, USERS.USER_NAME as COURSE_INSTRUCTOR_NAME
+                 FROM
+                   COURSES
+                   LEFT JOIN 
+                   (SECTIONS 
+                    INNER JOIN
+                    USERS ON SECTIONS.USER_ID = USERS.ID 
+                   ) K ON COURSES.ID = K.COURSE_ID
+                }
+      
+      
           #ActiveRecord::Base.connection.execute('CREATE UNIQUE INDEX uq_idx_one_vote_per_answer_user ON VOTES (answers_id, user_id);') 
       	  if !query_criteria[:course_instructor_name].empty? and !query_criteria[:course_name].empty?
             sWhere = "WHERE INSTR(USERS.USER_NAME, :course_instructor_name) > 0 AND INSTR(COURSES.COURSE_NAME, :course_name) > 0"
@@ -68,13 +80,27 @@ private
           
       when "production" # PRODUCTION :: PostGRE
        #thanks postGRE...
+       
+       sSQL = %{SELECT DISTINCT  
+                   COURSES.ID as COURSE_ID, COURSES.COURSE_NAME, K.ID as SECTION_ID, K.USER_ID as COURSE_INSTRUCTOR_ID, K.USER_NAME as COURSE_INSTRUCTOR_NAME
+                 FROM
+                   COURSES
+                   LEFT JOIN 
+                   (SELECT 
+                    SECTIONS.COURSE_ID, SECTIONS.ID, SECTIONS.USER_ID, USERS.USER_NAME
+                   FROM
+                    SECTIONS 
+                    INNER JOIN
+                    USERS ON SECTIONS.USER_ID = USERS.ID 
+                   ) K ON COURSES.ID = K.COURSE_ID
+                }
           if !query_criteria[:course_instructor_name].empty? and !query_criteria[:course_name].empty?
-            sWhere = "WHERE position(:course_instructor_name in USERS.USER_NAME) > 0 AND position(:course_name in COURSES.COURSE_NAME) > 0"
+            sWhere = "WHERE position(:course_instructor_name in K.USER_NAME) > 0 AND position(:course_name in K.COURSE_NAME) > 0"
              
           else
             sWhere = "WHERE "
-            sWhere = sWhere + " position(:course_instructor_name in  USERS.USER_NAME ) > 0" if !query_criteria[:course_instructor_name].empty?
-            sWhere = sWhere + " position(:course_name in COURSES.COURSE_NAME) > 0" if !query_criteria[:course_name].empty? 
+            sWhere = sWhere + " position(:course_instructor_name in  K.USER_NAME ) > 0" if !query_criteria[:course_instructor_name].empty?
+            sWhere = sWhere + " position(:course_name in K.COURSE_NAME) > 0" if !query_criteria[:course_name].empty? 
           end
       end
         
